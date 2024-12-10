@@ -1,11 +1,16 @@
 package com.banyan_dormitory.controller;
 import com.banyan_dormitory.Main;
 
+import com.banyan_dormitory.util.DatabaseUtil;
 import com.banyan_dormitory.util.StringUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 public class LoginController {
     @FXML
     private TextField account;
@@ -13,7 +18,7 @@ public class LoginController {
     @FXML
     private TextField password;
     @FXML
-    private Label errorInfo;
+    private Label error;
     @FXML
     public void initialize(){
 
@@ -23,20 +28,41 @@ public class LoginController {
         String accountText=account.getText();
         String passwordText= password.getText();
         if(StringUtil.isEmpty(accountText)){
-            errorInfo.setText("请输入账户！！");
-            errorInfo.setVisible(true);
+            error.setText("请输入账户！！");
+            error.setVisible(true);
             return;
         }
         if(StringUtil.isEmpty(passwordText)){
-            errorInfo.setText("请输入密码！！");
-            errorInfo.setVisible(true);
+            error.setText("请输入密码！！");
+            error.setVisible(true);
             return;
         }
-        if(accountText.equals("admin")&&passwordText.equals("admin")){
+        if(verifyCredentials(accountText, passwordText)){
 //            Main.changeView("main.fxml");
+            System.out.println("登录成功");
         }else{
-            errorInfo.setText("账户或密码错误");
-            errorInfo.setVisible(true);
+            error.setText("账户或密码错误");
+            error.setVisible(true);
         }
+    }
+    private boolean verifyCredentials(String account, String password) {
+        try (Connection connection = DatabaseUtil.getConnection()) {
+            String sql = "SELECT COUNT(*) FROM account_password WHERE account = ? AND password = ?";
+            try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+                pstmt.setString(1, account);
+                pstmt.setString(2, password);
+
+                try (ResultSet rs = pstmt.executeQuery()) {
+                    if (rs.next()) {
+                        int count = rs.getInt(1);
+                        return count > 0;
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("数据库查询失败: " + e.getMessage());
+        }
+        return false;
     }
 }

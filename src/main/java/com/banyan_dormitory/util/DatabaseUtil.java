@@ -5,12 +5,9 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
-
-/**
+import java.util.Properties;/**
  * DatabaseUtil 类提供静态方法来获取数据库连接。
  * 它从 resources 文件夹中的 database.properties 文件加载数据库配置，
- * 并使用环境变量来安全地读取数据库用户名和密码。
  */
 public class DatabaseUtil {
 
@@ -18,6 +15,7 @@ public class DatabaseUtil {
     private static String DB_URL;
     private static String DB_USER;
     private static String DB_PASSWORD;
+    private static String DB_DRIVER;
 
     /**
      * 静态初始化块，在类加载时执行一次。
@@ -25,21 +23,26 @@ public class DatabaseUtil {
      */
     static {
         try (InputStream input = DatabaseUtil.class.getClassLoader().getResourceAsStream("database.properties")) {
-            Properties prop = new Properties();
             if (input == null) {
-                System.out.println("Sorry, unable to find database.properties");
+                throw new IOException("Sorry, unable to find database.properties");
             }
-            // 加载属性文件到 Properties 对象中
+
+            Properties prop = new Properties();
             prop.load(input);
 
-            // 设置静态变量，其中 URL 从 properties 文件中读取，而用户名和密码则从环境变量中读取
+            // 设置静态变量，全部从 properties 文件中读取
             DB_URL = prop.getProperty("db.url");
-            DB_USER = System.getenv("DB_USERNAME");
-            DB_PASSWORD = System.getenv("DB_PASSWORD");
+            DB_USER = prop.getProperty("db.username");
+            DB_PASSWORD = prop.getProperty("db.password");
+            DB_DRIVER = prop.getProperty("db.driver");
 
-        } catch (IOException ex) {
-            // 捕获并打印可能发生的 IO 异常
+            // 加载 JDBC 驱动程序
+            Class.forName(DB_DRIVER);
+
+        } catch (IOException | ClassNotFoundException ex) {
+            // 捕获并打印可能发生的 IO 或类找不到异常
             ex.printStackTrace();
+            throw new RuntimeException(ex);
         }
     }
 
