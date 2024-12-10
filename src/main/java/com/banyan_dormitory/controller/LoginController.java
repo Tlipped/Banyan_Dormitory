@@ -21,7 +21,7 @@ public class LoginController {
     private Label error;
     @FXML
     public void initialize(){
-
+    System.out.println("yrsd");
     }
     @FXML
     public void doLogin(){
