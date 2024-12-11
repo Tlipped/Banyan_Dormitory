@@ -8,10 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -34,7 +32,6 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         Main.stage=stage;
         stage.setTitle("榕园物业系统!");
-
         // 在启动时测试数据库连接
         testDatabaseConnection();
 
