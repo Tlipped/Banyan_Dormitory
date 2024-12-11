@@ -5,10 +5,13 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -53,6 +56,11 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
             System.err.println("无法加载 FXML 文件: " + fxml);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Failed to load view.");
+            alert.setContentText("The system could not load the requested view. Please try again or contact support.");
+            alert.showAndWait();
         }
     }
     /**

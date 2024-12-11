@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cc20415-62e4-412d-93b0-d3b860c3c2cf" name="更改" comment="readme补充" />
+    <list default="true" id="9cc20415-62e4-412d-93b0-d3b860c3c2cf" name="更改" comment="初始化功能">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/student/AnnouncementController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/fxml/Student/Announcement.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/images/navigator.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/images/榕树.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,34 +22,34 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "history": [
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
     {
-      "state": "OPEN",
-      "assignee": "Tlipped",
-      "author": "Tlipped"
+      &quot;state&quot;: &quot;OPEN&quot;,
+      &quot;assignee&quot;: &quot;Tlipped&quot;,
+      &quot;author&quot;: &quot;Tlipped&quot;
     }
   ],
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Tlipped",
-    "author": "Tlipped"
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Tlipped&quot;,
+    &quot;author&quot;: &quot;Tlipped&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Tlipped/Banyan_Dormitory.git",
-    "accountId": "c7675701-089e-4afb-a674-e18d34f671f7"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Tlipped/Banyan_Dormitory.git&quot;,
+    &quot;accountId&quot;: &quot;c7675701-089e-4afb-a674-e18d34f671f7&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -48,11 +57,16 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2q0NtnZyvFDZ0ZSiuN9O2NfrNfw" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -67,6 +81,7 @@
     "project.structure.last.edited": "库",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "editor.preferences.tabs",
     "应用程序.Main.executor": "Run"
   }
 }]]></component>
@@ -75,6 +90,7 @@
       <recent name="D:\Project\JAVAFX\Banyan_Dormitory\src\main\resources\com\banyan_dormitory\fxml" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Project\JAVAFX\Banyan_Dormitory\src\main\resources\com\banyan_dormitory\images" />
       <recent name="D:\Project\JAVAFX\Banyan_Dormitory\src\main\resources" />
       <recent name="D:\Project\JAVAFX\Banyan_Dormitory\src\main\resources\com\banyan_dormitory\fxml" />
     </key>
@@ -115,14 +131,32 @@
       <option name="project" value="LOCAL" />
       <updated>1733806891935</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="-">
+      <option name="closed" value="true" />
+      <created>1733807697044</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1733807697044</updated>
+    </task>
+    <task id="LOCAL-00005" summary="初始化功能">
+      <option name="closed" value="true" />
+      <created>1733823436939</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1733823436939</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="初始化" />
     <MESSAGE value="数据库连接" />
     <MESSAGE value="readme补充" />
-    <option name="LAST_COMMIT_MESSAGE" value="readme补充" />
+    <MESSAGE value="-" />
+    <MESSAGE value="初始化功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="初始化功能" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

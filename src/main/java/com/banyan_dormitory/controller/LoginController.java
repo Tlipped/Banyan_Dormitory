@@ -21,12 +21,12 @@ public class LoginController {
     private Label error;
     @FXML
     public void initialize(){
-    System.out.println("yrsd");
+
     }
     @FXML
     public void doLogin(){
-        String accountText=account.getText();
-        String passwordText= password.getText();
+        String accountText=account.getText().trim();
+        String passwordText= password.getText().trim();
         if(StringUtil.isEmpty(accountText)){
             error.setText("请输入账户！！");
             error.setVisible(true);
@@ -38,8 +38,8 @@ public class LoginController {
             return;
         }
         if(verifyCredentials(accountText, passwordText)){
-//            Main.changeView("main.fxml");
             System.out.println("登录成功");
+            Main.changeView("/com/banyan_dormitory/fxml/Student/Announcement.fxml");
         }else{
             error.setText("账户或密码错误");
             error.setVisible(true);
