@@ -37,17 +37,20 @@ public class LoginController {
             error.setVisible(true);
             return;
         }
-        if(verifyCredentials(accountText, passwordText)){
-            System.out.println("登录成功");
+        if(verifyCredentials(accountText, passwordText)&&account.getLength()==8){
+            System.out.println("学生端登录成功");
             Main.changeView("/com/banyan_dormitory/fxml/Student/Announcement.fxml");
-        }else{
+        } else if (verifyCredentials(accountText, passwordText)&&account.getLength()==6) {
+            System.out.println("管理端登录成功");
+            Main.changeView("/com/banyan_dormitory/fxml/Manager/Manager_Navigator.fxml");
+        } else{
             error.setText("账户或密码错误");
             error.setVisible(true);
         }
     }
     private boolean verifyCredentials(String account, String password) {
         try (Connection connection = DatabaseUtil.getConnection()) {
-            String sql = "SELECT COUNT(*) FROM account_password WHERE account = ? AND password = ?";
+            String sql = "SELECT COUNT(*) FROM user WHERE id = ? AND password = ?";
             try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
                 pstmt.setString(1, account);
                 pstmt.setString(2, password);
