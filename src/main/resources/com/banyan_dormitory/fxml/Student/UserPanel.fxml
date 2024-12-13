@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.banyan_dormitory.controller.student.UserPanelController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="660.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banyan_dormitory.controller.student.UserPanelController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a9f41" height="71.0" layoutX="63.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="510.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a9f41" height="71.0" layoutX="63.0" layoutY="171.0" stroke="BLACK" strokeType="INSIDE" width="510.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a9f41" height="71.0" layoutX="63.0" layoutY="295.0" stroke="BLACK" strokeType="INSIDE" width="510.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a9f41" height="71.0" layoutX="63.0" layoutY="414.0" stroke="BLACK" strokeType="INSIDE" width="510.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a9f41" height="71.0" layoutX="63.0" layoutY="534.0" stroke="BLACK" strokeType="INSIDE" width="510.0" />
+      <Label layoutX="80.0" layoutY="65.0" prefHeight="41.0" prefWidth="476.0" text="姓名：">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="80.0" layoutY="186.0" prefHeight="41.0" prefWidth="476.0" text="学号：">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="80.0" layoutY="310.0" prefHeight="41.0" prefWidth="476.0" text="宿舍信息：">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="80.0" layoutY="429.0" prefHeight="41.0" prefWidth="476.0" text="学院：">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="80.0" layoutY="548.0" prefHeight="41.0" prefWidth="476.0" text="表现分：">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
