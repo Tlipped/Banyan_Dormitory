@@ -1,18 +1,16 @@
 package com.banyan_dormitory;
 
 import com.banyan_dormitory.util.DatabaseUtil;
+import com.banyan_dormitory.util.ViewManager;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
-
 public class Main extends Application {
     private static Stage stage;
 
@@ -29,37 +27,26 @@ public class Main extends Application {
         }
     }
     @Override
-    public void start(Stage stage) throws IOException {
-        Main.stage=stage;
-        stage.setTitle("榕园物业系统!");
+    public void start(Stage primaryStage) throws IOException {
+        Main.stage = primaryStage;
+        primaryStage.setTitle("榕园物业系统");
         // 在启动时测试数据库连接
         testDatabaseConnection();
-
-        changeView("/com/banyan_dormitory/fxml/Login.fxml");
-        stage.show();
+        URL resource = getClass().getResource("/com/banyan_dormitory/images/LOGO.png");
+        if (resource != null) {
+            primaryStage.getIcons().add(new Image(resource.toExternalForm()));
+        }
+        ViewManager.setStage(primaryStage);
+        ViewManager.changeView("/com/banyan_dormitory/fxml/Login.fxml");
+        // 固定窗口大小
+        primaryStage.setResizable(false);
+        primaryStage.show();
     }
 
     public static void main(String[] args) {
         launch();
     }
 
-    public static void changeView(String fxml){
-        try {
-            // 使用绝对路径以确保资源能够被正确找到
-            Parent root = FXMLLoader.load(Main.class.getResource(fxml));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.centerOnScreen();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.err.println("无法加载 FXML 文件: " + fxml);
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Failed to load view.");
-            alert.setContentText("The system could not load the requested view. Please try again or contact support.");
-            alert.showAndWait();
-        }
-    }
     /**
      * 测试数据库连接的方法。
      */

@@ -1,12 +1,13 @@
 package com.banyan_dormitory.controller.student;
 
+import com.banyan_dormitory.util.DatabaseUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import com.banyan_dormitory.util.changePasswordInDatabaseUtil;
+
 
 public class ChangePasswordController {
 
@@ -36,7 +37,7 @@ public class ChangePasswordController {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "修改成功");
                 alert.showAndWait();
 
-                changePasswordInDatabaseUtil.changePassword(UserPanelController.user.getId(), passwordInput.getText());
+               DatabaseUtil.changePassword(UserPanelController.user.getId(), passwordInput.getText());
 
                 // 获取当前窗口并关闭
                 Stage stage = (Stage) confirmButton.getScene().getWindow();
