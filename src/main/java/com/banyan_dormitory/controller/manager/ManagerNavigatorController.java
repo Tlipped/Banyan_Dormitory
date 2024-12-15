@@ -77,7 +77,6 @@ public class ManagerNavigatorController {
             return;
         }
         else error.setVisible(false);
-
         System.out.println(date_edit.getEditor().getText()+accouncement_edit.getText());
     }
 }
