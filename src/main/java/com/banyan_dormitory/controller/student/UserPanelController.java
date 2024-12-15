@@ -1,6 +1,6 @@
 package com.banyan_dormitory.controller.student;
-import com.banyan_dormitory.util.ReadUserFromDatabaseUtil;
-import com.banyan_dormitory.util.User;
+import com.banyan_dormitory.util.DatabaseUtil;
+import com.banyan_dormitory.model.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -68,8 +68,7 @@ public class UserPanelController {
     }
 
     public void loadUserPanel(String userid) {
-        ReadUserFromDatabaseUtil readUserFromDatabaseUtil = new ReadUserFromDatabaseUtil();
-        user= readUserFromDatabaseUtil.getUser(String.valueOf(userid));
+        user= DatabaseUtil.getUser(String.valueOf(userid));
         initLineBackground(nameContainer);
         initLineBackground(idContainer);
         initLineBackground(dormInfoContainer);

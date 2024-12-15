@@ -1,10 +1,10 @@
 package com.banyan_dormitory.util;
 
+import com.banyan_dormitory.model.User;
+
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Properties;/**
  * DatabaseUtil 类提供静态方法来获取数据库连接。
  * 它从 resources 文件夹中的 database.properties 文件加载数据库配置，
@@ -12,10 +12,10 @@ import java.util.Properties;/**
 public class DatabaseUtil {
 
     // 静态变量用于存储数据库连接信息
-    private static String DB_URL;
-    private static String DB_USER;
-    private static String DB_PASSWORD;
-    private static String DB_DRIVER;
+    private static final String DB_URL;
+    private static final String DB_USER;
+    private static final String DB_PASSWORD;
+    private static final String DB_DRIVER;
 
     /**
      * 静态初始化块，在类加载时执行一次。
@@ -55,5 +55,81 @@ public class DatabaseUtil {
     public static Connection getConnection() throws SQLException {
         // 使用静态变量创建并返回一个数据库连接
         return DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+    }
+
+    public static void changePassword(String id, String password) {
+        // 从数据库中修改密码
+        String sql = "UPDATE `user` SET `password` = ? WHERE `id` = ?";
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, password);
+            pstmt.setString(2, id);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public static boolean verifyCredentials(String account, String password) {
+        try (Connection connection = DatabaseUtil.getConnection()) {
+            String sql = "SELECT COUNT(*) FROM user WHERE id = ? AND password = ?";
+            try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+                pstmt.setString(1, account);
+                pstmt.setString(2, password);
+
+                try (ResultSet rs = pstmt.executeQuery()) {
+                    if (rs.next()) {
+                        int count = rs.getInt(1);
+                        return count > 0;
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("数据库查询失败: " + e.getMessage());
+        }
+        return false;
+    }
+    public static boolean registerUser(String account, String password) {
+        try (Connection connection = DatabaseUtil.getConnection()) {
+            String sql = "INSERT INTO user (id, password) VALUES (?, ?)";
+            try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+                pstmt.setString(1, account);
+                pstmt.setString(2, password);
+                int rowsAffected = pstmt.executeUpdate();
+                return rowsAffected > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("数据库插入失败: " + e.getMessage());
+        }
+        return false;
+    }
+    public static User getUser(String userid) {
+        // SQL 查询语句
+        String sql = "SELECT * FROM `user` where `id` = "+userid;
+
+        User user = null;
+
+        // 执行查询
+        try (Connection conn = DatabaseUtil.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            // 提取数据
+            rs.next();
+            user = new User(
+                    rs.getString("id"),
+                    rs.getString("password"),
+                    rs.getString("school"),
+                    rs.getString("score"),
+                    rs.getString("room"),
+                    rs.getString("bed"),
+                    rs.getString("name")
+            );
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return user;
     }
 }

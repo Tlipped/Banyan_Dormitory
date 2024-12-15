@@ -1,4 +1,4 @@
-package com.banyan_dormitory.util;
+package com.banyan_dormitory.model;
 
 import java.util.Objects;
 
