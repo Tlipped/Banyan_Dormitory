@@ -1,5 +1,6 @@
 package com.banyan_dormitory.controller.student;
 
+import com.banyan_dormitory.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
@@ -46,6 +47,7 @@ public class AnnouncementController {
 
         button.setOnAction(event -> {
             selectButton(container);
+            Main.changeView("/com/banyan_dormitory/fxml/Student/UserPanel.fxml");
         });
     }
 

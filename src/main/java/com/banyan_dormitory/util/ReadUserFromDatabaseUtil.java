@@ -6,10 +6,11 @@ import java.util.List;
 
 public class ReadUserFromDatabaseUtil {
 
-    public List<User> getAllUsers() {
-        List<User> userList = new ArrayList<>();
+    public User getUser(String userid) {
         // SQL 查询语句
-        String sql = "SELECT * FROM `user`";
+        String sql = "SELECT * FROM `user` where `id` = "+userid;
+
+        User user = null;
 
         // 执行查询
         try (Connection conn = DatabaseUtil.getConnection();
@@ -17,22 +18,21 @@ public class ReadUserFromDatabaseUtil {
              ResultSet rs = stmt.executeQuery(sql)) {
 
             // 提取数据
-            while (rs.next()) {
-                User user = new User(
-                        rs.getInt("id"),
-                        rs.getString("password"),
-                        rs.getString("school"),
-                        rs.getString("score"),
-                        rs.getString("room"),
-                        rs.getString("bed")
-                );
-                userList.add(user);
-            }
+            rs.next();
+            user = new User(
+                    rs.getString("id"),
+                    rs.getString("password"),
+                    rs.getString("school"),
+                    rs.getString("score"),
+                    rs.getString("room"),
+                    rs.getString("bed"),
+                    rs.getString("name")
+            );
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return userList;
+        return user;
     }
 }
 

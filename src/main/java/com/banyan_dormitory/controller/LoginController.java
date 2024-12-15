@@ -11,6 +11,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import com.banyan_dormitory.controller.student.UserPanelController;
+
 public class LoginController {
     @FXML
     private TextField account;
@@ -39,6 +42,7 @@ public class LoginController {
         }
         if(verifyCredentials(accountText, passwordText)&&account.getLength()==8){
             System.out.println("学生端登录成功");
+            UserPanelController.receiveUserID(accountText);
             Main.changeView("/com/banyan_dormitory/fxml/Student/Announcement.fxml");
         } else if (verifyCredentials(accountText, passwordText)&&account.getLength()==6) {
             System.out.println("管理端登录成功");
