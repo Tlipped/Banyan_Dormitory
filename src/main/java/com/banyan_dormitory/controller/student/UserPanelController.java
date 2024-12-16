@@ -11,25 +11,50 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
 public class UserPanelController {
 
     @FXML
+    private TextField bedInput;
+
+    @FXML
+    private Button changePasswordButton;
+
+    @FXML
+    private Button changeUserInfoButton;
+
+    @FXML
     private StackPane dormInfoContainer;
+
+    @FXML
+    private TextField dormInput;
 
     @FXML
     private StackPane idContainer;
 
     @FXML
+    private TextField idInput;
+
+    @FXML
     private StackPane nameContainer;
+
+    @FXML
+    private TextField nameInput;
 
     @FXML
     private StackPane schoolContainer;
 
     @FXML
+    private TextField schoolInput;
+
+    @FXML
     private StackPane scoreContainer;
+
+    @FXML
+    private TextField scoreInput;
 
     @FXML
     private Label userDormInfoText;
@@ -41,16 +66,15 @@ public class UserPanelController {
     private Label userNameText;
 
     @FXML
+    private AnchorPane userPanelMainContainer;
+
+    @FXML
     private Label userSchoolText;
 
     @FXML
     private Label userScoreText;
 
-    @FXML
-    private Button changePasswordButton;
-
-    @FXML
-    private AnchorPane userPanelMainContainer;
+    boolean isEditable = false;
 
     public static User user;
 
@@ -63,24 +87,31 @@ public class UserPanelController {
         user.setId(userid);
     }
 
-    public void initLineBackground(StackPane container){
-        container.setStyle("-fx-background-color: rgba(10,159,65,1);-fx-background-radius: 5;");
-    }
+//    public void initLineBackground(StackPane container){
+//        container.setStyle("-fx-background-color: rgba(10,159,65,1);-fx-background-radius: 5;");
+//    }
 
     public void loadUserPanel(String userid) {
         user= DatabaseUtil.getUser(String.valueOf(userid));
-        initLineBackground(nameContainer);
-        initLineBackground(idContainer);
-        initLineBackground(dormInfoContainer);
-        initLineBackground(schoolContainer);
-        initLineBackground(scoreContainer);
-        userNameText.setText("姓名："+user.getName());
-        userIdText.setText("学号："+user.getId());
-        userDormInfoText.setText("宿舍信息："+user.getRoom()+"房 "+user.getBed()+"床");
-        userSchoolText.setText("学院："+user.getSchool());
-        userScoreText.setText("表现分："+user.getScore());
+//        initLineBackground(nameContainer);
+//        initLineBackground(idContainer);
+//        initLineBackground(dormInfoContainer);
+//        initLineBackground(schoolContainer);
+//        initLineBackground(scoreContainer);
+        nameInput.setText(user.getName());
+        nameInput.setEditable(false);
+        idInput.setText(user.getId());
+        idInput.setEditable(false);
+        dormInput.setText(user.getRoom());
+        dormInput.setEditable(false);
+        bedInput.setText(user.getBed());
+        bedInput.setEditable(false);
+        schoolInput.setText(user.getSchool());
+        schoolInput.setEditable(false);
+        scoreInput.setText(user.getScore());
+        scoreInput.setEditable(false);
 
-        changePasswordButton.setStyle("-fx-background-color: rgba(173,240,140,1);");
+        //changePasswordButton.setStyle("-fx-background-color: rgba(173,240,140,1);");
         changePasswordButton.setOnAction(event -> {
             Stage changePasswordStage = new Stage();
             changePasswordStage.setTitle("修改密码");
@@ -100,7 +131,27 @@ public class UserPanelController {
                 alert.showAndWait();
             }
         });
-        userPanelMainContainer.setStyle("-fx-background-color: rgba(10,159,65,0.2);-fx-background-radius: 10;");
+
+        changeUserInfoButton.setOnAction(event -> {
+            if(!isEditable) {
+                changeUserInfoButton.setText("保存用户信息");
+                isEditable = true;
+                nameInput.setEditable(true);
+                schoolInput.setEditable(true);
+            }else{
+                changeUserInfoButton.setText("修改用户信息");
+                isEditable = false;
+                nameInput.setEditable(false);
+                schoolInput.setEditable(false);
+                user.setName(nameInput.getText());
+                user.setSchool(schoolInput.getText());
+                DatabaseUtil.updateUser(user);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "修改成功");
+                alert.showAndWait();
+            }
+        });
+
+        //userPanelMainContainer.setStyle("-fx-background-color: rgba(10,159,65,0.2);-fx-background-radius: 10;");
     }
 }
 

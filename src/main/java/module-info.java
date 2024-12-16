@@ -7,6 +7,8 @@ module com.banyan_dormitory {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
     requires java.desktop;
+    requires mysql.connector.j;
+    requires jdk.jdi;
 
     // 确保开放控制器所在的包
     opens com.banyan_dormitory to javafx.fxml;
