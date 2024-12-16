@@ -4,21 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cc20415-62e4-412d-93b0-d3b860c3c2cf" name="更改" comment="学生端导航栏实现">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/util/ViewManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/fxml/Register.fxml" afterDir="false" />
+    <list default="true" id="9cc20415-62e4-412d-93b0-d3b860c3c2cf" name="更改" comment="图片上传">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/student/AnnouncementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/student/AnnouncementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/student/ChangePasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/student/ChangePasswordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/student/UserPanelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/student/UserPanelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/util/DatabaseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/util/DatabaseUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/util/ReadUserFromDatabaseUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/util/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/util/changePasswordInDatabaseUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/fxml/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/fxml/Login.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +156,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733929853445</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="登录注册实现和用户中心整合">
+      <option name="closed" value="true" />
+      <created>1734264409242</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1734264409243</updated>
+    </task>
+    <task id="LOCAL-00009" summary="图片上传">
+      <option name="closed" value="true" />
+      <created>1734265336382</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1734265336382</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -180,7 +183,9 @@
     <MESSAGE value="初始化功能" />
     <MESSAGE value="主页的部分修改" />
     <MESSAGE value="学生端导航栏实现" />
-    <option name="LAST_COMMIT_MESSAGE" value="学生端导航栏实现" />
+    <MESSAGE value="登录注册实现和用户中心整合" />
+    <MESSAGE value="图片上传" />
+    <option name="LAST_COMMIT_MESSAGE" value="图片上传" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
