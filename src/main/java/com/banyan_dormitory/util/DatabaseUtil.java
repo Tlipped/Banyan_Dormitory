@@ -71,7 +71,7 @@ public class DatabaseUtil {
     }
     public static boolean verifyCredentials(String account, String password) {
         try (Connection connection = DatabaseUtil.getConnection()) {
-            String sql = "SELECT COUNT(*) FROM user WHERE id = ? AND password = ?";
+            String sql = "SELECT COUNT(*) FROM `user` WHERE id = ? AND password = ?";
             try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
                 pstmt.setString(1, account);
                 pstmt.setString(2, password);
@@ -131,5 +131,18 @@ public class DatabaseUtil {
         }
 
         return user;
+    }
+
+    public static void updateUser(User user){
+        String sql = "UPDATE `user` SET `name` = ? , school = ? WHERE `id` = ?";
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, user.getName());
+            pstmt.setString(2, user.getSchool());
+            pstmt.setString(3, user.getId());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
