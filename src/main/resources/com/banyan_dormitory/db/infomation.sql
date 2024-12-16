@@ -1,4 +1,4 @@
-CREATE TABLE `infomation` (
+CREATE TABLE `information` (
                               `id` int NOT NULL,
                               `content` varchar(255) DEFAULT NULL,
                               `date` varchar(255) DEFAULT NULL,
