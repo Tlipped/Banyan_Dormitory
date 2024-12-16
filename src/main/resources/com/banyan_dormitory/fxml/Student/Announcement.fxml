@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banyan_dormitory.controller.student.AnnouncementController">
+
+    <children>
+      <StackPane fx:id="content" layoutX="270.0" layoutY="40.0" prefHeight="660.0" prefWidth="930.0" />
+      <AnchorPane prefHeight="700.0" prefWidth="270.0">
+         <children>
+            <ImageView fitHeight="701.0" fitWidth="273.0">
+               <image>
+                  <Image url="@../../images/navigator.png" />
+               </image>
+            </ImageView>
+             <StackPane fx:id="homepageContainer" layoutX="54.0" layoutY="128.0" prefHeight="48.0" prefWidth="185.0" style="-fx-background-color: transparent;">
+                 <Button fx:id="homepage" mnemonicParsing="false" prefHeight="48.0" prefWidth="185.0" style="-fx-background-color: transparent;" />
+             </StackPane>
+             <StackPane fx:id="applyContainer" layoutX="54.0" layoutY="219.0" prefHeight="48.0" prefWidth="185.0" style="-fx-background-color: transparent;">
+                 <Button fx:id="apply" mnemonicParsing="false" prefHeight="48.0" prefWidth="185.0" style="-fx-background-color: transparent;" />
+             </StackPane>
+             <StackPane fx:id="feedbackContainer" layoutX="54.0" layoutY="311.0" prefHeight="48.0" prefWidth="185.0" style="-fx-background-color: transparent;">
+                 <Button fx:id="feedback" mnemonicParsing="false" prefHeight="48.0" prefWidth="185.0" style="-fx-background-color: transparent;" />
+             </StackPane>
+             <StackPane fx:id="user_centerContainer" layoutX="54.0" layoutY="457.0" prefHeight="48.0" prefWidth="185.0" style="-fx-background-color: transparent;">
+                 <Button fx:id="user_center" mnemonicParsing="false" prefHeight="48.0" prefWidth="185.0" style="-fx-background-color: transparent;" />
+             </StackPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
