@@ -26,7 +26,7 @@ public class AnnouncementController {
     public void initialize(){
         setupButton(homepage, homepageContainer, "/com/banyan_dormitory/fxml/Student/UserPanel.fxml");
         setupButton(apply, applyContainer, "/com/banyan_dormitory/fxml/Student/SendRequestPanel.fxml");
-        setupButton(feedback, feedbackContainer, "/com/banyan_dormitory/fxml/Student/UserPanel.fxml");
+        setupButton(feedback, feedbackContainer, "/com/banyan_dormitory/fxml/Student/RequestFeedbackPanel.fxml");
         setupButton(user_center, user_centerContainer, "/com/banyan_dormitory/fxml/Student/UserPanel.fxml");
 
         // 默认选中第一个按钮

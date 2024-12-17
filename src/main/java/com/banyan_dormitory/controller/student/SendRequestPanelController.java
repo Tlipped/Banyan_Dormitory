@@ -17,7 +17,7 @@ public class SendRequestPanelController {
 
     public void initialize() {
         SubmitRequestButton.setOnAction(event -> {
-            DatabaseUtil.insertStudentRequest(UserPanelController.user.getId(),/* adminId*/"123",RequestInput.getText());
+            DatabaseUtil.insertStudentRequest(UserPanelController.user.getId(),/* adminId*/"123456",RequestInput.getText());
             System.out.println("Request submitted");
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("成功");

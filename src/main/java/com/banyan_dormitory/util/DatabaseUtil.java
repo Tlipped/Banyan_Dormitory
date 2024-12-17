@@ -1,10 +1,14 @@
 package com.banyan_dormitory.util;
 
+import com.banyan_dormitory.controller.student.UserPanelController;
+import com.banyan_dormitory.model.Message;
 import com.banyan_dormitory.model.User;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;/**
  * DatabaseUtil 类提供静态方法来获取数据库连接。
  * 它从 resources 文件夹中的 database.properties 文件加载数据库配置，
@@ -153,10 +157,37 @@ public class DatabaseUtil {
             pstmt.setString(1, from);
             pstmt.setString(2, to);
             pstmt.setString(3, content);
-            pstmt.setInt(4, 0);
+            pstmt.setInt(4, 1);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static List<Message> readMessageFromDatabase(String userId) {
+        List<Message> messages = new ArrayList<>();
+        String sql = "SELECT * FROM message WHERE `from` = ? OR `to` = ?";
+
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, userId);
+            pstmt.setString(2, userId);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    Message message = new Message();
+                    message.setId(rs.getInt("id"));
+                    message.setFrom(rs.getString("from"));
+                    message.setTo(rs.getString("to"));
+                    message.setContent(rs.getString("content"));
+                    message.setStatus(rs.getInt("status"));
+                    messages.add(message);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return messages;
     }
 }

@@ -85,6 +85,7 @@ public class UserPanelController {
     public static void receiveUserID(String userid){
         user=new User();
         user.setId(userid);
+        user=DatabaseUtil.getUser(userid);
     }
 
 //    public void initLineBackground(StackPane container){
