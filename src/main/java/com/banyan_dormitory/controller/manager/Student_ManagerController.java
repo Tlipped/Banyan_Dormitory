@@ -34,7 +34,7 @@ public class Student_ManagerController {
         // 清空显示
         resetFields();
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dormitory_db", "username", "password");
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Banyan_Dormitory", "root", "123456");
              PreparedStatement pstmt = conn.prepareStatement(query)) {
 
             pstmt.setString(1, roomNumber);
