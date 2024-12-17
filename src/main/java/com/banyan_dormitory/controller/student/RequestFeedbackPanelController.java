@@ -2,6 +2,7 @@ package com.banyan_dormitory.controller.student;
 
 import com.banyan_dormitory.model.Message;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -20,7 +21,7 @@ public class RequestFeedbackPanelController {
             GridPane gridPane = new GridPane();
             MessageContainer.getChildren().add(gridPane);
 
-            gridPane.setPadding(new javafx.geometry.Insets(10, 10, 10, 10));
+            gridPane.setPadding(new Insets(10, 10, 10, 10));
             gridPane.setHgap(10);
             gridPane.setVgap(10);
             gridPane.setStyle("-fx-background-color: rgba(10,159,65,1);-fx-background-radius: 5");
@@ -55,22 +56,15 @@ public class RequestFeedbackPanelController {
             label4.setAlignment(Pos.CENTER_LEFT);
             gridPane.add(label4, 3, 0);
 
-            String messageContent = message.getContent();
-            messageContent.replace("\n", " ");
-            Label contentLabel;
-            if (messageContent.length() > 6) {
-                contentLabel = new Label(messageContent.substring(0, 6) + "...");
-            } else {
-                contentLabel = new Label(messageContent);
-            }
-            contentLabel.setStyle("-fx-font-size: 24px;");
-            contentLabel.setMaxWidth(Double.MAX_VALUE);
-            contentLabel.setAlignment(Pos.CENTER_LEFT);
-            gridPane.add(contentLabel, 4, 0);
+            Label label5 = new Label(message.getType());
+            label5.setStyle("-fx-font-size: 24px;");
+            label5.setMaxWidth(Double.MAX_VALUE);
+            label5.setAlignment(Pos.CENTER_LEFT);
+            gridPane.add(label5, 4, 0);
 
             int messageStatus = message.getStatus();
             StackPane statusContainer = new StackPane();
-            statusContainer.setPadding(new javafx.geometry.Insets(10, 10, 10, 10));
+            statusContainer.setPadding(new Insets(10, 10, 10, 10));
             statusContainer.setStyle("-fx-background-color: rgba(173,240,140,1);-fx-background-radius: 5");
             statusContainer.setAlignment(Pos.CENTER_LEFT);
 

@@ -6,6 +6,7 @@ public class Message {
     private String to;
     private String content;
     private int status;// 1未处理 2已通过 3被驳回 其他：异常状态
+    private String type;
 
     public int getId() {
         return id;
@@ -45,5 +46,13 @@ public class Message {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

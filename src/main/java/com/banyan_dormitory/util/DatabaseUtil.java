@@ -1,6 +1,5 @@
 package com.banyan_dormitory.util;
 
-import com.banyan_dormitory.controller.student.UserPanelController;
 import com.banyan_dormitory.model.Message;
 import com.banyan_dormitory.model.User;
 
@@ -150,14 +149,15 @@ public class DatabaseUtil {
         }
     }
 
-    public static void insertStudentRequest(String from, String to, String content){
-        String sql = "INSERT INTO message (`from`, `to`, content, status) VALUES (?, ?, ?, ?)";
+    public static void insertStudentRequest(String from, String to, String content, String type){
+        String sql = "INSERT INTO message (`from`, `to`, content, status, type) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn =DatabaseUtil.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, from);
             pstmt.setString(2, to);
             pstmt.setString(3, content);
             pstmt.setInt(4, 1);
+            pstmt.setString(5, type);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -181,6 +181,7 @@ public class DatabaseUtil {
                     message.setTo(rs.getString("to"));
                     message.setContent(rs.getString("content"));
                     message.setStatus(rs.getInt("status"));
+                    message.setType(rs.getString("type"));
                     messages.add(message);
                 }
             }
@@ -191,12 +192,29 @@ public class DatabaseUtil {
         return messages;
     }
 
-    public static void updateMessageStatus(int id, int i) {
-        String sql = "UPDATE `message` SET status = ? WHERE `id` = ?";
+    public static void updateMessageStatus(int id, int type) {
+        String sql = "UPDATE `message` SET status = ? , type = ? WHERE `id` = ?";
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, 2);
-            pstmt.setInt(2, id);
+            switch (type) {
+                case 0:
+                    pstmt.setString(2, "报修申请");
+                    break;
+                case 1:
+                    pstmt.setString(2, "分数相关");
+                    break;
+                case 2:
+                    pstmt.setString(2, "投诉");
+                    break;
+                case 3:
+                    pstmt.setString(2, "建议");
+                    break;
+                default:
+                    pstmt.setString(2, "其他");
+                    break;
+            }
+            pstmt.setInt(3, id);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
