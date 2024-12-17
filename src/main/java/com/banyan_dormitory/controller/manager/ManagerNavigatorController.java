@@ -1,70 +1,87 @@
 package com.banyan_dormitory.controller.manager;
 
 import com.banyan_dormitory.util.DatabaseUtil;
+import com.banyan_dormitory.util.ViewManager;
 import com.mysql.cj.xdevapi.SqlStatement;
+import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
+import javafx.util.Duration;
 
+import java.io.IOException;
 import java.sql.*;
-import java.util.Date;
-
-import static java.lang.Thread.sleep;
 
 import com.banyan_dormitory.Main;
 
 public class ManagerNavigatorController {
     @FXML
+    public ComboBox<String> logout;
+    public Label name;
+    @FXML
     private StackPane public_container,checkin_container,student_management_container,examine_container;
     @FXML
     private Button public_announce,checkin,student_management,examine;
+    @FXML
+    private StackPane content;
     private StackPane currentSelectedContainer;
     @FXML
-    private TextArea accouncement_edit;
-    @FXML
     private Label error;
-    @FXML
-    private DatePicker date_edit;
-    @FXML
-    private Label success;
-    @FXML
-    private ListView<String> accouncement_show;
+
     public void initialize() throws SQLException {
-        setupButton(public_announce, public_container);
-        setupButton(checkin, checkin_container);
-        setupButton(student_management, student_management_container);
-        setupButton(examine, examine_container);
+        if (content == null) {
+            throw new IllegalStateException("content is not injected by FXMLLoader");
+        }
+        setupButton(public_announce, public_container,"/com/banyan_dormitory/fxml/Manager/Visitor_Check.fxml");
+        setupButton(checkin, checkin_container,"/com/banyan_dormitory/fxml/Manager/Visitor_Check.fxml");
+        setupButton(student_management, student_management_container,"/com/banyan_dormitory/fxml/Manager/Student_manager.fxml");
+        setupButton(examine, examine_container,"/com/banyan_dormitory/fxml/Manager/Visitor_Check.fxml");
 
         // 默认选中第一个按钮
         selectButton(public_container);
-
-        String sql="SELECT * FROM information order by id ";
-        Connection connection= DatabaseUtil.getConnection();
-        Statement sq= connection.createStatement();
-        ResultSet Set=sq.executeQuery(sql);
-        while (Set.next())
-        {
-            String str=Set.getString("content");
-            int size=50-3*str.length();
-            StringBuffer Sb=new StringBuffer(" ");
-            System.out.println(size);
-            while (size>=0)
-            {
-                Sb.append(' ');
-                size--;
+        loadContent("/com/banyan_dormitory/fxml/Manager/Visitor_Check.fxml");
+        logout.getItems().add("登出");
+        logout.setOnAction(event -> {
+            String selectedItem = logout.getSelectionModel().getSelectedItem();
+            if ("登出".equals(selectedItem)) {
+                // 延迟一下
+                PauseTransition delay = new PauseTransition(Duration.seconds(0.2));
+                delay.setOnFinished(event1 -> performLogout());
+                delay.play();
             }
-            accouncement_show.getItems().add(Set.getString("content")+Sb+Set.getString("date"));
-        }
+        });
     }
+
+    private void performLogout() {
+        System.out.println("管理员已登出");
+        ViewManager.changeView("/com/banyan_dormitory/fxml/Login.fxml");
+    }
+
     public ManagerNavigatorController() {
         // 默认构造函数
 
     }
-
-    private void setupButton(Button button, StackPane container) {
+    private void loadContent(String fxmlPath) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent view = loader.load();
+            if (content != null) {
+                content.getChildren().setAll(view);
+            } else {
+                System.err.println("content is null when trying to load content.");
+            }
+        } catch (IOException e) {
+            System.err.println("无法加载 FXML 文件: " + fxmlPath);
+            e.printStackTrace();
+            error.setText("无法加载页面，请稍后再试。");
+        }
+    }
+    private void setupButton(Button button, StackPane container, String fxmlPath) {
         button.setOnMouseEntered(event -> {
             if (currentSelectedContainer != container) {
                 container.setStyle("-fx-border-color:  rgba(234,251,226,0.93);");
@@ -79,6 +96,7 @@ public class ManagerNavigatorController {
 
         button.setOnAction(event -> {
             selectButton(container);
+            loadContent(fxmlPath);
         });
     }
 
@@ -88,48 +106,5 @@ public class ManagerNavigatorController {
         }
         currentSelectedContainer = newSelectedContainer;
         currentSelectedContainer.setStyle("-fx-border-color: rgba(234,251,226,0.93);");
-    }
-
-    public void release_announcement_action(ActionEvent actionEvent) throws SQLException, InterruptedException {
-        String accouncement=accouncement_edit.getText();
-        String date=date_edit.getEditor().getText();
-        if(accouncement.isEmpty())
-        {
-            error.setText("公告不能为空");
-            error.setVisible(true);
-            success.setVisible(false);
-            return;
-        }
-        else if (date.isEmpty())
-        {
-            error.setText("日期不能为空");
-            error.setVisible(true);
-            success.setVisible(false);
-            return;
-        }
-        else error.setVisible(false);
-        int id=0;
-        String sql="SELECT * FROM information order by id";
-        Connection connection= DatabaseUtil.getConnection();
-        Statement sq= connection.createStatement();
-        ResultSet Set=sq.executeQuery(sql);
-        while (Set.next())
-        {
-            id=Set.getInt("id")+1;
-        }
-
-        sql="INSERT INTO information VALUES (?,?,?)";
-        try (PreparedStatement presq=connection.prepareStatement(sql);){
-            presq.setInt(1,id);
-            presq.setString(2,accouncement);
-            presq.setString(3,date);
-            presq.execute();
-        }
-
-        accouncement_edit.clear();
-        date_edit.getEditor().clear();
-        success.setVisible(true);
-        initialize();
-        return;
     }
 }

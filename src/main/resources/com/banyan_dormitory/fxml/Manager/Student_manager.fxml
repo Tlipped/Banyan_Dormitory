@@ -21,7 +21,7 @@
                 <Label prefHeight="27.0" prefWidth="131.0" style="-fx-font-size: 20px;" text="           宿舍号" />
                 <TextField fx:id="room" prefWidth="80.0" promptText="302" style="-fx-font-size: 18px;" />
                 <Button fx:id="search" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #A2F290; -fx-font-size: 18px;" text="查询" />
-                <Button fx:id="add" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #A2F290; -fx-font-size: 18px;" text="添加" />
+                <Button fx:id="add" disable="true" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #A2F290; -fx-font-size: 18px;" text="添加" />
             </children>
         </HBox>
 

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="80.0" prefWidth="862.0" style="-fx-background-color: rgb(77,186,117); -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banyan_dormitory.controller.manager.Visitor_layoutController">
+   <children>
+      <Label fx:id="name" layoutX="18.0" layoutY="19.0" prefHeight="40.0" prefWidth="120.0" text="张三" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="visitor_id" layoutX="152.0" layoutY="19.0" prefHeight="40.0" prefWidth="302.0" text="3505242005062533333" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="phone_number" layoutX="472.0" layoutY="19.0" prefHeight="40.0" prefWidth="181.0" text="13316333333" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="reason" layoutX="711.0" layoutY="17.0" prefHeight="40.0" prefWidth="112.0" text="探访孩子" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
