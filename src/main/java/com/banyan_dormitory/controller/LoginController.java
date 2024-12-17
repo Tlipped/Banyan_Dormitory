@@ -9,13 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import com.banyan_dormitory.controller.student.UserPanelController;
 import javafx.scene.layout.StackPane;
 
@@ -24,6 +18,10 @@ public class LoginController {
     public TextField reAccount;
     @FXML
     public TextField rePassword;
+    @FXML
+    public TextField rename;
+    @FXML
+    public TextField reschool;
     @FXML
     private TextField account;
     @FXML
@@ -69,19 +67,10 @@ public class LoginController {
 
     @FXML
     public void doregister(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/banyan_dormitory/fxml/Register.fxml"));
-            Node registerNode = loader.load();
-            content.getChildren().setAll(registerNode);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.err.println("无法加载 Register.fxml 文件.");
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Failed to load register view.");
-            alert.setContentText("The system could not load the registration form. Please try again or contact support.");
-            alert.showAndWait();
-        }
+        ViewManager.changeView("/com/banyan_dormitory/fxml/Register.fxml");
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/banyan_dormitory/fxml/Register.fxml"));
+//            Node registerNode = loader.load();
+//            content.getChildren().setAll(registerNode);
     }
     @FXML
     public void backLogin(ActionEvent event) {
@@ -91,7 +80,8 @@ public class LoginController {
     public void register(ActionEvent actionEvent) {
         String account = reAccount.getText().trim();
         String password = rePassword.getText().trim();
-
+        String name=rename.getText().trim();
+        String school =reschool.getText().trim();
         if (StringUtil.isEmpty(account)) {
             showError("请输入账号！");
             return;
@@ -100,7 +90,15 @@ public class LoginController {
             showError("请输入密码！");
             return;
         }
-        if (DatabaseUtil.registerUser(account, password)) {
+        if (StringUtil.isEmpty(name)) {
+            showError("请输入名字！");
+            return;
+        }
+        if (StringUtil.isEmpty(school)) {
+            showError("请输入学院！");
+            return;
+        }
+        if (DatabaseUtil.registerUser(account, password,name,school)) {
             showSuccessAlert("注册成功！");
             ViewManager.changeView("/com/banyan_dormitory/fxml/Login.fxml");
         } else {

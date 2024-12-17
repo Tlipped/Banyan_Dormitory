@@ -2,6 +2,9 @@ package com.banyan_dormitory.util;
 
 import com.banyan_dormitory.model.Message;
 import com.banyan_dormitory.model.User;
+import com.banyan_dormitory.model.Visitor;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -92,12 +95,14 @@ public class DatabaseUtil {
         }
         return false;
     }
-    public static boolean registerUser(String account, String password) {
+    public static boolean registerUser(String account, String password,String name,String school) {
         try (Connection connection = DatabaseUtil.getConnection()) {
-            String sql = "INSERT INTO user (id, password) VALUES (?, ?)";
+            String sql = "INSERT INTO user (id, password,name,school) VALUES (?, ?)";
             try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
                 pstmt.setString(1, account);
                 pstmt.setString(2, password);
+                pstmt.setString(2, name);
+                pstmt.setString(2, school);
                 int rowsAffected = pstmt.executeUpdate();
                 return rowsAffected > 0;
             }
@@ -220,4 +225,40 @@ public class DatabaseUtil {
             e.printStackTrace();
         }
     }
+    public static ObservableList<Visitor> fetchDataFromDateBase(Date date){
+        System.out.println(date);
+        ObservableList<Visitor> visitors = FXCollections.observableArrayList();
+        String sql = "SELECT * FROM `visitor` WHERE `date`=?";
+
+        // 使用 try-with-resources 确保资源被自动关闭
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            // 设置 PreparedStatement 参数
+            pstmt.setDate(1, date);
+
+            // 执行查询并获取结果集
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    System.out.println("查到一个");
+                    Visitor visitor = new Visitor(
+                            rs.getString("name"),
+                            rs.getString("visitor_id"),
+                            rs.getString("phone_number"),
+                            rs.getString("reason"),
+                            rs.getDate("date"),
+                            rs.getTime("time")
+                    );
+                    visitor.setId(rs.getInt("id"));
+                    // 将每个 Visitor 添加到列表中
+                    visitors.add(visitor);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println(visitors.size());
+        return visitors;
+    }
+
 }
