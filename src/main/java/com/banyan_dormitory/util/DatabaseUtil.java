@@ -190,4 +190,16 @@ public class DatabaseUtil {
 
         return messages;
     }
+
+    public static void updateMessageStatus(int id, int i) {
+        String sql = "UPDATE `message` SET status = ? WHERE `id` = ?";
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, 2);
+            pstmt.setInt(2, id);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

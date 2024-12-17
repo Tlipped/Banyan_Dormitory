@@ -107,6 +107,9 @@ public class RequestFeedbackPanelController {
                 alert.setHeaderText("消息内容");
                 alert.setContentText(message.getContent());
                 alert.showAndWait();
+                if(message.getFrom().equals("123456"/*adminId*/)){
+                    DatabaseUtil.updateMessageStatus(message.getId(), 2);
+                }
             });
         }
     }
