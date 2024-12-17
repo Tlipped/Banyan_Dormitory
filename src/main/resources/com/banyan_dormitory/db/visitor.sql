@@ -1,5 +1,5 @@
 CREATE TABLE `visitor` (
-                           `id` int NOT NULL,
+                           `id` int NOT NULL AUTO_INCREMENT,
                            `name` varchar(255) DEFAULT NULL,
                            `visitor_id` int DEFAULT NULL,
                            `phone_number` int DEFAULT NULL,

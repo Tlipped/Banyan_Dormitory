@@ -14,6 +14,8 @@ import java.util.Date;
 
 import static java.lang.Thread.sleep;
 
+import com.banyan_dormitory.Main;
+
 public class ManagerNavigatorController {
     @FXML
     private StackPane public_container,checkin_container,student_management_container,examine_container;

@@ -145,4 +145,18 @@ public class DatabaseUtil {
             e.printStackTrace();
         }
     }
+
+    public static void insertStudentRequest(String from, String to, String content){
+        String sql = "INSERT INTO message (`from`, `to`, content, status) VALUES (?, ?, ?, ?)";
+        try (Connection conn =DatabaseUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, from);
+            pstmt.setString(2, to);
+            pstmt.setString(3, content);
+            pstmt.setInt(4, 0);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
