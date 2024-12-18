@@ -33,13 +33,13 @@
              </StackPane>
          </children>
       </AnchorPane>
-        <ComboBox fx:id="logout" layoutX="974.0" layoutY="6.0" prefHeight="31.0" prefWidth="55.0" style="-fx-background-color: transparent;" visibleRowCount="2" />
+        <ComboBox fx:id="logout" layoutX="926.0" layoutY="-8.0" prefHeight="56.0" prefWidth="104.0" style="-fx-background-color: transparent;" visibleRowCount="2" />
       <ImageView fitHeight="40.0" fitWidth="39.0" layoutX="994.0" layoutY="-1.0">
          <image>
             <Image url="@../../images/logout.png" />
          </image>
       </ImageView>
-      <Label fx:id="name" layoutX="880.0" layoutY="8.0" prefHeight="28.0" prefWidth="66.0" text="张三">
+      <Label fx:id="name" layoutX="882.0" layoutY="5.0" prefHeight="28.0" prefWidth="66.0" text="张三">
          <font>
             <Font size="21.0" />
          </font>

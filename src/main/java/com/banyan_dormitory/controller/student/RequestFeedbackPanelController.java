@@ -1,11 +1,14 @@
 package com.banyan_dormitory.controller.student;
 
 import com.banyan_dormitory.model.Message;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 
 import java.util.List;
@@ -15,6 +18,8 @@ public class RequestFeedbackPanelController {
     @FXML
     private VBox MessageContainer;
 
+    @FXML
+    private ScrollPane myscrollPane;
     public void initialize() {
         List<Message> messages = DatabaseUtil.readMessageFromDatabase(UserPanelController.user.getId());
         for (Message message : messages) {
@@ -105,6 +110,23 @@ public class RequestFeedbackPanelController {
                     DatabaseUtil.updateMessageStatus(message.getId(), 2);
                 }
             });
+        }
+        Platform.runLater(this::setVerticalScrollBarStyle);
+    }
+    private void setVerticalScrollBarStyle() {
+        // 垂直滚动条并设置其样式
+        Node verticalScrollBar = myscrollPane.lookup(".scroll-bar:vertical");
+        if (verticalScrollBar != null) {
+            verticalScrollBar.setStyle(
+                    "-fx-background-color: rgba(142,216,99,0.8); " + // 设置外部颜色
+                            "-fx-background-insets: 0; " +
+                            "-fx-padding: 0;"
+            );
+
+            Node thumb = verticalScrollBar.lookup(".thumb");
+            if (thumb != null) {
+                thumb.setStyle("-fx-background-color: rgb(75,147,53);");
+            }
         }
     }
 }

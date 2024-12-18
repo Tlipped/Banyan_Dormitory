@@ -4,45 +4,55 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="510.0" prefWidth="418.0" style="-fx-background-color: rgba(214,239,223,0.9);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banyan_dormitory.controller.manager.Visitor_DialogController">
    <children>
-      <Label alignment="CENTER" layoutX="130.0" layoutY="25.0" prefHeight="50.0" prefWidth="157.0" text="来访人登记">
+      <Label alignment="CENTER" layoutX="109.0" layoutY="25.0" prefHeight="50.0" prefWidth="215.0" text="来 访 人 登 记">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#56a35ab8" />
+                  <Stop color="#118225" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
       </Label>
       <Label layoutX="20.0" layoutY="100.0" prefHeight="36.0" prefWidth="70.0" text="姓名：">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="name" layoutX="138.0" layoutY="100.0" prefHeight="36.0" prefWidth="198.0" style="-fx-border-radius: 5; -fx-border-color: rgba(214,239,223,0.9);" />
+      <TextField fx:id="name" layoutX="138.0" layoutY="100.0" prefHeight="36.0" prefWidth="198.0" style="-fx-border-radius: 5; -fx-border-color: black; -fx-background-color: transparent;" />
       <Label layoutX="20.0" layoutY="160.0" prefHeight="36.0" prefWidth="101.0" text="身份证号:">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="visitor_id" layoutX="138.0" layoutY="160.0" prefHeight="36.0" prefWidth="198.0" style="-fx-border-radius: 5; -fx-border-color: rgba(214,239,223,0.9);" />
+      <TextField fx:id="visitor_id" layoutX="138.0" layoutY="160.0" prefHeight="36.0" prefWidth="198.0" promptText="请输入18位身份证号" style="-fx-border-radius: 5; -fx-border-color: black; -fx-background-color: transparent;" />
       <Label layoutX="20.0" layoutY="220.0" prefHeight="36.0" prefWidth="70.0" text="手机号:">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="phone_number" layoutX="138.0" layoutY="220.0" prefHeight="36.0" prefWidth="198.0" style="-fx-border-radius: 5; -fx-border-color: rgba(214,239,223,0.9);" />
+      <TextField fx:id="phone_number" layoutX="138.0" layoutY="220.0" prefHeight="36.0" prefWidth="198.0" promptText="请输入11位身份证号" style="-fx-border-radius: 5; -fx-border-color: black; -fx-background-color: transparent;" />
       <Label layoutX="20.0" layoutY="280.0" prefHeight="36.0" prefWidth="101.0" text="来访时间:">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="date" layoutX="138.0" layoutY="280.0" prefHeight="36.0" prefWidth="198.0" style="-fx-border-radius: 5; -fx-border-color: rgba(214,239,223,0.9);" />
+      <TextField fx:id="date" layoutX="138.0" layoutY="280.0" prefHeight="36.0" prefWidth="198.0" promptText="年-月-日 小时:分钟" style="-fx-border-radius: 5; -fx-border-color: black; -fx-background-color: transparent;" />
       <Label layoutX="20.0" layoutY="340.0" prefHeight="36.0" prefWidth="101.0" text="来访原因:">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="reason" layoutX="138.0" layoutY="340.0" prefHeight="36.0" prefWidth="198.0" style="-fx-border-radius: 5; -fx-border-color: rgba(214,239,223,0.9);" />
+      <TextField fx:id="reason" layoutX="138.0" layoutY="340.0" prefHeight="36.0" prefWidth="198.0" style="-fx-border-radius: 5; -fx-border-color: black; -fx-background-color: transparent;" />
       <Button layoutX="71.0" layoutY="428.0" mnemonicParsing="false" onAction="#Addcomfirm" prefHeight="36.0" prefWidth="129.0" style="-fx-background-color: rgb(172,238,179); -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;" text="确  认">
          <font>
             <Font size="21.0" />

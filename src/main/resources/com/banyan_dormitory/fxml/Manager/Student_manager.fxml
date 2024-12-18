@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -7,89 +8,95 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="Student_managerid" prefHeight="660.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banyan_dormitory.controller.manager.Student_ManagerController">
+<AnchorPane fx:id="Student_managerid" prefHeight="660.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banyan_dormitory.controller.manager.Student_ManagerController">
     <!-- 主面板 -->
     <children>
 
         <!-- 顶部输入框和按钮 -->
         <HBox alignment="center" layoutY="21.0" prefHeight="80.0" prefWidth="930.0" spacing="15.0">
             <children>
-                <Label prefHeight="27.0" prefWidth="164.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" text="请输入查询信息：" />
-                <Label style="-fx-font-size: 20px;" text="榕园" />
-            <Label layoutX="297.0" layoutY="37.0" prefHeight="27.0" prefWidth="29.0" style="-fx-font-size: 20px; -fx-font-weight: bold;" text=" 九" />
-                <Label prefHeight="27.0" prefWidth="47.0" style="-fx-font-size: 20px;" text="号" />
-                <Label prefHeight="27.0" prefWidth="131.0" style="-fx-font-size: 20px;" text="           宿舍号" />
-                <TextField fx:id="room" prefWidth="80.0" promptText="302" style="-fx-font-size: 18px;" />
-                <Button fx:id="search" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #A2F290; -fx-font-size: 18px;" text="查询" />
-                <Button fx:id="add" disable="true" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #A2F290; -fx-font-size: 18px;" text="添加" />
+                <Label prefHeight="27.0" prefWidth="208.0" style="-fx-font-size: 23px; -fx-font-weight: bold;" text="请输入查询信息：" />
+                <Label style="-fx-font-size: 22px;" text="榕园" />
+            <Label layoutX="297.0" layoutY="37.0" prefHeight="27.0" prefWidth="29.0" style="-fx-font-size: 22px; -fx-font-weight: bold;" text=" 九" />
+                <Label prefHeight="29.0" prefWidth="34.0" style="-fx-font-size: 22px;" text="号" />
+                <Label prefHeight="29.0" prefWidth="146.0" style="-fx-font-size: 22px;" text="           宿舍号">
+               <padding>
+                  <Insets left="-10.0" />
+               </padding></Label>
+                <TextField fx:id="room" prefHeight="36.0" prefWidth="91.0" promptText="302" style="-fx-font-size: 18px;">
+               <HBox.margin>
+                  <Insets left="-3.0" />
+               </HBox.margin></TextField>
+                <Button fx:id="search" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #A2F290; -fx-font-size: 20px;" text="查询" />
+                <Button fx:id="add" disable="true" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #A2F290; -fx-font-size: 20px;" text="添加" />
             </children>
         </HBox>
 
         <!-- 表格部分 -->
         <AnchorPane layoutX="20.0" layoutY="89.0" prefHeight="548.0" prefWidth="890.0" style="-fx-background-color: #C2E4C0; -fx-background-radius: 20; -fx-border-color: #C2E4C0; -fx-border-radius: 30; -fx-border-width: 5;">
             <children>
-                <VBox layoutX="10.0" layoutY="10.0" prefHeight="480.0" prefWidth="870.0" spacing="20.0">
+                <VBox layoutX="10.0" layoutY="10.0" prefHeight="480.0" prefWidth="870.0" spacing="28.0">
                     <!-- 标题栏 -->
                     <HBox alignment="center" spacing="20.0" style="-fx-background-color: #C2E4C0; -fx-background-radius: 20; -fx-padding: 10;">
-                        <Label prefHeight="27.0" prefWidth="103.0" style="-fx-font-size: 20px;" text="床位" />
-                        <Label prefHeight="27.0" prefWidth="161.0" style="-fx-font-size: 20px;" text="姓名" />
-                        <Label prefHeight="27.0" prefWidth="188.0" style="-fx-font-size: 20px;" text="学号" />
-                        <Label prefHeight="27.0" prefWidth="186.0" style="-fx-font-size: 20px;" text="表现分" />
-                        <Label prefHeight="27.0" prefWidth="99.0" style="-fx-font-size: 20px;" text="操作" />
+                        <Label prefHeight="27.0" prefWidth="103.0" style="-fx-font-size: 22px;" text="床位" />
+                        <Label prefHeight="27.0" prefWidth="161.0" style="-fx-font-size: 22px;" text="姓名" />
+                        <Label prefHeight="27.0" prefWidth="188.0" style="-fx-font-size: 22px;" text="学号" />
+                        <Label prefHeight="27.0" prefWidth="186.0" style="-fx-font-size: 22px;" text="表现分" />
+                        <Label prefHeight="27.0" prefWidth="99.0" style="-fx-font-size: 22px;" text="操作" />
                     </HBox>
 
                        <!-- 表格行1 -->
                     <HBox alignment="CENTER_LEFT" prefHeight="80.0" spacing="20.0" style="-fx-background-color: #58C272; -fx-background-radius: 20; -fx-padding: 10;">
-                        <Label prefWidth="140.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" text="床号1" />
-                        <Label fx:id="name1" prefWidth="180.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" text="床位为空" />
+                        <Label prefWidth="140.0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" text="床号1" />
+                        <Label fx:id="name1" prefWidth="180.0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" text="床位为空" />
                         <Label fx:id="id1" prefWidth="250.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" text="" />
                         <Label fx:id="score1" prefWidth="140.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" text="" />
                         <VBox alignment="CENTER" spacing="10.0">
                             <HBox alignment="CENTER" spacing="15.0">
-                                <Button fx:id="changeScore1" disable="true" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #C4F79A; -fx-background-radius: 10; -fx-font-size: 16px;" text="评分" />
-                                <Button fx:id="delete1" disable="true" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #F97A7A; -fx-background-radius: 10; -fx-font-size: 16px;" text="删除" />
+                                <Button fx:id="changeScore1" disable="true" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #C4F79A; -fx-background-radius: 10; -fx-font-size: 18px;" text="评分" />
+                                <Button fx:id="delete1" disable="true" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #F97A7A; -fx-background-radius: 10; -fx-font-size: 18px;" text="删除" />
                             </HBox>
                         </VBox>
                     </HBox>
 
                     <!-- 表格行2 -->
                     <HBox alignment="CENTER_LEFT" prefHeight="80.0" spacing="20.0" style="-fx-background-color: #58C272; -fx-background-radius: 20; -fx-padding: 10;">
-                        <Label prefWidth="140.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" text="床号2" />
-                        <Label fx:id="name2" prefWidth="180.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" text="床位为空" />
+                        <Label prefWidth="140.0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" text="床号2" />
+                        <Label fx:id="name2" prefWidth="180.0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" text="床位为空" />
                         <Label fx:id="id2" prefWidth="250.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" text="" />
                         <Label fx:id="score2" prefWidth="140.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" text="" />
                         <VBox alignment="CENTER" spacing="10.0">
                             <HBox alignment="CENTER" spacing="15.0">
-                                <Button fx:id="changeScore2" disable="true" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #C4F79A; -fx-background-radius: 10; -fx-font-size: 16px;" text="评分" />
-                                <Button fx:id="delete2" disable="true" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #F97A7A; -fx-background-radius: 10; -fx-font-size: 16px;" text="删除" />
+                                <Button fx:id="changeScore2" disable="true" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #C4F79A; -fx-background-radius: 10; -fx-font-size: 18px;" text="评分" />
+                                <Button fx:id="delete2" disable="true" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #F97A7A; -fx-background-radius: 10; -fx-font-size: 18px;" text="删除" />
                             </HBox>
                         </VBox>
                     </HBox>
 
                     <!-- 表格行3 -->
                     <HBox alignment="CENTER_LEFT" prefHeight="80.0" spacing="20.0" style="-fx-background-color: #58C272; -fx-background-radius: 20; -fx-padding: 10;">
-                        <Label prefWidth="140.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" text="床号3" />
-                        <Label fx:id="name3" prefWidth="180.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" text="床位为空" />
+                        <Label prefWidth="140.0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" text="床号3" />
+                        <Label fx:id="name3" prefWidth="180.0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" text="床位为空" />
                         <Label fx:id="id3" prefWidth="250.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" text="" />
                         <Label fx:id="score3" prefWidth="140.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" text="" />
                         <VBox alignment="CENTER" spacing="10.0">
                             <HBox alignment="CENTER" spacing="15.0">
-                                <Button fx:id="changeScore3" disable="true" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #C4F79A; -fx-background-radius: 10; -fx-font-size: 16px;" text="评分" />
-                                <Button fx:id="delete3" disable="true" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #F97A7A; -fx-background-radius: 10; -fx-font-size: 16px;" text="删除" />
+                                <Button fx:id="changeScore3" disable="true" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #C4F79A; -fx-background-radius: 10; -fx-font-size: 18px;" text="评分" />
+                                <Button fx:id="delete3" disable="true" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #F97A7A; -fx-background-radius: 10; -fx-font-size: 18px;" text="删除" />
                             </HBox>
                         </VBox>
                     </HBox>
 
                     <!-- 表格行4 -->
                     <HBox alignment="CENTER_LEFT" prefHeight="80.0" spacing="20.0" style="-fx-background-color: #58C272; -fx-background-radius: 20; -fx-padding: 10;">
-                        <Label prefWidth="140.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" text="床号4" />
-                        <Label fx:id="name4" prefWidth="180.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" text="床位为空" />
+                        <Label prefWidth="140.0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" text="床号4" />
+                        <Label fx:id="name4" prefWidth="180.0" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" text="床位为空" />
                         <Label fx:id="id4" prefWidth="250.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" text="" />
                         <Label fx:id="score4" prefWidth="140.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;" text="" />
                         <VBox alignment="CENTER" spacing="10.0">
                             <HBox alignment="CENTER" spacing="15.0">
-                                <Button fx:id="changeScore4" disable="true" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #C4F79A; -fx-background-radius: 10; -fx-font-size: 16px;" text="评分" />
-                                <Button fx:id="delete4" disable="true" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #F97A7A; -fx-background-radius: 10; -fx-font-size: 16px;" text="删除" />
+                                <Button fx:id="changeScore4" disable="true" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #C4F79A; -fx-background-radius: 10; -fx-font-size: 18px;" text="评分" />
+                                <Button fx:id="delete4" disable="true" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #F97A7A; -fx-background-radius: 10; -fx-font-size: 18px;" text="删除" />
                             </HBox>
                         </VBox>
                     </HBox>

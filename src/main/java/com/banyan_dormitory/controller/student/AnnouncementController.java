@@ -37,7 +37,7 @@ public class AnnouncementController {
     private StackPane content; // 右边显示内容的 StackPane
 
     public void initialize(){
-        setupButton(homepage, homepageContainer, "/com/banyan_dormitory/fxml/Student/UserPanel.fxml");
+        setupButton(homepage, homepageContainer, "/com/banyan_dormitory/fxml/Student/Homepage_announcement.fxml");
         setupButton(apply, applyContainer, "/com/banyan_dormitory/fxml/Student/SendRequestPanel.fxml");
         setupButton(feedback, feedbackContainer, "/com/banyan_dormitory/fxml/Student/RequestFeedbackPanel.fxml");
         setupButton(user_center, user_centerContainer, "/com/banyan_dormitory/fxml/Student/UserPanel.fxml");

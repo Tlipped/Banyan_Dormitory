@@ -284,14 +284,14 @@ public class Student_ManagerController {
 
         // 确定与取消按钮
         Button confirmButton = new Button("确定");
-        confirmButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px;");
+        confirmButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 18px;");
         confirmButton.setOnAction(event -> {
             handleAddStudent(roomInput.getText(), bedInput.getText(), idInput.getText(), scoreInput.getText());
             dialog.close();
         });
 
         Button cancelButton = new Button("取消");
-        cancelButton.setStyle("-fx-background-color: #A5D6A7; -fx-text-fill: white; -fx-font-size: 14px;");
+        cancelButton.setStyle("-fx-background-color: #A5D6A7; -fx-text-fill: white; -fx-font-size: 18px;");
         cancelButton.setOnAction(event -> dialog.close());
 
         HBox buttons = new HBox(20, confirmButton, cancelButton);

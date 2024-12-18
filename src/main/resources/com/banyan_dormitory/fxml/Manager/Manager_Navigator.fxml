@@ -41,7 +41,7 @@
          </children>
       </AnchorPane>
       <StackPane fx:id="content" layoutX="270.0" layoutY="40.0" prefHeight="660.0" prefWidth="930.0" />
-      <ComboBox fx:id="logout" layoutX="963.0" layoutY="6.0" prefHeight="31.0" prefWidth="68.0" style="-fx-background-color: transparent;" visibleRowCount="2" />
+      <ComboBox fx:id="logout" layoutX="929.0" layoutY="-4.0" prefHeight="49.0" prefWidth="102.0" style="-fx-background-color: transparent;" visibleRowCount="2" />
       <ImageView fitHeight="41.0" fitWidth="43.0" layoutX="994.0" layoutY="-1.0">
          <image>
             <Image url="@../../images/logout.png" />

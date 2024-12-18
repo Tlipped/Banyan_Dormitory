@@ -14,12 +14,12 @@
    <children>
       <Label layoutX="24.0" layoutY="36.0" prefHeight="34.0" prefWidth="181.0" text="请输入访问信息：">
          <font>
-            <Font size="19.0" />
+            <Font name="System Bold" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="198.0" layoutY="35.0" prefHeight="34.0" prefWidth="114.0" text="榕园九号">
+      <Label layoutX="205.0" layoutY="37.0" prefHeight="34.0" prefWidth="127.0" text="榕园九号">
          <font>
-            <Font size="19.0" />
+            <Font size="25.0" />
          </font>
       </Label>
       <Label layoutX="331.0" layoutY="35.0" prefHeight="34.0" prefWidth="77.0" text="日期：">
@@ -27,22 +27,22 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <DatePicker fx:id="date" layoutX="385.0" layoutY="41.0" prefHeight="26.0" prefWidth="193.0" />
-      <Button layoutX="633.0" layoutY="31.0" mnemonicParsing="false" onAction="#onSearchButtonClick" prefHeight="46.0" prefWidth="101.0" style="-fx-background-color: rgb(172,238,179); -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;" text="查询">
+      <DatePicker fx:id="date" layoutX="385.0" layoutY="41.0" prefHeight="26.0" prefWidth="193.0" style="-fx-font-size:17px"/>
+      <Button layoutX="633.0" layoutY="31.0" mnemonicParsing="false" onAction="#onSearchButtonClick" prefHeight="46.0" prefWidth="114.0" style="-fx-background-color: rgb(172,238,179); -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;" text="查询">
          <font>
-            <Font size="19.0" />
+            <Font size="21.0" />
          </font>
       </Button>
-      <Button layoutX="763.0" layoutY="30.0" mnemonicParsing="false" onAction="#onCheckInButtonClick" prefHeight="46.0" prefWidth="114.0" style="-fx-background-color: rgb(172,238,179); -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;" text="登记">
+      <Button layoutX="772.0" layoutY="30.0" mnemonicParsing="false" onAction="#onCheckInButtonClick" prefHeight="46.0" prefWidth="114.0" style="-fx-background-color: rgb(172,238,179); -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;" text="登记">
          <font>
-            <Font size="19.0" />
+            <Font size="21.0" />
          </font>
       </Button>
-      <ScrollPane fx:id="myScrollPane" hbarPolicy="NEVER" layoutX="24.0" layoutY="133.0" minHeight="431.0" minWidth="877.0" prefHeight="510.0" prefWidth="898.0" style="         -fx-background-color: rgb(142,216,99);         -fx-border-width: 0;         -fx-padding: 0;">
+      <ScrollPane fx:id="myScrollPane" hbarPolicy="NEVER" layoutX="24.0" layoutY="133.0" minHeight="431.0" minWidth="877.0" prefHeight="510.0" prefWidth="898.0" style="-fx-border-width: 0; -fx-border-color: none;">
          <content>
-            <VBox fx:id="myVox" prefHeight="492.0" prefWidth="883.0" spacing="20.0" style="-fx-background-color: rgba(214,239,223,0.9); -fx-background-radius: 10;">
+            <VBox fx:id="myVox" prefHeight="497.0" prefWidth="887.0" spacing="20.0" style="-fx-background-color: rgba(214,239,223,0.7); -fx-background-radius: 10;">
                <padding>
-                  <Insets left="10.0" right="10.0" top="10.0" />
+                  <Insets left="15.0" right="10.0" top="10.0" />
                </padding></VBox>
          </content>
       </ScrollPane>
@@ -56,7 +56,7 @@
                   <Insets left="5.0" />
                </padding>
                <HBox.margin>
-                  <Insets right="10.0" />
+                  <Insets left="-20.0" right="10.0" />
                </HBox.margin>
             </Label>
             <Label alignment="CENTER" prefHeight="49.0" prefWidth="158.0" text="身份证号" textAlignment="CENTER">
