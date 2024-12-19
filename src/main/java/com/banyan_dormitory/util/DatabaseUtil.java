@@ -1,10 +1,16 @@
 package com.banyan_dormitory.util;
 
+import com.banyan_dormitory.model.Message;
 import com.banyan_dormitory.model.User;
+import com.banyan_dormitory.model.Visitor;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;/**
  * DatabaseUtil 类提供静态方法来获取数据库连接。
  * 它从 resources 文件夹中的 database.properties 文件加载数据库配置，
@@ -71,7 +77,7 @@ public class DatabaseUtil {
     }
     public static boolean verifyCredentials(String account, String password) {
         try (Connection connection = DatabaseUtil.getConnection()) {
-            String sql = "SELECT COUNT(*) FROM user WHERE id = ? AND password = ?";
+            String sql = "SELECT COUNT(*) FROM `user` WHERE id = ? AND password = ?";
             try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
                 pstmt.setString(1, account);
                 pstmt.setString(2, password);
@@ -89,12 +95,14 @@ public class DatabaseUtil {
         }
         return false;
     }
-    public static boolean registerUser(String account, String password) {
+    public static boolean registerUser(String account, String password,String name,String school) {
         try (Connection connection = DatabaseUtil.getConnection()) {
-            String sql = "INSERT INTO user (id, password) VALUES (?, ?)";
+            String sql = "INSERT INTO user (id, password,name,school) VALUES (?, ?)";
             try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
                 pstmt.setString(1, account);
                 pstmt.setString(2, password);
+                pstmt.setString(2, name);
+                pstmt.setString(2, school);
                 int rowsAffected = pstmt.executeUpdate();
                 return rowsAffected > 0;
             }
@@ -132,4 +140,125 @@ public class DatabaseUtil {
 
         return user;
     }
+
+    public static void updateUser(User user){
+        String sql = "UPDATE `user` SET `name` = ? , school = ? WHERE `id` = ?";
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, user.getName());
+            pstmt.setString(2, user.getSchool());
+            pstmt.setString(3, user.getId());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void insertStudentRequest(String from, String to, String content, String type){
+        String sql = "INSERT INTO message (`from`, `to`, content, status, type) VALUES (?, ?, ?, ?, ?)";
+        try (Connection conn =DatabaseUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, from);
+            pstmt.setString(2, to);
+            pstmt.setString(3, content);
+            pstmt.setInt(4, 1);
+            pstmt.setString(5, type);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static List<Message> readMessageFromDatabase(String userId) {
+        List<Message> messages = new ArrayList<>();
+        String sql = "SELECT * FROM message WHERE `from` = ? OR `to` = ?";
+
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, userId);
+            pstmt.setString(2, userId);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    Message message = new Message();
+                    message.setId(rs.getInt("id"));
+                    message.setFrom(rs.getString("from"));
+                    message.setTo(rs.getString("to"));
+                    message.setContent(rs.getString("content"));
+                    message.setStatus(rs.getInt("status"));
+                    message.setType(rs.getString("type"));
+                    messages.add(message);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return messages;
+    }
+
+    public static void updateMessageStatus(int id, int type) {
+        String sql = "UPDATE `message` SET status = ? , type = ? WHERE `id` = ?";
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, 2);
+            switch (type) {
+                case 0:
+                    pstmt.setString(2, "报修申请");
+                    break;
+                case 1:
+                    pstmt.setString(2, "分数相关");
+                    break;
+                case 2:
+                    pstmt.setString(2, "投诉");
+                    break;
+                case 3:
+                    pstmt.setString(2, "建议");
+                    break;
+                default:
+                    pstmt.setString(2, "其他");
+                    break;
+            }
+            pstmt.setInt(3, id);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public static ObservableList<Visitor> fetchDataFromDateBase(Date date){
+        System.out.println(date);
+        ObservableList<Visitor> visitors = FXCollections.observableArrayList();
+        String sql = "SELECT * FROM `visitor` WHERE `date`=?";
+
+        // 使用 try-with-resources 确保资源被自动关闭
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            // 设置 PreparedStatement 参数
+            pstmt.setDate(1, date);
+
+            // 执行查询并获取结果集
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    System.out.println("查到一个");
+                    Visitor visitor = new Visitor(
+                            rs.getString("name"),
+                            rs.getString("visitor_id"),
+                            rs.getString("phone_number"),
+                            rs.getString("reason"),
+                            rs.getDate("date"),
+                            rs.getTime("time")
+                    );
+                    visitor.setId(rs.getInt("id"));
+                    // 将每个 Visitor 添加到列表中
+                    visitors.add(visitor);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println(visitors.size());
+        return visitors;
+    }
+
 }

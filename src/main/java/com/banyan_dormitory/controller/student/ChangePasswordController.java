@@ -38,6 +38,7 @@ public class ChangePasswordController {
                 alert.showAndWait();
 
                DatabaseUtil.changePassword(UserPanelController.user.getId(), passwordInput.getText());
+               UserPanelController.user.setPassword(passwordInput.getText());
 
                 // 获取当前窗口并关闭
                 Stage stage = (Stage) confirmButton.getScene().getWindow();

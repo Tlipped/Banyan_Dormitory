@@ -16,7 +16,7 @@ module com.banyan_dormitory {
     opens com.banyan_dormitory.controller.student to javafx.fxml;
     opens com.banyan_dormitory.images to javafx.fxml;
     opens com.banyan_dormitory.controller.manager to javafx.fxml;
-
+    opens com.banyan_dormitory.model to javafx.fxml;
 
     exports com.banyan_dormitory;
 }

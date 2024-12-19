@@ -1,5 +1,5 @@
 CREATE TABLE `information` (
-                              `id` int NOT NULL,
+                              `id` int NOT NULL AUTO_INCREMENT,
                               `content` varchar(255) DEFAULT NULL,
                               `date` varchar(255) DEFAULT NULL,
                               PRIMARY KEY (`id`)

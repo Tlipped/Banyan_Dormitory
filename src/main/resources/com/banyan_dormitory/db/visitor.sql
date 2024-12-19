@@ -1,10 +1,11 @@
-CREATE TABLE `visitor` (
-                           `id` int NOT NULL,
-                           `name` varchar(255) DEFAULT NULL,
-                           `visitor_id` int DEFAULT NULL,
-                           `phone_number` int DEFAULT NULL,
-                           `date` datetime DEFAULT NULL,
-                           `time` datetime DEFAULT NULL,
-                           `reason` varchar(255) DEFAULT NULL,
-                           PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+create table visitor
+(
+    id           int auto_increment
+        primary key,
+    name         varchar(255) null,
+    visitor_id   varchar(18)  null,
+    phone_number varchar(11)  null,
+    date         date         null,
+    time         time         null,
+    reason       varchar(255) null
+);
