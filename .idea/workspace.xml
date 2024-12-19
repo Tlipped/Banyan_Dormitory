@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cc20415-62e4-412d-93b0-d3b860c3c2cf" name="更改" comment="初始化功能">
+    <list default="true" id="9cc20415-62e4-412d-93b0-d3b860c3c2cf" name="更改" comment="新加管理员发布公告和看公告功能">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/manager/ManagerAccouncement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/fxml/Manager/managerAccouncement.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/manager/ManagerNavigatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/manager/ManagerNavigatorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/db/infomation.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/db/infomation.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/fxml/Manager/Manager_Navigator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/fxml/Manager/Manager_Navigator.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -74,7 +75,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Project/JAVAFX/Banyan_Dormitory&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/JAVA/Banyan_Dormitory&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
@@ -82,7 +83,7 @@
     &quot;project.structure.last.edited&quot;: &quot;库&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;,
     &quot;应用程序.Main.executor&quot;: &quot;Run&quot;
   }
@@ -92,6 +93,7 @@
       <recent name="D:\Project\JAVAFX\Banyan_Dormitory\src\main\resources\com\banyan_dormitory\fxml" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\JAVA\Banyan_Dormitory\src\main\java\com\banyan_dormitory\controller\manager" />
       <recent name="D:\Project\JAVAFX\Banyan_Dormitory\src\main\resources\com\banyan_dormitory\images" />
       <recent name="D:\Project\JAVAFX\Banyan_Dormitory\src\main\resources" />
       <recent name="D:\Project\JAVAFX\Banyan_Dormitory\src\main\resources\com\banyan_dormitory\fxml" />
@@ -137,7 +139,12 @@
       <option name="presentableId" value="Default" />
       <updated>1733795752715</updated>
       <workItem from="1734265402129" duration="4290000" />
-      <workItem from="1734317790746" duration="5317000" />
+      <workItem from="1734317790746" duration="5687000" />
+      <workItem from="1734337916789" duration="1974000" />
+      <workItem from="1734347143315" duration="6179000" />
+      <workItem from="1734425732107" duration="105000" />
+      <workItem from="1734507167763" duration="14040000" />
+      <workItem from="1734589494130" duration="684000" />
     </task>
     <task id="LOCAL-00001" summary="初始化">
       <option name="closed" value="true" />
@@ -211,7 +218,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734265569707</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="新加管理员发布公告和看公告功能">
+      <option name="closed" value="true" />
+      <created>1734323473847</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1734323473847</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,7 +251,8 @@
     <MESSAGE value="主页的部分修改" />
     <MESSAGE value="学生端导航栏实现" />
     <MESSAGE value="初始化功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="初始化功能" />
+    <MESSAGE value="新加管理员发布公告和看公告功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="新加管理员发布公告和看公告功能" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
