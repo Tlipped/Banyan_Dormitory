@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9cc20415-62e4-412d-93b0-d3b860c3c2cf" name="更改" comment="新加管理员发布公告和看公告功能">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/manager/ManagerAccouncement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/fxml/Manager/managerAccouncement.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/manager/ManagerNavigatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/manager/ManagerNavigatorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/fxml/Manager/Manager_Navigator.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/fxml/Manager/Manager_Navigator.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/database.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,6 +141,7 @@
       <workItem from="1734425732107" duration="105000" />
       <workItem from="1734507167763" duration="14040000" />
       <workItem from="1734589494130" duration="684000" />
+      <workItem from="1734596710770" duration="930000" />
     </task>
     <task id="LOCAL-00001" summary="初始化">
       <option name="closed" value="true" />
@@ -226,7 +223,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734323473847</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="新加管理员发布公告和看公告功能">
+      <option name="closed" value="true" />
+      <created>1734596809298</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1734596809298</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
