@@ -225,7 +225,7 @@ public class Student_ManagerController {
         String querySelect = "SELECT score FROM user WHERE room = ? AND bed = ?";
         String queryUpdate = "UPDATE user SET score = ? WHERE room = ? AND bed = ?";
 
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Banyan_Dormitory", "root", "123456");
+        try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement pstmtSelect = conn.prepareStatement(querySelect);
              PreparedStatement pstmtUpdate = conn.prepareStatement(queryUpdate)) {
 

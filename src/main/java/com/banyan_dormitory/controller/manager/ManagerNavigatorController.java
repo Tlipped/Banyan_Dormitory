@@ -37,14 +37,14 @@ public class ManagerNavigatorController {
         if (content == null) {
             throw new IllegalStateException("content is not injected by FXMLLoader");
         }
-        setupButton(public_announce, public_container,"/com/banyan_dormitory/fxml/Manager/Visitor_Check.fxml");
+        setupButton(public_announce, public_container,"/com/banyan_dormitory/fxml/Manager/managerAccouncement.fxml");
         setupButton(checkin, checkin_container,"/com/banyan_dormitory/fxml/Manager/Visitor_Check.fxml");
         setupButton(student_management, student_management_container,"/com/banyan_dormitory/fxml/Manager/Student_manager.fxml");
-        setupButton(examine, examine_container,"/com/banyan_dormitory/fxml/Manager/Visitor_Check.fxml");
+        setupButton(examine, examine_container,"/com/banyan_dormitory/fxml/Manager/manager_handleMessages.fxml");
 
         // 默认选中第一个按钮
         selectButton(public_container);
-        loadContent("/com/banyan_dormitory/fxml/Manager/Visitor_Check.fxml");
+        loadContent("/com/banyan_dormitory/fxml/Manager/managerAccouncement.fxml");
         logout.getItems().add("登出");
         logout.setOnAction(event -> {
             String selectedItem = logout.getSelectionModel().getSelectedItem();
