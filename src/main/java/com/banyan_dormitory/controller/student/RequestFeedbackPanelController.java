@@ -1,6 +1,8 @@
 package com.banyan_dormitory.controller.student;
 
 import com.banyan_dormitory.model.Message;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,15 +21,35 @@ import java.io.IOException;
 import java.util.List;
 import com.banyan_dormitory.util.DatabaseUtil;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class RequestFeedbackPanelController {
     @FXML
     private VBox MessageContainer;
 
+    static Timeline timeline;
+
     @FXML
     private ScrollPane myscrollPane;
     public void initialize() {
+        showAllRequests();
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            showAllRequests();
+//            System.out.println("refreshed");
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+    }
+
+    public static void stopRequestFeedbackPanelTimeline(){
+        if(timeline!=null){
+            timeline.stop();
+        }
+    }
+
+    private void showAllRequests(){
         List<Message> messages = DatabaseUtil.readMessageFromDatabase(UserPanelController.user.getId());
+        MessageContainer.getChildren().clear();
         for (Message message : messages) {
             GridPane gridPane = new GridPane();
             MessageContainer.getChildren().add(gridPane);
@@ -144,6 +166,7 @@ public class RequestFeedbackPanelController {
         }
         Platform.runLater(this::setVerticalScrollBarStyle);
     }
+
     private void setVerticalScrollBarStyle() {
         // 垂直滚动条并设置其样式
         Node verticalScrollBar = myscrollPane.lookup(".scroll-bar:vertical");

@@ -8,7 +8,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="660.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banyan_dormitory.controller.student.SendRequestPanelController">
+<AnchorPane prefHeight="660.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banyan_dormitory.controller.student.SendRequestPanelController">
    <children>
       <TextArea fx:id="RequestInput" layoutX="49.0" layoutY="27.0" prefHeight="521.0" prefWidth="812.0" promptText="请填写诉求内容" style="-fx-border-radius: 10; -fx-background-radius: 10; -fx-background-color: rgb(222,222,222);" wrapText="true" AnchorPane.bottomAnchor="112.0" AnchorPane.leftAnchor="49.0" AnchorPane.rightAnchor="69.0" AnchorPane.topAnchor="27.0">
          <font>

@@ -13,7 +13,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="660.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banyan_dormitory.controller.student.UserPanelController">
+<AnchorPane prefHeight="660.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banyan_dormitory.controller.student.UserPanelController">
    <children>
       <AnchorPane fx:id="userPanelMainContainer" layoutX="33.0" layoutY="9.0" prefHeight="637.0" prefWidth="871.0" style="-fx-background-color: rgba(214,239,223,0.7); -fx-background-radius: 15;">
          <children>
@@ -27,7 +27,7 @@
                                  <children>
                                     <HBox prefHeight="42.0" prefWidth="170.0">
                                        <children>
-                                          <Label fx:id="userNameText" prefHeight="32.0" prefWidth="75.0" text="姓名：">
+                                          <Label fx:id="userNameText" prefHeight="54.0" prefWidth="75.0" text="姓名：">
                                              <font>
                                                 <Font size="24.0" />
                                              </font>
@@ -48,7 +48,7 @@
                                  <children>
                                     <HBox prefHeight="42.0" prefWidth="42.0">
                                        <children>
-                                          <Label fx:id="userIdText" prefHeight="32.0" prefWidth="79.0" text="学号：">
+                                          <Label fx:id="userIdText" prefHeight="65.0" prefWidth="79.0" text="学号：">
                                              <font>
                                                 <Font size="24.0" />
                                              </font>
@@ -73,12 +73,12 @@
                                  <children>
                                     <HBox>
                                        <children>
-                                          <Label fx:id="userScoreText" prefHeight="34.0" prefWidth="128.0" text="表现分：">
+                                          <Label fx:id="userScoreText" prefHeight="57.0" prefWidth="106.0" text="表现分：">
                                              <font>
                                                 <Font size="24.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="scoreInput" prefHeight="42.0" prefWidth="86.0" style="-fx-border-color: none; -fx-background-color: transparent; -fx-border-radius: 5;">
+                                          <TextField fx:id="scoreInput" prefHeight="47.0" prefWidth="110.0" style="-fx-border-color: none; -fx-background-color: transparent; -fx-border-radius: 5;">
                                              <font>
                                                 <Font size="21.0" />
                                              </font>
@@ -94,22 +94,22 @@
                                  <children>
                                     <HBox>
                                        <children>
-                                          <Label fx:id="userDormInfoText" prefHeight="32.0" prefWidth="130.0" text="宿舍信息：">
+                                          <Label fx:id="userDormInfoText" prefHeight="61.0" prefWidth="130.0" text="宿舍信息：">
                                              <font>
                                                 <Font size="24.0" />
                                              </font>
                                           </Label>
-                                          <Label prefHeight="32.0" prefWidth="79.0" text="宿舍号">
+                                          <Label prefHeight="55.0" prefWidth="79.0" text="宿舍号">
                                              <font>
                                                 <Font size="24.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="dormInput" prefHeight="42.0" prefWidth="59.0" style="-fx-border-color: none; -fx-background-color: transparent; -fx-border-radius: 5;">
+                                          <TextField fx:id="dormInput" prefHeight="45.0" prefWidth="67.0" style="-fx-border-color: none; -fx-background-color: transparent; -fx-border-radius: 5;">
                                              <font>
                                                 <Font size="21.0" />
                                              </font>
                                           </TextField>
-                                          <Label prefHeight="32.0" prefWidth="71.0" text="床号">
+                                          <Label prefHeight="63.0" prefWidth="71.0" text="床号">
                                              <font>
                                                 <Font size="24.0" />
                                              </font>
@@ -117,7 +117,7 @@
                                                 <Insets left="15.0" />
                                              </padding>
                                           </Label>
-                                          <TextField fx:id="bedInput" prefHeight="32.0" prefWidth="28.0" style="-fx-border-color: none; -fx-background-color: transparent; -fx-border-radius: 5;">
+                                          <TextField fx:id="bedInput" prefHeight="45.0" prefWidth="28.0" style="-fx-border-color: none; -fx-background-color: transparent; -fx-border-radius: 5;">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding>
@@ -141,7 +141,7 @@
                      <children>
                         <HBox prefHeight="42.0" prefWidth="413.0">
                            <children>
-                              <Label fx:id="userSchoolText" prefHeight="33.0" prefWidth="128.0" text="学院：">
+                              <Label fx:id="userSchoolText" prefHeight="56.0" prefWidth="128.0" text="学院：">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -162,7 +162,7 @@
                      <children>
                         <HBox>
                            <children>
-                              <Label fx:id="userScoreText1" prefHeight="34.0" prefWidth="128.0" text="身份证号：">
+                              <Label fx:id="userScoreText1" prefHeight="65.0" prefWidth="128.0" text="身份证号：">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -188,7 +188,7 @@
                      <children>
                         <HBox>
                            <children>
-                              <Label fx:id="userScoreText11" prefHeight="34.0" prefWidth="128.0" text="手机号：">
+                              <Label fx:id="userScoreText11" prefHeight="67.0" prefWidth="128.0" text="手机号：">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
