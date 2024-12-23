@@ -4,6 +4,7 @@ import com.banyan_dormitory.util.DatabaseUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
@@ -50,13 +51,18 @@ public class Student_ManagerController {
     }
 
     private void loadRoomData() {
+        // 获取用户输入的房间号
         String roomNumber = room.getText();
+        if (room.getText() == null || room.getText().trim().isEmpty()) {
+            showAlerttOnce("输入错误", "请输入有效宿舍号");
+            return;
+        }
         String query = "SELECT * FROM user WHERE room = ?";
 
         // 清空所有显示
         resetFields();
 
-        try (Connection conn =DatabaseUtil.getConnection();
+        try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
 
             pstmt.setString(1, roomNumber);
@@ -94,6 +100,7 @@ public class Student_ManagerController {
         }
     }
 
+
     private void resetFields() {
         resetField(name1, id1, score1, changeScore1, delete1);
         resetField(name2, id2, score2, changeScore2, delete2);
@@ -120,6 +127,7 @@ public class Student_ManagerController {
 
     private void showDeleteConfirmation(String bedNumber) {
         Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.setTitle("删除确认");
 
         // 确认消息样式
@@ -172,6 +180,7 @@ public class Student_ManagerController {
 
     private void showChangeScoreDialog(String bedNumber) {
         Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.setTitle("加/扣分");
 
         // 提示信息和输入框横向放置
@@ -196,7 +205,7 @@ public class Student_ManagerController {
                 dialog.close();
                 search.fire(); // 刷新显示
             } catch (NumberFormatException e) {
-                showAlert("输入错误", "请输入有效的分数增减量，例如 +10 或 -5");
+                showAlerttOnce("输入错误", "请输入有效的分数增减量，例如 +10 或 -5");
             }
         });
 
@@ -253,41 +262,45 @@ public class Student_ManagerController {
         }
     }
 
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
+
 
     // 显示添加学生信息的弹窗
     private void showAddStudentDialog() {
         Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.setTitle("添加学生");
 
         // 创建输入组件
         Label roomLabel = new Label("房间号：");
+        roomLabel.setStyle("-fx-font-size: 16px;"); // 设置字体大小
+        // 设置默认房间号为201
         TextField roomInput = new TextField(room.getText());
-        roomInput.setDisable(true);
+
+        roomInput.setDisable(true); // 禁止编辑房间号
+        roomInput.setStyle("-fx-font-size: 16px; -fx-pref-height: 30px;"); // 设置字体大小和高度
 
         Label bedLabel = new Label("床位号：");
+        bedLabel.setStyle("-fx-font-size: 16px;");
         TextField bedInput = new TextField();
         bedInput.setPromptText("请输入床位 (1~4)");
+        bedInput.setStyle("-fx-font-size: 16px; -fx-pref-height: 30px;");
 
-        Label idLabel = new Label("学号：   ");
+        Label idLabel = new Label("学号：    ");
+        idLabel.setStyle("-fx-font-size: 16px;");
         TextField idInput = new TextField();
         idInput.setPromptText("请输入学号");
+        idInput.setStyle("-fx-font-size: 16px; -fx-pref-height: 30px;");
 
         Label scoreLabel = new Label("表现分：");
+        scoreLabel.setStyle("-fx-font-size: 16px;");
         TextField scoreInput = new TextField("100"); // 表现分默认100
+        scoreInput.setStyle("-fx-font-size: 16px; -fx-pref-height: 30px;");
 
         // 确定与取消按钮
         Button confirmButton = new Button("确定");
         confirmButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 18px;");
         confirmButton.setOnAction(event -> {
-            handleAddStudent(roomInput.getText(), bedInput.getText(), idInput.getText(), scoreInput.getText());
-            dialog.close();
+            handleAddStudent(roomInput.getText(), bedInput.getText(), idInput.getText(), scoreInput.getText(), dialog);
         });
 
         Button cancelButton = new Button("取消");
@@ -322,9 +335,9 @@ public class Student_ManagerController {
     }
 
     // 处理添加学生的逻辑
-    private void handleAddStudent(String roomNumber, String bedNumber, String studentId, String score) {
+    private void handleAddStudent(String roomNumber, String bedNumber, String studentId, String score, Stage dialog) {
         if (bedNumber.isEmpty() || studentId.isEmpty()) {
-            showAlertt("错误", "床位号和学号不能为空！");
+            showAlerttOnce("错误", "床位号和学号不能为空！");
             return;
         }
 
@@ -336,7 +349,7 @@ public class Student_ManagerController {
                 pstmt.setString(2, bedNumber);
                 ResultSet rs = pstmt.executeQuery();
                 if (rs.next()) {
-                    showAlertt("已分配", "房间 " + roomNumber + " 床位 " + bedNumber + " 已分配给学号：" + rs.getString("id"));
+                    showAlerttOnce("已分配", "房间 " + roomNumber + " 床位 " + bedNumber + " 已分配给学号：" + rs.getString("id"));
                     return;
                 }
             }
@@ -346,19 +359,22 @@ public class Student_ManagerController {
             try (PreparedStatement pstmt = conn.prepareStatement(checkIdQuery)) {
                 pstmt.setString(1, studentId);
                 ResultSet rs = pstmt.executeQuery();
-                if (!rs.next()) {
-                    showAlertt("错误", "学号 " + studentId + " 不存在！");
+                if (!rs.next() || studentId.length()==6) {
+                    showAlerttOnce("错误", "学号 " + studentId + " 不存在！");
                     return;
                 } else {
                     String existingRoom = rs.getString("room");
                     String existingBed = rs.getString("bed");
                     if (existingRoom != null && !existingRoom.isEmpty() && existingBed != null && !existingBed.isEmpty()) {
-                        showAlertt("已分配", "学号 " + studentId + " 已分配宿舍：房间 " + existingRoom + " 床位 " + existingBed);
+                        showAlerttOnce("已分配", "学号 " + studentId + " 已分配宿舍：房间 " + existingRoom + " 床位 " + existingBed);
                         return;
                     }
                 }
             }
-
+            if(Integer.parseInt(score)>100 || Integer.parseInt(score)<0){
+                showAlerttOnce("错误", "分数设置请在0到100之间！");
+                return;
+            }
             // 更新数据库，将room和bed分配给学生
             String updateQuery = "UPDATE user SET room = ?, bed = ?, score = ? WHERE id = ?";
             try (PreparedStatement pstmt = conn.prepareStatement(updateQuery)) {
@@ -367,22 +383,30 @@ public class Student_ManagerController {
                 pstmt.setString(3, score);
                 pstmt.setString(4, studentId);
                 pstmt.executeUpdate();
-                showAlertt("成功", "学生信息已成功添加！");
+                showAlerttOnce("成功", "学生信息已成功添加！");
                 search.fire(); // 自动触发搜索按钮，刷新数据
+                dialog.close(); // 添加成功后关闭主窗口
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            showAlertt("错误", "数据库操作失败：" + e.getMessage());
+            showAlerttOnce("错误", "数据库操作失败：" + e.getMessage());
         }
     }
 
-    // 显示警告/消息弹窗
-    private void showAlertt(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
+    // 显示仅一次的警告/消息弹窗
+    private boolean alertDisplayed = false; // 标记是否已显示过弹窗
+    private void showAlerttOnce(String title, String content) {
+        if (!alertDisplayed) { // 只允许第一个警告弹窗显示
+            alertDisplayed = true;
+            Alert alert = new Alert(Alert.AlertType.INFORMATION); // 信息类型警告框
+            alert.setTitle(title);        // 设置标题
+            alert.setHeaderText(null);    // 不显示头部文本
+            alert.setContentText(content); // 设置内容文本
 
+            // 使用模态窗口避免后续逻辑执行
+            alert.showAndWait(); // 等待用户关闭弹窗
+
+            alertDisplayed = false; // 重置标志位，以便下次可以再次弹出
+        }
+    }
 }

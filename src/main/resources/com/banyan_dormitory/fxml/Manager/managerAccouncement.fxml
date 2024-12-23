@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="660.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banyan_dormitory.controller.manager.ManagerAccouncement">
+<AnchorPane prefHeight="660.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banyan_dormitory.controller.manager.ManagerAccouncement">
    <HBox layoutX="99.0" layoutY="75.0" prefHeight="467.0" prefWidth="731.0" style="-fx-background-color: green; -fx-background-radius: 30;">
       <children>
          <VBox prefHeight="221.0" prefWidth="103.0" style="-fx-background-radius: 30;">
@@ -77,7 +77,7 @@
          </Label>
       </children>
    </HBox>
-   <Button fx:id="releaseButton" layoutX="317.0" layoutY="550.0" mnemonicParsing="false" onAction="#handleReleaseButtonAction" prefHeight="91.0" prefWidth="273.0" style="-fx-background-radius: 50; -fx-background-color: #90EE90;" text="发布公告">
+   <Button fx:id="releaseButton" layoutX="317.0" layoutY="550.0" mnemonicParsing="false" onAction="#handleReleaseButtonAction" prefHeight="91.0" prefWidth="273.0" style="-fx-background-radius: 20; -fx-background-color: #90EE90;" text="发布公告">
       <font>
          <Font name="Arial" size="37.0" />
       </font>

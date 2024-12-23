@@ -95,14 +95,14 @@ public class DatabaseUtil {
         }
         return false;
     }
-    public static boolean registerUser(String account, String password,String name,String school) {
+    public static boolean registerUser(int account, String password,String name,String school) {
         try (Connection connection = DatabaseUtil.getConnection()) {
-            String sql = "INSERT INTO user (id, password,name,school) VALUES (?, ?)";
+            String sql = "INSERT INTO user (id, password,name,school) VALUES (?, ?,?,?)";
             try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-                pstmt.setString(1, account);
+                pstmt.setString(1, Integer.toString(account));
                 pstmt.setString(2, password);
-                pstmt.setString(2, name);
-                pstmt.setString(2, school);
+                pstmt.setString(3, name);
+                pstmt.setString(4, school);
                 int rowsAffected = pstmt.executeUpdate();
                 return rowsAffected > 0;
             }

@@ -2,6 +2,7 @@ package com.banyan_dormitory.controller;
 import com.banyan_dormitory.util.DatabaseUtil;
 import com.banyan_dormitory.util.StringUtil;
 import com.banyan_dormitory.util.ViewManager;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,14 +16,6 @@ import javafx.scene.layout.StackPane;
 
 public class LoginController {
     @FXML
-    public TextField reAccount;
-    @FXML
-    public TextField rePassword;
-    @FXML
-    public TextField rename;
-    @FXML
-    public TextField reschool;
-    @FXML
     private TextField account;
     @FXML
     private TextField password;
@@ -30,8 +23,8 @@ public class LoginController {
     private Label error;
     @FXML
     private StackPane content;
-    @FXML
 
+    @FXML
     public void initialize(){
 
     }
@@ -68,42 +61,6 @@ public class LoginController {
     @FXML
     public void doregister(ActionEvent actionEvent) {
         ViewManager.changeView("/com/banyan_dormitory/fxml/Register.fxml");
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/banyan_dormitory/fxml/Register.fxml"));
-//            Node registerNode = loader.load();
-//            content.getChildren().setAll(registerNode);
-    }
-    @FXML
-    public void backLogin(ActionEvent event) {
-        ViewManager.changeView("/com/banyan_dormitory/fxml/Login.fxml");
-    }
-    @FXML
-    public void register(ActionEvent actionEvent) {
-        String account = reAccount.getText().trim();
-        String password = rePassword.getText().trim();
-        String name=rename.getText().trim();
-        String school =reschool.getText().trim();
-        if (StringUtil.isEmpty(account)) {
-            showError("请输入账号！");
-            return;
-        }
-        if (StringUtil.isEmpty(password)) {
-            showError("请输入密码！");
-            return;
-        }
-        if (StringUtil.isEmpty(name)) {
-            showError("请输入名字！");
-            return;
-        }
-        if (StringUtil.isEmpty(school)) {
-            showError("请输入学院！");
-            return;
-        }
-        if (DatabaseUtil.registerUser(account, password,name,school)) {
-            showSuccessAlert("注册成功！");
-            ViewManager.changeView("/com/banyan_dormitory/fxml/Login.fxml");
-        } else {
-            showError("注册失败，请重试！");
-        }
     }
 
     private void showError(String message) {

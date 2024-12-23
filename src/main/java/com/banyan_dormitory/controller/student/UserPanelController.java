@@ -1,6 +1,7 @@
 package com.banyan_dormitory.controller.student;
 import com.banyan_dormitory.util.DatabaseUtil;
 import com.banyan_dormitory.model.User;
+import com.banyan_dormitory.util.StringUtil;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -181,11 +182,21 @@ public class UserPanelController {
 
                 user_idWarningText.setVisible(false);
                 phone_numberWarningText.setVisible(false);
-
                 boolean isValid=true;
+                if(StringUtil.isEmpty(user_id)){
+                    user_idWarningText.setText("请输入身份证号");
+                    user_idWarningText.setVisible(true);
+                    isValid=false;
+                }
+                if(StringUtil.isEmpty(phone_number)){
+                    phone_numberWarningText.setText("请输入手机号");
+                    phone_numberWarningText.setVisible(true);
+                    isValid=false;
+                }
                 if(user_id.length() != 18){
 //                    Alert alert = new Alert(Alert.AlertType.ERROR, "身份证号长度不正确");
 //                    alert.showAndWait();
+                    user_idWarningText.setText("身份证号需要18位");
                     user_idWarningText.setVisible(true);
                     isValid=false;
                 }
@@ -193,6 +204,7 @@ public class UserPanelController {
                 if(phone_number.length() != 11){
 //                    Alert alert = new Alert(Alert.AlertType.ERROR, "手机号长度不正确");
 //                    alert.showAndWait();
+                    phone_numberWarningText.setText("手机号码需要11位");
                     phone_numberWarningText.setVisible(true);
                     isValid=false;
                 }

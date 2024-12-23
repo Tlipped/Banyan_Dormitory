@@ -44,7 +44,7 @@ public class AnnouncementController {
         name.setText(UserPanelController.user.getName());
         // 默认选中第一个按钮
         selectButton(homepageContainer);
-        loadContent("/com/banyan_dormitory/fxml/Student/UserPanel.fxml");
+        loadContent("/com/banyan_dormitory/fxml/Student/Homepage_announcement.fxml");
         logout.getItems().add("登出");
         logout.setOnAction(event -> {
             String selectedItem = logout.getSelectionModel().getSelectedItem();

@@ -33,6 +33,7 @@ public class VisitorCheckController {
             throw new IllegalStateException("myVox is not injected by FXMLLoader");
         }
         date.setValue(LocalDate.now());
+        onSearchButtonClick(new ActionEvent());
         Platform.runLater(this::setVerticalScrollBarStyle);
     }
 
