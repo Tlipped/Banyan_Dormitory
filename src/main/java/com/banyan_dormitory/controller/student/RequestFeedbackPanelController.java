@@ -57,7 +57,7 @@ public class RequestFeedbackPanelController {
             gridPane.setPadding(new Insets(10, 10, 10, 10));
             gridPane.setHgap(10);
             gridPane.setVgap(10);
-            gridPane.setStyle("-fx-background-color: rgba(10,159,65,1);-fx-background-radius: 5");
+            gridPane.setStyle("-fx-background-color: rgba(10,159,65,0.4);-fx-background-radius: 5");
 
             for (int i = 0; i < 6; i++) {
                 ColumnConstraints column = new ColumnConstraints();
@@ -138,7 +138,7 @@ public class RequestFeedbackPanelController {
 //                    DatabaseUtil.updateMessageStatus(message.getId(), 2);
 //                }
                 Stage RequestDetailStage = new Stage();
-                RequestDetailStage.setTitle("修改密码");
+                RequestDetailStage.setTitle("信息详情");
                 try {
                     RequestDetailWindowController.setContentDetail(message.getContent());
                     RequestDetailWindowController.setReplyDetail(message.getReply());

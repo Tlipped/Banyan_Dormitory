@@ -32,6 +32,8 @@ public class ChangePasswordController {
             // 获取当前窗口并关闭
             Stage stage = (Stage) cancelButton.getScene().getWindow();
             stage.close();
+            cancelButton.setCursor(Cursor.HAND);
+            confirmButton.setCursor(Cursor.HAND);
         });
         confirmButton.setOnAction(actionEvent -> {
             if(passwordInput.getText().equals("")){

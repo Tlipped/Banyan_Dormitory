@@ -106,6 +106,8 @@ public class UserPanelController {
 
     public void initialize() {
         loadUserPanel(user.getId());
+        changePasswordButton.setCursor(Cursor.HAND);
+        changeUserInfoButton.setCursor(Cursor.HAND);
     }
 
     public static void receiveUserID(String userid){

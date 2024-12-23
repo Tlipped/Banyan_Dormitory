@@ -2,6 +2,7 @@ package com.banyan_dormitory.controller.manager;
 
 import com.banyan_dormitory.util.DatabaseUtil;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -48,6 +49,17 @@ public class Student_ManagerController {
 
         // 添加学生
         add.setOnAction(event -> showAddStudentDialog());
+
+        changeScore1.setCursor(Cursor.HAND);
+        delete1.setCursor(Cursor.HAND);
+        changeScore2.setCursor(Cursor.HAND);
+        delete2.setCursor(Cursor.HAND);
+        changeScore3.setCursor(Cursor.HAND);
+        delete3.setCursor(Cursor.HAND);
+        changeScore4.setCursor(Cursor.HAND);
+        delete4.setCursor(Cursor.HAND);
+        search.setCursor(Cursor.HAND);
+        add.setCursor(Cursor.HAND);
     }
 
     private void loadRoomData() {
@@ -403,7 +415,6 @@ public class Student_ManagerController {
             alert.setHeaderText(null);    // 不显示头部文本
             alert.setContentText(content); // 设置内容文本
 
-            // 使用模态窗口避免后续逻辑执行
             alert.showAndWait(); // 等待用户关闭弹窗
 
             alertDisplayed = false; // 重置标志位，以便下次可以再次弹出

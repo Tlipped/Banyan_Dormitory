@@ -4,6 +4,7 @@ import com.banyan_dormitory.util.DatabaseUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -25,7 +26,7 @@ public class ManagerAccouncement {
         accouncement_show.getItems().clear();
         accouncement_show.setStyle("-fx-background-radius: 50;-fx-font-family: Arial");
         accouncement_show.setFixedCellSize(50);
-
+        releaseButton.setCursor(Cursor.HAND);
         String sql="SELECT * FROM information order by id ";
         Connection connection= DatabaseUtil.getConnection();
         Statement sq= connection.createStatement();
@@ -117,6 +118,7 @@ public class ManagerAccouncement {
         Scene scene = new Scene(layout, 300, 200);
         popupStage.setScene(scene);
         popupStage.show();
+
     }
 
     private void showAlert(String message) {

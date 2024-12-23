@@ -28,6 +28,6 @@
             </LinearGradient>
          </textFill>
       </Button>
-      <ComboBox fx:id="requestTypeSelect" layoutX="652.0" layoutY="584.0" prefHeight="48.0" prefWidth="182.0" promptText="申 请 类 型" style="-fx-background-color: rgb(169,221,189); -fx-font-size: 18px; -fx-border-insets: 5;" visibleRowCount="5" />
+      <ComboBox fx:id="requestTypeSelect" layoutX="656.0" layoutY="581.0" prefHeight="48.0" prefWidth="182.0" promptText="申 请 类 型" style="-fx-background-color: rgb(169,221,189); -fx-font-size: 18px; -fx-border-insets: 5;" visibleRowCount="3" />
    </children>
 </AnchorPane>

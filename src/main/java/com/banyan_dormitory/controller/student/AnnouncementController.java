@@ -4,6 +4,7 @@ import com.banyan_dormitory.util.ViewManager;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
@@ -35,7 +36,7 @@ public class AnnouncementController {
         setupButton(feedback, feedbackContainer, "/com/banyan_dormitory/fxml/Student/RequestFeedbackPanel.fxml");
         setupButton(user_center, user_centerContainer, "/com/banyan_dormitory/fxml/Student/UserPanel.fxml");
         name.setText(UserPanelController.user.getName());
-        // 默认选中第一个按钮
+        // 默认
         selectButton(homepageContainer);
         loadContent("/com/banyan_dormitory/fxml/Student/Homepage_announcement.fxml");
         logout.getItems().add("登出");
@@ -48,6 +49,11 @@ public class AnnouncementController {
                 delay.play();
             }
         });
+        logout.setCursor(Cursor.HAND);
+        homepage.setCursor(Cursor.HAND);
+        apply.setCursor(Cursor.HAND);
+        feedback.setCursor(Cursor.HAND);
+        user_center.setCursor(Cursor.HAND);
     }
 
     private void performLogout() {

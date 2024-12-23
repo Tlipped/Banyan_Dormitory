@@ -6,12 +6,19 @@ import com.banyan_dormitory.util.ViewManager;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 
-public class RegisterController {  // 注意这里应该是 RegisterController 而不是 LoginController
+public class RegisterController {
+    @FXML
+    public Button RegisterButton;  // 注意这里应该是 RegisterController 而不是 LoginController
+    public Label error;
+    @FXML
+    public Button BackButton;
     @FXML
     private TextField reAccount;
     @FXML
@@ -29,7 +36,9 @@ public class RegisterController {  // 注意这里应该是 RegisterController �
     public void initialize() {
         // 初始化时隐藏 rank 标签
         rank.setVisible(false);
-
+        RegisterButton.setCursor(Cursor.HAND);
+        BackButton.setCursor(Cursor.HAND);
+        error.setVisible(false);
         // 添加监听器到密码字段
         rePassword.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.isEmpty()) {
@@ -50,7 +59,6 @@ public class RegisterController {  // 注意这里应该是 RegisterController �
         String regexDigitsAndLetters = "^(?=.*[0-9])(?=.*[a-zA-Z]).*$";  // 包含数字和字母
         String regexStrong = "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[^\\w\\s]).*$";  // 包含数字、字母和特殊字符
 
-        // 使用正则表达式评估密码强度
         if (password.matches(regexOnlyDigits)) {
             return "弱";
         } else if (password.matches(regexDigitsAndLetters)) {
@@ -80,6 +88,10 @@ public class RegisterController {  // 注意这里应该是 RegisterController �
             showError("账号必须是数字！");
             return;
         }
+        if (DatabaseUtil.isAccountExists(account)) {
+            showError("该账号已存在！");
+            return;
+        }
         String password = rePassword.getText().trim();
         String name = rename.getText().trim();
         String school = reschool.getText().trim();
@@ -105,11 +117,8 @@ public class RegisterController {  // 注意这里应该是 RegisterController �
     }
 
     private void showError(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("错误");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+        error.setText(message);
+        error.setVisible(true);
     }
 
     private void showSuccessAlert(String message) {

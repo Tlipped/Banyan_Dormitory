@@ -6,9 +6,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -19,6 +21,10 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Optional;
 public class VisitorCheckController {
+    @FXML
+    public Button searchButton;
+    @FXML
+    public Button CheckInButton;
     @FXML
     private javafx.scene.control.Button checkIn;
     @FXML
@@ -35,6 +41,9 @@ public class VisitorCheckController {
         date.setValue(LocalDate.now());
         onSearchButtonClick(new ActionEvent());
         Platform.runLater(this::setVerticalScrollBarStyle);
+        searchButton.setCursor(Cursor.HAND);
+        CheckInButton.setCursor(Cursor.HAND);
+        date.setCursor(Cursor.HAND);
     }
 
     private void setVerticalScrollBarStyle() {

@@ -6,8 +6,10 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import java.io.IOException;
@@ -15,6 +17,10 @@ import com.banyan_dormitory.controller.student.UserPanelController;
 import javafx.scene.layout.StackPane;
 
 public class LoginController {
+    @FXML
+    private Button registerButton;
+    @FXML
+    private Button loginButton;
     @FXML
     private TextField account;
     @FXML
@@ -26,7 +32,8 @@ public class LoginController {
 
     @FXML
     public void initialize(){
-
+        registerButton.setCursor(Cursor.HAND);
+        loginButton.setCursor(Cursor.HAND);
     }
     @FXML
     public void doLogin(ActionEvent actionEvent){

@@ -154,7 +154,21 @@ public class DatabaseUtil {
             e.printStackTrace();
         }
     }
-
+    public static boolean isAccountExists(int accountId) {
+        String query = "SELECT COUNT(*) FROM user WHERE id = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, accountId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     public static void insertStudentRequest(String from, String to, String content, String type){
         String sql = "INSERT INTO message (`from`, `to`, content, status, type) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn =DatabaseUtil.getConnection();
