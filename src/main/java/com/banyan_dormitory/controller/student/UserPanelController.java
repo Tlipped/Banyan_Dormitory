@@ -3,6 +3,7 @@ import com.banyan_dormitory.util.DatabaseUtil;
 import com.banyan_dormitory.model.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -221,6 +222,9 @@ public class UserPanelController {
                 phone_numberInput.setStyle("-fx-border-color: none;-fx-border-radius: 5;-fx-background-color: transparent;");
             }
         });
+
+        changePasswordButton.setCursor(Cursor.HAND);
+        changeUserInfoButton.setCursor(Cursor.HAND);
 
         //userPanelMainContainer.setStyle("-fx-background-color: rgba(10,159,65,0.2);-fx-background-radius: 10;");
     }

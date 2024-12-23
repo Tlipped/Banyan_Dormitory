@@ -3,16 +3,22 @@ package com.banyan_dormitory.controller.student;
 import com.banyan_dormitory.model.Message;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 
+import java.io.IOException;
 import java.util.List;
 import com.banyan_dormitory.util.DatabaseUtil;
+import javafx.stage.Stage;
 
 public class RequestFeedbackPanelController {
     @FXML
@@ -101,15 +107,40 @@ public class RequestFeedbackPanelController {
 
             gridPane.setOnMouseClicked(event -> {
                 System.out.println("clicked");
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("消息详情");
-                alert.setHeaderText("消息内容");
-                alert.setContentText(message.getContent());
-                alert.showAndWait();
-                if(message.getFrom().equals("123456"/*adminId*/)){
-                    DatabaseUtil.updateMessageStatus(message.getId(), 2);
+//                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//                alert.setTitle("消息详情");
+//                alert.setHeaderText("消息内容");
+//                alert.setContentText(message.getContent());
+//                alert.showAndWait();
+//                if(message.getFrom().equals("123456"/*adminId*/)){
+//                    DatabaseUtil.updateMessageStatus(message.getId(), 2);
+//                }
+                Stage RequestDetailStage = new Stage();
+                RequestDetailStage.setTitle("修改密码");
+                try {
+                    RequestDetailWindowController.setContentDetail(message.getContent());
+                    RequestDetailWindowController.setReplyDetail(message.getReply());
+
+                    Parent root= FXMLLoader.load(RequestFeedbackPanelController.class.getResource("/com/banyan_dormitory/fxml/Student/RequestDetailWindow.fxml"));
+                    if(message.getFrom().equals("123456"/*adminId*/)){
+                        DatabaseUtil.updateMessageStatus(message.getId(), 2);
+                    }
+                    Scene scene = new Scene(root);
+                    RequestDetailStage.setScene(scene);
+                    RequestDetailStage.centerOnScreen();
+                    RequestDetailStage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.err.println("无法加载 FXML 文件: " + "/com/banyan_dormitory/fxml/RequestDetailWindow.fxml");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Failed to load view.");
+                    alert.setContentText("The system could not load the requested view. Please try again or contact support.");
+                    alert.showAndWait();
                 }
             });
+
+            gridPane.setCursor(Cursor.HAND);
         }
         Platform.runLater(this::setVerticalScrollBarStyle);
     }
