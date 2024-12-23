@@ -11,6 +11,8 @@ public class User {
     private String room;
     private String bed;
     private String name;
+    private String user_id;
+    private String phone_number;
 
     //getter和setter****************************
     public String getId() {
@@ -67,6 +69,22 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
+
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
     }
     //getter和setter*******************************
 

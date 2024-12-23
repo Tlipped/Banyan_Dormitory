@@ -142,12 +142,13 @@ public class DatabaseUtil {
     }
 
     public static void updateUser(User user){
-        String sql = "UPDATE `user` SET `name` = ? , school = ? WHERE `id` = ?";
+        String sql = "UPDATE `user` SET school = ? , user_id = ? , phone_number = ? WHERE `id` = ?";
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, user.getName());
-            pstmt.setString(2, user.getSchool());
-            pstmt.setString(3, user.getId());
+            pstmt.setString(1, user.getSchool());
+            pstmt.setString(2, user.getUser_id());
+            pstmt.setString(3, user.getPhone_number());
+            pstmt.setString(4, user.getId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

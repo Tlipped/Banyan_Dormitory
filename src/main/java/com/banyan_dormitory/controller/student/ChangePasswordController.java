@@ -33,7 +33,11 @@ public class ChangePasswordController {
             stage.close();
         });
         confirmButton.setOnAction(actionEvent -> {
-            if(confirmInput.getText().equals(passwordInput.getText())) {
+            if(passwordInput.getText().equals("")){
+                Alert alert = new Alert(Alert.AlertType.ERROR, "密码不能为空");
+                alert.showAndWait();
+            }
+            else if(confirmInput.getText().equals(passwordInput.getText())) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "修改成功");
                 alert.showAndWait();
 
