@@ -181,14 +181,23 @@ public class DatabaseUtil {
 
             try (ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
-                    Message message = new Message();
-                    message.setId(rs.getInt("id"));
-                    message.setFrom(rs.getString("from"));
-                    message.setTo(rs.getString("to"));
-                    message.setContent(rs.getString("content"));
-                    message.setStatus(rs.getInt("status"));
-                    message.setType(rs.getString("type"));
-                    messages.add(message);
+
+                    if(rs.getString("from").equals(userId)){
+                        Message message = new Message();
+                        message.setId(rs.getInt("id"));
+                        message.setFrom(rs.getString("from"));
+                        message.setTo(rs.getString("to"));
+                        message.setContent(rs.getString("content"));
+                        message.setStatus(rs.getInt("status"));
+                        message.setType(rs.getString("type"));
+                        message.setReply("暂无回复内容");
+                        messages.add(message);
+                    }else{
+                        int index=findIndexById(messages,(rs.getInt("id")-10000));
+                        if(index!=-1){
+                            messages.get(index).setReply(rs.getString("content"));
+                        }
+                    }
                 }
             }
         } catch (SQLException e) {
@@ -196,6 +205,15 @@ public class DatabaseUtil {
         }
 
         return messages;
+    }
+
+    public static int findIndexById(List<Message> list, int id) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getId() == id) {
+                return i;
+            }
+        }
+        return -1; // 如果未找到匹配项，返回 -1
     }
 
     public static void updateMessageStatus(int id, int type) {

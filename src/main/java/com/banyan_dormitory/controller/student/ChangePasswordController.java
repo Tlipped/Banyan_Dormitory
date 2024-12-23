@@ -2,6 +2,7 @@ package com.banyan_dormitory.controller.student;
 
 import com.banyan_dormitory.util.DatabaseUtil;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -52,5 +53,8 @@ public class ChangePasswordController {
                 alert.showAndWait();
             }
         });
+
+        confirmButton.setCursor(Cursor.HAND);
+        cancelButton.setCursor(Cursor.HAND);
     }
 }
