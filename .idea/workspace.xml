@@ -4,21 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cc20415-62e4-412d-93b0-d3b860c3c2cf" name="更改" comment="优化发布公告界面">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/manager/ManagerHandleMessages.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/manager/ManagerReleaseMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/manager/ManagerRespond.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/manager/ManagerRespondMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/fxml/Manager/managerRespond.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/fxml/Manager/manager_handleMessages.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/fxml/Manager/manager_releaseMessage.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/fxml/Manager/manager_respondMessage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/manager/ManagerAccouncement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/manager/ManagerAccouncement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/db/message.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/db/message.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/fxml/Manager/managerAccouncement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/fxml/Manager/managerAccouncement.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="9cc20415-62e4-412d-93b0-d3b860c3c2cf" name="更改" comment="更新发布公告和信息处理，变成FXML界面" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -163,7 +149,7 @@
       <workItem from="1734936231316" duration="1260000" />
       <workItem from="1734952014046" duration="1615000" />
       <workItem from="1734955392481" duration="508000" />
-      <workItem from="1735037276158" duration="6961000" />
+      <workItem from="1735037276158" duration="7277000" />
     </task>
     <task id="LOCAL-00001" summary="初始化">
       <option name="closed" value="true" />
@@ -269,7 +255,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734599130725</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="更新发布公告和信息处理，变成FXML界面">
+      <option name="closed" value="true" />
+      <created>1735044428002</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1735044428002</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,7 +290,8 @@
     <MESSAGE value="初始化功能" />
     <MESSAGE value="新加管理员发布公告和看公告功能" />
     <MESSAGE value="优化发布公告界面" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化发布公告界面" />
+    <MESSAGE value="更新发布公告和信息处理，变成FXML界面" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新发布公告和信息处理，变成FXML界面" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
