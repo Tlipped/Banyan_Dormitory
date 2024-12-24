@@ -27,13 +27,13 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <DatePicker fx:id="date" layoutX="385.0" layoutY="41.0" prefHeight="26.0" prefWidth="193.0" style="-fx-font-size:17px"/>
-      <Button layoutX="633.0" layoutY="31.0" mnemonicParsing="false" onAction="#onSearchButtonClick" prefHeight="46.0" prefWidth="114.0" style="-fx-background-color: rgb(172,238,179); -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;" text="查询">
+      <DatePicker fx:id="date" layoutX="385.0" layoutY="41.0" prefHeight="26.0" prefWidth="193.0" style="-fx-font-size:17px" />
+      <Button fx:id="searchButton" layoutX="633.0" layoutY="31.0" mnemonicParsing="false" onAction="#onSearchButtonClick" prefHeight="46.0" prefWidth="114.0" style="-fx-background-color: rgb(172,238,179); -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;" text="查询">
          <font>
             <Font size="21.0" />
          </font>
       </Button>
-      <Button layoutX="772.0" layoutY="30.0" mnemonicParsing="false" onAction="#onCheckInButtonClick" prefHeight="46.0" prefWidth="114.0" style="-fx-background-color: rgb(172,238,179); -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;" text="登记">
+      <Button fx:id="CheckInButton" layoutX="772.0" layoutY="30.0" mnemonicParsing="false" onAction="#onCheckInButtonClick" prefHeight="46.0" prefWidth="114.0" style="-fx-background-color: rgb(172,238,179); -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;" text="登记">
          <font>
             <Font size="21.0" />
          </font>

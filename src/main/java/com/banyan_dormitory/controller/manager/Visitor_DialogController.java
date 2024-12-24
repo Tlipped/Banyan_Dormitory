@@ -3,8 +3,10 @@ package com.banyan_dormitory.controller.manager;
 import com.banyan_dormitory.util.DatabaseUtil;
 import com.banyan_dormitory.util.StringUtil;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent; // 确保使用的是 JavaFX 的 ActionEvent
@@ -16,9 +18,16 @@ import java.time.format.DateTimeParseException;
 
 public class Visitor_DialogController {
     @FXML
+    public Button Cancel;
+    @FXML
+    public Button Confirm;
+    @FXML
     private javafx.scene.control.TextField name,visitor_id,phone_number,reason,date;
     private VisitorCheckController visitorCheckController;
-
+    public void initialize(){
+        Confirm.setCursor(Cursor.HAND);
+        Cancel.setCursor(Cursor.HAND);
+    }
     public void setVisitorCheckController(VisitorCheckController controller) {
         this.visitorCheckController = controller;
     }

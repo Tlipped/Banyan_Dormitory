@@ -1,27 +1,55 @@
 package com.banyan_dormitory.controller.student;
 
 import com.banyan_dormitory.model.Message;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 
+import java.io.IOException;
 import java.util.List;
 import com.banyan_dormitory.util.DatabaseUtil;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class RequestFeedbackPanelController {
     @FXML
     private VBox MessageContainer;
 
+    static Timeline timeline;
+
     @FXML
     private ScrollPane myscrollPane;
     public void initialize() {
+        showAllRequests();
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            showAllRequests();
+//            System.out.println("refreshed");
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+    }
+
+    public static void stopRequestFeedbackPanelTimeline(){
+        if(timeline!=null){
+            timeline.stop();
+        }
+    }
+
+    private void showAllRequests(){
         List<Message> messages = DatabaseUtil.readMessageFromDatabase(UserPanelController.user.getId());
+        MessageContainer.getChildren().clear();
         for (Message message : messages) {
             GridPane gridPane = new GridPane();
             MessageContainer.getChildren().add(gridPane);
@@ -29,7 +57,7 @@ public class RequestFeedbackPanelController {
             gridPane.setPadding(new Insets(10, 10, 10, 10));
             gridPane.setHgap(10);
             gridPane.setVgap(10);
-            gridPane.setStyle("-fx-background-color: rgba(10,159,65,1);-fx-background-radius: 5");
+            gridPane.setStyle("-fx-background-color: rgba(10,159,65,0.4);-fx-background-radius: 5");
 
             for (int i = 0; i < 6; i++) {
                 ColumnConstraints column = new ColumnConstraints();
@@ -101,18 +129,44 @@ public class RequestFeedbackPanelController {
 
             gridPane.setOnMouseClicked(event -> {
                 System.out.println("clicked");
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("消息详情");
-                alert.setHeaderText("消息内容");
-                alert.setContentText(message.getContent());
-                alert.showAndWait();
-                if(message.getFrom().equals("123456"/*adminId*/)){
-                    DatabaseUtil.updateMessageStatus(message.getId(), 2);
+//                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//                alert.setTitle("消息详情");
+//                alert.setHeaderText("消息内容");
+//                alert.setContentText(message.getContent());
+//                alert.showAndWait();
+//                if(message.getFrom().equals("123456"/*adminId*/)){
+//                    DatabaseUtil.updateMessageStatus(message.getId(), 2);
+//                }
+                Stage RequestDetailStage = new Stage();
+                RequestDetailStage.setTitle("信息详情");
+                try {
+                    RequestDetailWindowController.setContentDetail(message.getContent());
+                    RequestDetailWindowController.setReplyDetail(message.getReply());
+
+                    Parent root= FXMLLoader.load(RequestFeedbackPanelController.class.getResource("/com/banyan_dormitory/fxml/Student/RequestDetailWindow.fxml"));
+                    if(message.getFrom().equals("123456"/*adminId*/)){
+                        DatabaseUtil.updateMessageStatus(message.getId(), 2);
+                    }
+                    Scene scene = new Scene(root);
+                    RequestDetailStage.setScene(scene);
+                    RequestDetailStage.centerOnScreen();
+                    RequestDetailStage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.err.println("无法加载 FXML 文件: " + "/com/banyan_dormitory/fxml/RequestDetailWindow.fxml");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Failed to load view.");
+                    alert.setContentText("The system could not load the requested view. Please try again or contact support.");
+                    alert.showAndWait();
                 }
             });
+
+            gridPane.setCursor(Cursor.HAND);
         }
         Platform.runLater(this::setVerticalScrollBarStyle);
     }
+
     private void setVerticalScrollBarStyle() {
         // 垂直滚动条并设置其样式
         Node verticalScrollBar = myscrollPane.lookup(".scroll-bar:vertical");

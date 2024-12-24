@@ -23,7 +23,7 @@
                <padding>
                   <Insets left="-10.0" />
                </padding></Label>
-                <TextField fx:id="room" prefHeight="36.0" prefWidth="91.0" promptText="302" style="-fx-font-size: 18px;">
+                <TextField fx:id="room" prefHeight="36.0" prefWidth="91.0" promptText="201" style="-fx-font-size: 18px;">
                <HBox.margin>
                   <Insets left="-3.0" />
                </HBox.margin></TextField>

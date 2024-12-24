@@ -28,7 +28,7 @@
                   <Font size="21.0" />
                </font>
             </Label>
-            <Button layoutX="37.0" layoutY="395.0" mnemonicParsing="false" onAction="#doregister" prefHeight="55.0" prefWidth="288.0" style="-fx-background-color: transparent;" textFill="#040404">
+            <Button fx:id="registerButton" layoutX="37.0" layoutY="395.0" mnemonicParsing="false" onAction="#doregister" prefHeight="55.0" prefWidth="288.0" style="-fx-background-color: transparent;" textFill="#040404">
                <font>
                   <Font size="16.0" />
                </font>
@@ -38,7 +38,7 @@
                   <Image url="@../images/Login.png" />
                </image>
             </ImageView>
-            <Button layoutX="36.0" layoutY="328.0" mnemonicParsing="false" onAction="#doLogin" prefHeight="81.0" prefWidth="297.0" style="-fx-background-color: transparent;" textFill="#040404">
+            <Button fx:id="loginButton" layoutX="36.0" layoutY="328.0" mnemonicParsing="false" onAction="#doLogin" prefHeight="81.0" prefWidth="297.0" style="-fx-background-color: transparent;" textFill="#040404">
                <font>
                   <Font size="16.0" />
                </font>

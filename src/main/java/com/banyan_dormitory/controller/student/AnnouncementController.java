@@ -1,22 +1,16 @@
 package com.banyan_dormitory.controller.student;
 
-import com.banyan_dormitory.Main;
-import com.banyan_dormitory.model.User;
-import com.banyan_dormitory.util.DatabaseUtil;
 import com.banyan_dormitory.util.ViewManager;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.util.Callback;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.net.URL;
 
 public class AnnouncementController {
     @FXML
@@ -42,9 +36,9 @@ public class AnnouncementController {
         setupButton(feedback, feedbackContainer, "/com/banyan_dormitory/fxml/Student/RequestFeedbackPanel.fxml");
         setupButton(user_center, user_centerContainer, "/com/banyan_dormitory/fxml/Student/UserPanel.fxml");
         name.setText(UserPanelController.user.getName());
-        // 默认选中第一个按钮
+        // 默认
         selectButton(homepageContainer);
-        loadContent("/com/banyan_dormitory/fxml/Student/UserPanel.fxml");
+        loadContent("/com/banyan_dormitory/fxml/Student/Homepage_announcement.fxml");
         logout.getItems().add("登出");
         logout.setOnAction(event -> {
             String selectedItem = logout.getSelectionModel().getSelectedItem();
@@ -55,6 +49,11 @@ public class AnnouncementController {
                 delay.play();
             }
         });
+        logout.setCursor(Cursor.HAND);
+        homepage.setCursor(Cursor.HAND);
+        apply.setCursor(Cursor.HAND);
+        feedback.setCursor(Cursor.HAND);
+        user_center.setCursor(Cursor.HAND);
     }
 
     private void performLogout() {
@@ -81,6 +80,10 @@ public class AnnouncementController {
         button.setOnAction(event -> {
             selectButton(container);
             loadContent(fxmlPath);
+
+            if(currentSelectedContainer!=feedbackContainer){
+                RequestFeedbackPanelController.stopRequestFeedbackPanelTimeline();
+            }
         });
     }
 

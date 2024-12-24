@@ -11,21 +11,11 @@ import java.io.InputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.concurrent.CountDownLatch;
+
 public class Main extends Application {
     private static Stage stage;
-
-    // 添加静态初始化块来测试资源加载
-    static {
-        try (InputStream input = Main.class.getClassLoader().getResourceAsStream("database.properties")) {
-            if (input == null) {
-                System.out.println("Sorry, unable to find database.properties");
-            } else {
-                System.out.println("database.properties found and loaded successfully.");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    private static CountDownLatch latch = new CountDownLatch(1);
     @Override
     public void start(Stage primaryStage) throws IOException {
         Main.stage = primaryStage;
@@ -46,10 +36,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch();
     }
-
-    /**
-     * 测试数据库连接的方法。
-     */
     private void testDatabaseConnection() {
         try (Connection connection = DatabaseUtil.getConnection()) {
             if (connection != null && !connection.isClosed()) {

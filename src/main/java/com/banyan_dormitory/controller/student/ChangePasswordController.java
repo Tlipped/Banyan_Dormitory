@@ -2,6 +2,7 @@ package com.banyan_dormitory.controller.student;
 
 import com.banyan_dormitory.util.DatabaseUtil;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -31,9 +32,15 @@ public class ChangePasswordController {
             // 获取当前窗口并关闭
             Stage stage = (Stage) cancelButton.getScene().getWindow();
             stage.close();
+            cancelButton.setCursor(Cursor.HAND);
+            confirmButton.setCursor(Cursor.HAND);
         });
         confirmButton.setOnAction(actionEvent -> {
-            if(confirmInput.getText().equals(passwordInput.getText())) {
+            if(passwordInput.getText().equals("")){
+                Alert alert = new Alert(Alert.AlertType.ERROR, "密码不能为空");
+                alert.showAndWait();
+            }
+            else if(confirmInput.getText().equals(passwordInput.getText())) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "修改成功");
                 alert.showAndWait();
 
@@ -48,5 +55,8 @@ public class ChangePasswordController {
                 alert.showAndWait();
             }
         });
+
+        confirmButton.setCursor(Cursor.HAND);
+        cancelButton.setCursor(Cursor.HAND);
     }
 }

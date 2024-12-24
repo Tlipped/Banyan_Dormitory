@@ -4,6 +4,7 @@ import com.banyan_dormitory.util.DatabaseUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
@@ -64,15 +65,16 @@ public class HomepageAController {
         // ID 标签
         Label idLabel = new Label(id + ".");
         idLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"); // 调小字体
+        idLabel.setPrefWidth(40);
 
         // 内容标签
         Label contentLabel = new Label(displayContent);
         contentLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;");
-        contentLabel.setPrefWidth(500);
+        contentLabel.setPrefWidth(420);
 
         // 日期标签
         Label dateLabel = new Label(date);
-        dateLabel.setStyle("-fx-font-size: 18px; -fx-text-fill: white;"); // 调小字体
+        dateLabel.setStyle("-fx-font-size: 18px; -fx-text-fill: white;"); // 调小字体112
 
         // 查看详情按钮（只有当内容超出20字符时才显示）
         if (showDetailButton) {
@@ -88,6 +90,7 @@ public class HomepageAController {
 
     private void showFullContentDialog(String fullContent) {
         Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.setTitle("详细信息");
 
         // 主布局

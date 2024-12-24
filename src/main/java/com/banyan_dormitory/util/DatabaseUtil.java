@@ -95,14 +95,14 @@ public class DatabaseUtil {
         }
         return false;
     }
-    public static boolean registerUser(String account, String password,String name,String school) {
+    public static boolean registerUser(int account, String password,String name,String school) {
         try (Connection connection = DatabaseUtil.getConnection()) {
-            String sql = "INSERT INTO user (id, password,name,school) VALUES (?, ?)";
+            String sql = "INSERT INTO user (id, password,name,school) VALUES (?, ?,?,?)";
             try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
-                pstmt.setString(1, account);
+                pstmt.setString(1, Integer.toString(account));
                 pstmt.setString(2, password);
-                pstmt.setString(2, name);
-                pstmt.setString(2, school);
+                pstmt.setString(3, name);
+                pstmt.setString(4, school);
                 int rowsAffected = pstmt.executeUpdate();
                 return rowsAffected > 0;
             }
@@ -142,18 +142,33 @@ public class DatabaseUtil {
     }
 
     public static void updateUser(User user){
-        String sql = "UPDATE `user` SET `name` = ? , school = ? WHERE `id` = ?";
+        String sql = "UPDATE `user` SET school = ? , user_id = ? , phone_number = ? WHERE `id` = ?";
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, user.getName());
-            pstmt.setString(2, user.getSchool());
-            pstmt.setString(3, user.getId());
+            pstmt.setString(1, user.getSchool());
+            pstmt.setString(2, user.getUser_id());
+            pstmt.setString(3, user.getPhone_number());
+            pstmt.setString(4, user.getId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
+    public static boolean isAccountExists(int accountId) {
+        String query = "SELECT COUNT(*) FROM user WHERE id = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, accountId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     public static void insertStudentRequest(String from, String to, String content, String type){
         String sql = "INSERT INTO message (`from`, `to`, content, status, type) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn =DatabaseUtil.getConnection();
@@ -180,14 +195,23 @@ public class DatabaseUtil {
 
             try (ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
-                    Message message = new Message();
-                    message.setId(rs.getInt("id"));
-                    message.setFrom(rs.getString("from"));
-                    message.setTo(rs.getString("to"));
-                    message.setContent(rs.getString("content"));
-                    message.setStatus(rs.getInt("status"));
-                    message.setType(rs.getString("type"));
-                    messages.add(message);
+
+                    if(rs.getString("from").equals(userId)){
+                        Message message = new Message();
+                        message.setId(rs.getInt("id"));
+                        message.setFrom(rs.getString("from"));
+                        message.setTo(rs.getString("to"));
+                        message.setContent(rs.getString("content"));
+                        message.setStatus(rs.getInt("status"));
+                        message.setType(rs.getString("type"));
+                        message.setReply("暂无回复内容");
+                        messages.add(message);
+                    }else{
+                        int index=findIndexById(messages,(rs.getInt("id")-10000));
+                        if(index!=-1){
+                            messages.get(index).setReply(rs.getString("content"));
+                        }
+                    }
                 }
             }
         } catch (SQLException e) {
@@ -195,6 +219,15 @@ public class DatabaseUtil {
         }
 
         return messages;
+    }
+
+    public static int findIndexById(List<Message> list, int id) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getId() == id) {
+                return i;
+            }
+        }
+        return -1; // 如果未找到匹配项，返回 -1
     }
 
     public static void updateMessageStatus(int id, int type) {

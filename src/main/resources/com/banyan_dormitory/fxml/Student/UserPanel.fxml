@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -16,104 +17,140 @@
    <children>
       <AnchorPane fx:id="userPanelMainContainer" layoutX="33.0" layoutY="9.0" prefHeight="637.0" prefWidth="871.0" style="-fx-background-color: rgba(214,239,223,0.7); -fx-background-radius: 15;">
          <children>
-            <VBox layoutX="136.0" layoutY="54.0" prefHeight="481.0" prefWidth="598.0" spacing="42.0">
+            <VBox layoutX="102.0" layoutY="59.0" prefHeight="487.0" prefWidth="667.0" spacing="10.0">
                <children>
-                  <StackPane fx:id="nameContainer" prefWidth="476.0" style="-fx-background-color: rgba(77,186,116,0.5); -fx-background-radius: 15; -fx-border-insets: 15;">
+                  <VBox spacing="10.0">
                      <children>
-                        <HBox>
+                        <HBox spacing="10.0">
                            <children>
-                              <Label fx:id="userNameText" prefHeight="32.0" prefWidth="128.0" text="姓名：">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="nameInput" prefHeight="36.0" prefWidth="317.0" style="-fx-border-color: none; -fx-background-color: transparent; -fx-border-radius: 5;">
-                                 <font>
-                                    <Font size="21.0" />
-                                 </font></TextField>
-                           </children>
-                        </HBox>
-                     </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" top="10.0" />
-                     </padding>
-                  </StackPane>
-                  <StackPane fx:id="idContainer" style="-fx-background-color: rgba(77,186,116,0.5); -fx-background-radius: 15; -fx-border-radius: 15;">
-                     <children>
-                        <HBox>
-                           <children>
-                              <Label fx:id="userIdText" prefHeight="32.0" prefWidth="128.0" text="学号：">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="idInput" prefHeight="36.0" prefWidth="317.0" style="-fx-border-color: none; -fx-background-color: transparent; -fx-border-radius: 5;">
-                                 <font>
-                                    <Font size="21.0" />
-                                 </font></TextField>
-                           </children>
-                        </HBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" top="10.0" />
-                     </padding>
-                  </StackPane>
-                  <StackPane fx:id="dormInfoContainer" style="-fx-background-color: rgba(77,186,116,0.5); -fx-background-radius: 15; -fx-border-insets: 15;">
-                     <children>
-                        <HBox>
-                           <children>
-                              <Label fx:id="userDormInfoText" prefHeight="32.0" prefWidth="143.0" text="宿舍信息：">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="32.0" prefWidth="105.0" text="宿舍号">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="dormInput" prefHeight="32.0" prefWidth="69.0" style="-fx-border-color: none; -fx-background-color: transparent; -fx-border-radius: 5;">
-                                 <font>
-                                    <Font size="21.0" />
-                                 </font></TextField>
-                              <Label prefHeight="32.0" prefWidth="87.0" text="床号">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
+                              <StackPane fx:id="nameContainer" prefHeight="62.0" prefWidth="318.0" style="-fx-background-color: rgba(77,186,116,0.5); -fx-background-radius: 15; -fx-border-insets: 15;">
+                                 <children>
+                                    <HBox prefHeight="42.0" prefWidth="170.0">
+                                       <children>
+                                          <Label fx:id="userNameText" prefHeight="54.0" prefWidth="75.0" text="姓名：">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="nameInput" prefHeight="42.0" prefWidth="215.0" style="-fx-border-color: none; -fx-background-color: transparent; -fx-border-radius: 5;">
+                                             <font>
+                                                <Font size="21.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </HBox>
+                                 </children>
                                  <padding>
-                                    <Insets left="15.0" />
+                                    <Insets bottom="10.0" left="10.0" top="10.0" />
                                  </padding>
-                              </Label>
-                              <TextField fx:id="bedInput" prefHeight="32.0" prefWidth="50.0" style="-fx-border-color: none; -fx-background-color: transparent; -fx-border-radius: 5;">
+                              </StackPane>
+                              <StackPane fx:id="idContainer" prefHeight="62.0" prefWidth="296.0" style="-fx-background-color: rgba(77,186,116,0.5); -fx-background-radius: 15; -fx-border-radius: 15;">
+                                 <children>
+                                    <HBox prefHeight="42.0" prefWidth="42.0">
+                                       <children>
+                                          <Label fx:id="userIdText" prefHeight="65.0" prefWidth="79.0" text="学号：">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="idInput" prefHeight="42.0" prefWidth="197.0" style="-fx-border-color: none; -fx-background-color: transparent; -fx-border-radius: 5;">
+                                             <font>
+                                                <Font size="21.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </HBox>
+                                 </children>
                                  <padding>
-                                    <Insets left="10.0" />
+                                    <Insets bottom="10.0" left="10.0" top="10.0" />
                                  </padding>
-                                 <font>
-                                    <Font size="21.0" />
-                                 </font></TextField>
+                              </StackPane>
+                           </children>
+                        </HBox>
+                        <HBox spacing="10.0">
+                           <children>
+                              <StackPane fx:id="scoreContainer" style="-fx-background-color: rgba(77,186,116,0.5); -fx-background-radius: 15; -fx-border-insets: 15;">
+                                 <children>
+                                    <HBox>
+                                       <children>
+                                          <Label fx:id="userScoreText" prefHeight="57.0" prefWidth="106.0" text="表现分：">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="scoreInput" prefHeight="47.0" prefWidth="110.0" style="-fx-border-color: none; -fx-background-color: transparent; -fx-border-radius: 5;">
+                                             <font>
+                                                <Font size="21.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" top="10.0" />
+                                 </padding>
+                              </StackPane>
+                              <StackPane fx:id="dormInfoContainer" prefHeight="62.0" prefWidth="389.0" style="-fx-background-color: rgba(77,186,116,0.5); -fx-background-radius: 15; -fx-border-insets: 15;">
+                                 <children>
+                                    <HBox>
+                                       <children>
+                                          <Label fx:id="userDormInfoText" prefHeight="61.0" prefWidth="130.0" text="宿舍信息：">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <Label prefHeight="55.0" prefWidth="79.0" text="宿舍号">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="dormInput" prefHeight="45.0" prefWidth="67.0" style="-fx-border-color: none; -fx-background-color: transparent; -fx-border-radius: 5;">
+                                             <font>
+                                                <Font size="21.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label prefHeight="63.0" prefWidth="71.0" text="床号">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets left="15.0" />
+                                             </padding>
+                                          </Label>
+                                          <TextField fx:id="bedInput" prefHeight="45.0" prefWidth="28.0" style="-fx-border-color: none; -fx-background-color: transparent; -fx-border-radius: 5;">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                             <font>
+                                                <Font size="21.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" top="10.0" />
+                                 </padding>
+                              </StackPane>
                            </children>
                         </HBox>
                      </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" top="10.0" />
-                     </padding>
-                  </StackPane>
-                  <StackPane fx:id="schoolContainer" style="-fx-background-color: rgba(77,186,116,0.5); -fx-background-radius: 15; -fx-border-insets: 15;">
+                  </VBox>
+                  <Separator prefWidth="200.0" />
+                  <StackPane fx:id="schoolContainer" prefHeight="62.0" prefWidth="548.0" style="-fx-background-color: rgba(77,186,116,0.5); -fx-background-radius: 15; -fx-border-insets: 15;">
                      <children>
-                        <HBox>
+                        <HBox prefHeight="42.0" prefWidth="413.0">
                            <children>
-                              <Label fx:id="userSchoolText" prefHeight="33.0" prefWidth="128.0" text="学院：">
+                              <Label fx:id="userSchoolText" prefHeight="56.0" prefWidth="128.0" text="学院：">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="schoolInput" prefHeight="36.0" prefWidth="317.0" style="-fx-border-color: none; -fx-background-color: transparent; -fx-border-radius: 5;">
+                              <TextField fx:id="schoolInput" prefHeight="42.0" prefWidth="467.0" style="-fx-border-color: none; -fx-background-color: transparent; -fx-border-radius: 5;">
                                  <font>
                                     <Font size="21.0" />
-                                 </font></TextField>
+                                 </font>
+                              </TextField>
                            </children>
                         </HBox>
                      </children>
@@ -121,19 +158,20 @@
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </padding>
                   </StackPane>
-                  <StackPane fx:id="scoreContainer" style="-fx-background-color: rgba(77,186,116,0.5); -fx-background-radius: 15; -fx-border-insets: 15;">
+                  <StackPane fx:id="scoreContainer1" layoutX="30.0" layoutY="240.0" style="-fx-background-color: rgba(77,186,116,0.5); -fx-background-radius: 15; -fx-border-insets: 15;">
                      <children>
                         <HBox>
                            <children>
-                              <Label fx:id="userScoreText" prefHeight="34.0" prefWidth="128.0" text="表现分：">
+                              <Label fx:id="userScoreText1" prefHeight="65.0" prefWidth="128.0" text="身份证号：">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="scoreInput" prefHeight="36.0" prefWidth="317.0" style="-fx-border-color: none; -fx-background-color: transparent; -fx-border-radius: 5;">
+                              <TextField fx:id="user_idInput" prefHeight="42.0" prefWidth="468.0" style="-fx-border-color: none; -fx-background-color: transparent; -fx-border-radius: 5;">
                                  <font>
                                     <Font size="21.0" />
-                                 </font></TextField>
+                                 </font>
+                              </TextField>
                            </children>
                         </HBox>
                      </children>
@@ -141,13 +179,44 @@
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </padding>
                   </StackPane>
+                  <Label fx:id="user_idWarningText" text="身份证号长度不足" textFill="RED">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <StackPane fx:id="user_" layoutX="30.0" layoutY="344.0" style="-fx-background-color: rgba(77,186,116,0.5); -fx-background-radius: 15; -fx-border-insets: 15;">
+                     <children>
+                        <HBox>
+                           <children>
+                              <Label fx:id="userScoreText11" prefHeight="67.0" prefWidth="128.0" text="手机号：">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="phone_numberInput" prefHeight="42.0" prefWidth="466.0" style="-fx-border-color: none; -fx-background-color: transparent; -fx-border-radius: 5;">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </padding>
+                  </StackPane>
+                  <Label fx:id="phone_numberWarningText" text="手机号长度不足" textFill="RED">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
                </children>
                <padding>
-                  <Insets bottom="20.0" left="20.0" top="20.0" />
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </padding>
             </VBox>
             <VBox layoutX="577.0" layoutY="365.0" spacing="20.0" />
-            <Button fx:id="changeUserInfoButton" layoutX="181.0" layoutY="577.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="176.0" style="-fx-background-color: rgba(172,240,142,0.7); -fx-background-radius: 10;" text="修改信息">
+            <Button fx:id="changeUserInfoButton" layoutX="181.0" layoutY="560.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="176.0" style="-fx-background-color: rgba(172,240,142,0.7); -fx-background-radius: 10;" text="修改信息">
                <font>
                   <Font size="24.0" />
                </font>
@@ -161,7 +230,7 @@
                   </LinearGradient>
                </textFill>
             </Button>
-            <Button fx:id="changePasswordButton" layoutX="490.0" layoutY="577.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="176.0" style="-fx-background-color: rgba(172,240,142,0.7); -fx-background-radius: 10;" text="修改密码">
+            <Button fx:id="changePasswordButton" layoutX="489.0" layoutY="560.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="176.0" style="-fx-background-color: rgba(172,240,142,0.7); -fx-background-radius: 10;" text="修改密码">
                <font>
                   <Font size="24.0" />
                </font>
