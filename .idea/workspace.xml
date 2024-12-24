@@ -5,7 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9cc20415-62e4-412d-93b0-d3b860c3c2cf" name="更改" comment="优化发布公告界面">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/manager/ManagerHandleMessages.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/manager/ManagerReleaseMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/manager/ManagerRespond.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/manager/ManagerRespondMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/fxml/Manager/managerRespond.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/fxml/Manager/manager_handleMessages.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/fxml/Manager/manager_releaseMessage.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/fxml/Manager/manager_respondMessage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/manager/ManagerAccouncement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banyan_dormitory/controller/manager/ManagerAccouncement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/db/message.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/db/message.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/fxml/Manager/managerAccouncement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/banyan_dormitory/fxml/Manager/managerAccouncement.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,8 +27,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -141,6 +153,17 @@
       <workItem from="1734507167763" duration="14040000" />
       <workItem from="1734589494130" duration="684000" />
       <workItem from="1734596710770" duration="2085000" />
+      <workItem from="1734599108291" duration="1670000" />
+      <workItem from="1734603170398" duration="15123000" />
+      <workItem from="1734621293391" duration="21000" />
+      <workItem from="1734662646956" duration="220000" />
+      <workItem from="1734748527555" duration="510000" />
+      <workItem from="1734772199679" duration="12529000" />
+      <workItem from="1734835020120" duration="7263000" />
+      <workItem from="1734936231316" duration="1260000" />
+      <workItem from="1734952014046" duration="1615000" />
+      <workItem from="1734955392481" duration="508000" />
+      <workItem from="1735037276158" duration="6961000" />
     </task>
     <task id="LOCAL-00001" summary="初始化">
       <option name="closed" value="true" />
@@ -238,7 +261,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734598225974</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="优化发布公告界面">
+      <option name="closed" value="true" />
+      <created>1734599130725</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1734599130725</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

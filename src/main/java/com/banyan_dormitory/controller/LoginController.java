@@ -55,6 +55,7 @@ public class LoginController {
                 ViewManager.changeView("/com/banyan_dormitory/fxml/Student/Announcement.fxml");
             } else if (DatabaseUtil.verifyCredentials(accountText, passwordText) && account.getLength() == 6) {
                 System.out.println("管理端登录成功");
+//                ViewManager.changeView("/com/banyan_dormitory/fxml/Manager/manager_handleMessages.fxml");
                 ViewManager.changeView("/com/banyan_dormitory/fxml/Manager/Manager_Navigator.fxml");
             } else {
                 showError("账号或密码错误");

@@ -1,32 +1,48 @@
 package com.banyan_dormitory.controller.manager;
 
 import com.banyan_dormitory.util.DatabaseUtil;
-import com.mysql.cj.xdevapi.SqlStatement;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
+import java.io.IOException;
 import java.sql.*;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 import static java.lang.Thread.sleep;
 
 public class ManagerAccouncement {
     @FXML
-    private ListView<Label> accouncement_show;
+    private ListView<HBox> accouncement_show;
     @FXML
     private Button releaseButton;
+    private Timeline timeline;
     public void initialize() throws SQLException {
+        timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> {
+            Platform.runLater(() -> {
+                try {
+                    update();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+    }
+
+    public void update() throws SQLException
+    {
+        releaseButton.setCursor(Cursor.HAND);
         accouncement_show.getItems().clear();
         accouncement_show.setStyle("-fx-background-radius: 50;-fx-font-family: Arial");
         accouncement_show.setFixedCellSize(50);
@@ -37,6 +53,7 @@ public class ManagerAccouncement {
         ResultSet Set=sq.executeQuery(sql);
         while (Set.next())
         {
+            String id=Set.getString("id");
             String str=Set.getString("content");
             int size=50-3*str.length();
             StringBuffer Sb=new StringBuffer(" ");
@@ -48,85 +65,47 @@ public class ManagerAccouncement {
             Label label=new Label(str+Sb+Set.getString("date"));
             label.setStyle("-fx-font-size: 24px;-fx-background-radius: 30;-fx-text-fill: black");
 
-            accouncement_show.getItems().add(label);
+            Button button=new Button("删除公告");
+            button.setCursor(Cursor.HAND);
+            button.setStyle("-fx-font-size: 20px;-fx-text-fill: black;-fx-background-color: red");
+            button.setOnAction(e->{
+                String drop="delete from information where id=?";
+                try {
+                    PreparedStatement pstm= connection.prepareStatement(drop);
+                    pstm.setString(1,id);
+                    pstm.execute();
+                    initialize();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            });
+
+            HBox hbox=new HBox();
+            hbox.getChildren().add(label);
+
+            Region spacer=new Region();
+            HBox.setHgrow(spacer, javafx.scene.layout.Priority.ALWAYS);
+            hbox.getChildren().add(spacer);
+            hbox.getChildren().add(button);
+            accouncement_show.getItems().add(hbox);
         }
     }
     public ManagerAccouncement() {
         // 默认构造函数
     }
 
-    public void handleReleaseButtonAction(ActionEvent event) {
-        Stage popupStage = new Stage();
-        popupStage.initModality(Modality.APPLICATION_MODAL);
-        popupStage.setTitle("发布公告");
-
-        TextField textField = new TextField();
-        textField.setPrefWidth(300);
-        textField.setPrefHeight(200);
-        textField.setStyle("-fx-font-family: Arial;-fx-background-radius: 30");
-        DatePicker datePicker = new DatePicker();
-        Button confirmButton = new Button("确认发布");
-
-        confirmButton.setOnAction(e -> {
-            if(datePicker.getValue()==null&&textField.getText().isEmpty())
-            {
-                showAlert("请输入公告和日期");
-            }
-            else if (datePicker.getEditor().getText().isEmpty()) {
-                showAlert("请输入日期");
-            } else if (textField.getText().isEmpty()) {
-                showAlert("请输入公告");
-            } else {
-                showAlert("公告发布成功");
-                // 获取当前本地日期时间
-                LocalDateTime now = LocalDateTime.now();
-
-                // 提取月、日、时、分、秒
-                int month = now.getMonthValue();
-                int day = now.getDayOfMonth();
-                int hour = now.getHour();
-                int minute = now.getMinute();
-                int second = now.getSecond();
-                // 按照自定义规则合并为一个整数
-                int combinedValue = month * 1000000 + day * 10000 + hour * 100 + minute * 10 + second;
-
-                String sql = "INSERT INTO information VALUES (?,?,?)";
-                try (Connection conn = DatabaseUtil.getConnection();
-                     PreparedStatement pstmt = conn.prepareStatement(sql))
-                {
-                    pstmt.setInt(1,combinedValue);
-                    pstmt.setString(2,textField.getText());
-                    pstmt.setString(3,datePicker.getEditor().getText());
-                    pstmt.execute();
-                } catch (SQLException a) {
-                    a.printStackTrace();
-                }
-                try {
-                    initialize();
-                } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
-                popupStage.close();
-            }
+    public void handleReleaseButtonAction(ActionEvent event) throws SQLException, IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/banyan_dormitory/fxml/Manager/manager_releaseMessage.fxml"));
+        loader.setControllerFactory(param -> {
+            return new ManagerReleaseMessage();
         });
-
-        VBox layout = new VBox(10);
-        layout.setAlignment(Pos.CENTER);
-        layout.getChildren().addAll(textField, datePicker, confirmButton);
-        BackgroundFill background_fill = new BackgroundFill(Color.LIGHTGREEN, CornerRadii.EMPTY, null);
-        layout.setBackground(new Background(background_fill));
-
-        Scene scene = new Scene(layout, 300, 200);
-        popupStage.setScene(scene);
-        popupStage.show();
-    }
-
-    private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("提示");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setHeight(500);
+        stage.setWidth(600);
+        stage.show();
     }
 
 }

@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="660.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banyan_dormitory.controller.manager.ManagerAccouncement">
-   <HBox layoutX="99.0" layoutY="75.0" prefHeight="467.0" prefWidth="731.0" style="-fx-background-color: green; -fx-background-radius: 30;">
+   <HBox layoutX="78.0" layoutY="75.0" prefHeight="467.0" prefWidth="781.0" style="-fx-background-color: green; -fx-background-radius: 30;">
       <children>
          <VBox prefHeight="221.0" prefWidth="103.0" style="-fx-background-radius: 30;">
             <children>
@@ -30,7 +30,7 @@
                </Label>
             </children>
          </VBox>
-          <ListView fx:id="accouncement_show" opacity="0.75" prefHeight="459.0" prefWidth="630.0" style="-fx-background-radius: 30;" />
+          <ListView fx:id="accouncement_show" opacity="0.75" prefHeight="467.0" prefWidth="678.0" style="-fx-background-radius: 30;" />
       </children>
    </HBox>
    <HBox layoutX="103.0" layoutY="6.0" prefHeight="63.0" prefWidth="731.0" style="-fx-background-color: #90EE90; -fx-background-radius: 30;">
