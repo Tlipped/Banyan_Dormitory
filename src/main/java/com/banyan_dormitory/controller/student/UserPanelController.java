@@ -109,6 +109,12 @@ public class UserPanelController {
 
     static Timeline timeline;
 
+    public static void stopUserPanelTimeline() {
+        if (timeline != null) {
+            timeline.stop();
+        }
+    }
+
     public void initialize() {
         loadUserPanel(user.getId());
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
