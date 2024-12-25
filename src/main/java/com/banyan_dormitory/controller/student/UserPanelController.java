@@ -181,6 +181,7 @@ public class UserPanelController {
 
         changeUserInfoButton.setOnAction(event -> {
             if(!isEditable) {
+                timeline.stop();
                 changeUserInfoButton.setText("保存信息");
                 isEditable = true;
                 //nameInput.setEditable(true);
@@ -246,6 +247,8 @@ public class UserPanelController {
                 schoolInput.setStyle("-fx-border-color: none;-fx-border-radius: 5;-fx-background-color: transparent;");
                 user_idInput.setStyle("-fx-border-color: none;-fx-border-radius: 5;-fx-background-color: transparent;");
                 phone_numberInput.setStyle("-fx-border-color: none;-fx-border-radius: 5;-fx-background-color: transparent;");
+
+                timeline.play();
             }
         });
 

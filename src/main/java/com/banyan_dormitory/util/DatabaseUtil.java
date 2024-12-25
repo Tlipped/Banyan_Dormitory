@@ -132,7 +132,9 @@ public class DatabaseUtil {
                     rs.getString("score"),
                     rs.getString("room"),
                     rs.getString("bed"),
-                    rs.getString("name")
+                    rs.getString("name"),
+                    rs.getString("user_id"),
+                    rs.getString("phone_number")
             );
         } catch (SQLException e) {
             e.printStackTrace();

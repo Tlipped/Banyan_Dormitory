@@ -93,7 +93,7 @@ public class User {
     }
 
     // 全参构造函数
-    public User(String id, String password, String school, String score, String room, String bed, String name) {
+    public User(String id, String password, String school, String score, String room, String bed, String name, String user_id, String phone_number) {
         this.id = id;
         this.password = password;
         this.school = school;
@@ -101,6 +101,8 @@ public class User {
         this.room = room;
         this.bed = bed;
         this.name=name;
+        this.user_id=user_id;
+        this.phone_number=phone_number;
     }
 
     // Getter 和 Setter 方法
