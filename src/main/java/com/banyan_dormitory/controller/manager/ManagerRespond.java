@@ -56,7 +56,8 @@ public class ManagerRespond {
 
     }
     public void returnAction(ActionEvent actionEvent) {
-        ViewManager.changeView("/com/banyan_dormitory/fxml/Manager/manager_handleMessages.fxml");
+        Stage stage = (Stage) returnButton.getScene().getWindow();
+        stage.close();
     }
 
     public void responseAction(ActionEvent actionEvent) throws IOException {

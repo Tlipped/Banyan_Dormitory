@@ -131,9 +131,10 @@ public class ManagerHandleMessages {
                         return new ManagerRespond(number);
                     });
                     Parent root = loader.load();
-                    Stage currentStage = (Stage) button.getScene().getWindow();
+                    Stage currentStage = new Stage();
                     Scene scene = new Scene(root);
                     currentStage.setScene(scene);
+                    currentStage.show();
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
