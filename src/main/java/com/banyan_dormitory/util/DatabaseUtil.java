@@ -212,6 +212,7 @@ public class DatabaseUtil {
                         int index=findIndexById(messages,(rs.getInt("id")-10000));
                         if(index!=-1){
                             messages.get(index).setReply(rs.getString("content"));
+                            messages.get(index).setStatus(rs.getInt("status"));// 2已通过 3被驳回
                         }
                     }
                 }

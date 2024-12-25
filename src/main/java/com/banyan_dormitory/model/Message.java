@@ -5,7 +5,7 @@ public class Message {
     private String from;
     private String to;
     private String content;
-    private int status;// 0未处理 1已通过 2被驳回 其他：异常状态
+    private int status;// 学生：0未处理 1已通过 宿管：2已通过 3被驳回 其他：异常状态
     private String type;
     private String reply;
 
