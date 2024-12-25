@@ -27,7 +27,7 @@ public class ManagerAccouncement {
     private Button releaseButton;
     private Timeline timeline;
     public void initialize() throws SQLException {
-        timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> {
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             Platform.runLater(() -> {
                 try {
                     update();
