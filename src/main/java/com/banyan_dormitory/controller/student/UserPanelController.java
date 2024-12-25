@@ -171,6 +171,10 @@ public class UserPanelController {
         changePasswordButton.setOnAction(event -> {
             Stage changePasswordStage = new Stage();
             changePasswordStage.setTitle("修改密码");
+
+            //冻结其他窗口
+            changePasswordStage.initModality(javafx.stage.Modality.APPLICATION_MODAL);
+
             try {
                 Parent root= FXMLLoader.load(UserPanelController.class.getResource("/com/banyan_dormitory/fxml/Student/ChangePassword.fxml"));
                 Scene scene = new Scene(root);
