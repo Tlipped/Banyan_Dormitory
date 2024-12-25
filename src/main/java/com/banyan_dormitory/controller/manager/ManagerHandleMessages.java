@@ -1,6 +1,7 @@
 package com.banyan_dormitory.controller.manager;
 
 import com.banyan_dormitory.util.DatabaseUtil;
+import com.banyan_dormitory.util.ViewManager;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -41,7 +42,7 @@ public class ManagerHandleMessages {
     }
     public void initialize() throws SQLException
     {
-        timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+        timeline = new Timeline(new KeyFrame(Duration.seconds(0.2), event -> {
             Platform.runLater(() -> {
                 try {
                     update();
@@ -64,7 +65,7 @@ public class ManagerHandleMessages {
                 super.updateItem(item, empty);
                 if (item!= null) {
                     setGraphic(item);
-                    setStyle("-fx-padding: 20px;-fx-background-color: green");
+                    setStyle("-fx-padding: 20px;-fx-background-color:  rgba(214,239,223,0.7)");
                     VBox vbox = new VBox(item);
                     vbox.setSpacing(100);
                     setGraphic(vbox);
@@ -124,19 +125,21 @@ public class ManagerHandleMessages {
             button.setStyle("-fx-font-size: 20;-fx-background-color: #ADD8E6");
 
             button.setOnAction(e-> {
-                try {
-                    timeline.stop();
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/banyan_dormitory/fxml/Manager/managerRespond.fxml"));
-                    loader.setControllerFactory(param -> {
-                        return new ManagerRespond(number);
-                    });
-                    Parent root = loader.load();
-                    Stage currentStage = (Stage) button.getScene().getWindow();
-                    Scene scene = new Scene(root);
-                    currentStage.setScene(scene);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
+//                try {
+//                    timeline.stop();
+//                    //FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/banyan_dormitory/fxml/Manager/managerRespond.fxml"));
+////                    loader.setControllerFactory(param -> {
+////                        return new ManagerRespond(number);
+////                    });
+////                    Parent root = loader.load();
+////                    Stage currentStage = (Stage) button.getScene().getWindow();
+////                    Scene scene = new Scene(root);
+////                    currentStage.setScene(scene);
+//
+//                } catch (IOException ex) {
+//                    ex.printStackTrace();
+//                }
+                ViewManager.changeView("/com/banyan_dormitory/fxml/Manager/managerRespond.fxml");
             });
             hbox.getChildren().addAll(dormLabel,roomLabel,idLabel,nameLabel,typeLabel);
             Region spacer=new Region();

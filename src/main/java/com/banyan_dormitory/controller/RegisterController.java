@@ -54,11 +54,9 @@ public class RegisterController {
     }
 
     private String checkPasswordStrength(String password) {
-        // 定义正则表达式
-        String regexOnlyDigits = "^\\d+$";  // 只包含数字
-        String regexDigitsAndLetters = "^(?=.*[0-9])(?=.*[a-zA-Z]).*$";  // 包含数字和字母
-        String regexStrong = "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[^\\w\\s]).*$";  // 包含数字、字母和特殊字符
-
+        String regexOnlyDigits = "^\\d+$";
+        String regexDigitsAndLetters = "^(?=.*[0-9])(?=.*[a-zA-Z]).*$";
+        String regexStrong = "^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[^\\w\\s]).*$";
         if (password.matches(regexOnlyDigits)) {
             return "弱";
         } else if (password.matches(regexDigitsAndLetters)) {
