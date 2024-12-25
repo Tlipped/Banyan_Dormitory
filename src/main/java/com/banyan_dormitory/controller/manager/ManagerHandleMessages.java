@@ -41,7 +41,7 @@ public class ManagerHandleMessages {
     }
     public void initialize() throws SQLException
     {
-        timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> {
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             Platform.runLater(() -> {
                 try {
                     update();
