@@ -2,6 +2,8 @@ package com.banyan_dormitory.controller.student;
 import com.banyan_dormitory.util.DatabaseUtil;
 import com.banyan_dormitory.model.User;
 import com.banyan_dormitory.util.StringUtil;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
@@ -14,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -104,8 +107,23 @@ public class UserPanelController {
 
     public static User user;
 
+    static Timeline timeline;
+
+    public static void stopUserPanelTimeline() {
+        if (timeline != null) {
+            timeline.stop();
+        }
+    }
+
     public void initialize() {
         loadUserPanel(user.getId());
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            loadUserPanel(user.getId());
+//            System.out.println("refreshed");
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+
         changePasswordButton.setCursor(Cursor.HAND);
         changeUserInfoButton.setCursor(Cursor.HAND);
     }
@@ -169,6 +187,7 @@ public class UserPanelController {
 
         changeUserInfoButton.setOnAction(event -> {
             if(!isEditable) {
+                timeline.stop();
                 changeUserInfoButton.setText("保存信息");
                 isEditable = true;
                 //nameInput.setEditable(true);
@@ -234,6 +253,8 @@ public class UserPanelController {
                 schoolInput.setStyle("-fx-border-color: none;-fx-border-radius: 5;-fx-background-color: transparent;");
                 user_idInput.setStyle("-fx-border-color: none;-fx-border-radius: 5;-fx-background-color: transparent;");
                 phone_numberInput.setStyle("-fx-border-color: none;-fx-border-radius: 5;-fx-background-color: transparent;");
+
+                timeline.play();
             }
         });
 

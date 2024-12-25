@@ -31,6 +31,7 @@ public class RequestFeedbackPanelController {
 
     @FXML
     private ScrollPane myscrollPane;
+
     public void initialize() {
         showAllRequests();
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
@@ -104,13 +105,13 @@ public class RequestFeedbackPanelController {
             String statusText="";
             if(message.getFrom().equals(UserPanelController.user.getId())){
                 switch (messageStatus) {
-                    case 1:
+                    case 0:
                         statusText = "未处理";
                         break;
-                    case 2:
+                    case 1:
                         statusText = "已通过";
                         break;
-                    case 3:
+                    case 2:
                         statusText = "被驳回";
                         break;
                     default:

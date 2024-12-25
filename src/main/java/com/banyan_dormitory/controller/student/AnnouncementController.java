@@ -84,6 +84,10 @@ public class AnnouncementController {
             if(currentSelectedContainer!=feedbackContainer){
                 RequestFeedbackPanelController.stopRequestFeedbackPanelTimeline();
             }
+
+            if(currentSelectedContainer!=user_centerContainer){
+                UserPanelController.stopUserPanelTimeline();
+            }
         });
     }
 
