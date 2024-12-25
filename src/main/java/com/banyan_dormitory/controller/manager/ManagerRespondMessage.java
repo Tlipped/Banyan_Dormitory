@@ -49,7 +49,7 @@ public class ManagerRespondMessage {
                 showSuccess("回复成功");
                 Stage stage = (Stage) passButton.getScene().getWindow();
                 stage.close();
-                ViewManager.changeView("/com/banyan_dormitory/fxml/Manager/manager_handleMessages.fxml");
+//                ViewManager.changeView("/com/banyan_dormitory/fxml/Manager/manager_handleMessages.fxml");
             }
         });
 
@@ -70,10 +70,11 @@ public class ManagerRespondMessage {
                 showSuccess("回复成功");
                 Stage stage = (Stage) passButton.getScene().getWindow();
                 stage.close();
-                ViewManager.changeView("/com/banyan_dormitory/fxml/Manager/manager_handleMessages.fxml");
+//                ViewManager.changeView("/com/banyan_dormitory/fxml/Manager/manager_handleMessages.fxml");
             }
         });
     }
+
     private static void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("提示");
