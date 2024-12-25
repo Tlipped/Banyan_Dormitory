@@ -71,10 +71,10 @@ public class ManagerAccouncement {
             button.setOnAction(e->{
                 String drop="delete from information where id=?";
                 try {
-                    PreparedStatement pstm= connection.prepareStatement(drop);
+                    Connection connection1= DatabaseUtil.getConnection();
+                    PreparedStatement pstm= connection1.prepareStatement(drop);
                     pstm.setString(1,id);
                     pstm.execute();
-                    initialize();
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -89,6 +89,10 @@ public class ManagerAccouncement {
             hbox.getChildren().add(button);
             accouncement_show.getItems().add(hbox);
         }
+
+        Set.close();
+        sq.close();
+        connection.close();
     }
     public ManagerAccouncement() {
         // 默认构造函数

@@ -74,7 +74,7 @@ public class ManagerHandleMessages {
             }
         });
 
-        String sql="SELECT * FROM message WHERE `to`='123456' order by status ";
+        String sql="SELECT * FROM message WHERE `to`='123456' order by status,id";
         Connection connection= DatabaseUtil.getConnection();
         Statement sq= connection.createStatement();
         ResultSet Set=sq.executeQuery(sql);
@@ -147,5 +147,9 @@ public class ManagerHandleMessages {
             hbox.setStyle("-fx-background-radius: 30");
             totalMessages.getItems().add(hbox);
         }
+
+        Set.close();
+        sq.close();
+        connection.close();
     }
 }
