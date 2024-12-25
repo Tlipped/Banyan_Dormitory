@@ -2,6 +2,8 @@ package com.banyan_dormitory.controller.student;
 import com.banyan_dormitory.util.DatabaseUtil;
 import com.banyan_dormitory.model.User;
 import com.banyan_dormitory.util.StringUtil;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
@@ -14,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -104,8 +107,17 @@ public class UserPanelController {
 
     public static User user;
 
+    static Timeline timeline;
+
     public void initialize() {
         loadUserPanel(user.getId());
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            loadUserPanel(user.getId());
+//            System.out.println("refreshed");
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+
         changePasswordButton.setCursor(Cursor.HAND);
         changeUserInfoButton.setCursor(Cursor.HAND);
     }

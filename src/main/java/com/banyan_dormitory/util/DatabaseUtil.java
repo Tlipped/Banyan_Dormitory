@@ -176,7 +176,7 @@ public class DatabaseUtil {
             pstmt.setString(1, from);
             pstmt.setString(2, to);
             pstmt.setString(3, content);
-            pstmt.setInt(4, 1);
+            pstmt.setInt(4, 0);// status 0 未处理
             pstmt.setString(5, type);
             pstmt.executeUpdate();
         } catch (SQLException e) {
