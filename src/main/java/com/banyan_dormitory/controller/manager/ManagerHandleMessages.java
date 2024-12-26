@@ -52,6 +52,7 @@ public class ManagerHandleMessages {
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
+
     }
 
     public void update() throws SQLException
@@ -125,15 +126,16 @@ public class ManagerHandleMessages {
 
             button.setOnAction(e-> {
                 try {
-                    timeline.stop();
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/banyan_dormitory/fxml/Manager/managerRespond.fxml"));
                     loader.setControllerFactory(param -> {
                         return new ManagerRespond(number);
                     });
                     Parent root = loader.load();
-                    Stage currentStage = (Stage) button.getScene().getWindow();
+                    Stage currentStage = new Stage();
                     Scene scene = new Scene(root);
                     currentStage.setScene(scene);
+                    currentStage.initModality(Modality.APPLICATION_MODAL);
+                    currentStage.show();
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
@@ -147,5 +149,9 @@ public class ManagerHandleMessages {
             hbox.setStyle("-fx-background-radius: 30");
             totalMessages.getItems().add(hbox);
         }
+
+        Set.close();
+        sq.close();
+        connection.close();
     }
 }

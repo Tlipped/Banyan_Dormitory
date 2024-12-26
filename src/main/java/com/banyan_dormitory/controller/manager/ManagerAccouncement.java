@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -71,7 +72,8 @@ public class ManagerAccouncement {
             button.setOnAction(e->{
                 String drop="delete from information where id=?";
                 try {
-                    PreparedStatement pstm= connection.prepareStatement(drop);
+                    Connection con=DatabaseUtil.getConnection();
+                    PreparedStatement pstm= con.prepareStatement(drop);
                     pstm.setString(1,id);
                     pstm.execute();
                     initialize();
@@ -89,6 +91,10 @@ public class ManagerAccouncement {
             hbox.getChildren().add(button);
             accouncement_show.getItems().add(hbox);
         }
+
+        Set.close();
+        sq.close();
+        connection.close();
     }
     public ManagerAccouncement() {
         // 默认构造函数
@@ -105,6 +111,7 @@ public class ManagerAccouncement {
         stage.setScene(scene);
         stage.setHeight(500);
         stage.setWidth(600);
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
     }
 

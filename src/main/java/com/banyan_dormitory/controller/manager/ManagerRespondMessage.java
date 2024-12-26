@@ -5,6 +5,7 @@ import com.banyan_dormitory.util.ViewManager;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.sql.Connection;
@@ -20,18 +21,20 @@ public class ManagerRespondMessage {
     private String student_id;
     private String type;
 
+    private Stage respondStage;
     public ManagerRespondMessage()
     {
-
     }
-    public ManagerRespondMessage(int id,String student_id,String type)
+    public ManagerRespondMessage(int id,String student_id,String type,Stage stage)
     {
+        this.respondStage=stage;
         this.id=id;
         this.student_id=student_id;
         this.type=type;
     }
     public void initialize()
     {
+
         passButton.setOnAction(event -> {
             if (textArea.getText().trim().isEmpty()) {
                 showAlert("请输入回复内容");
@@ -49,7 +52,7 @@ public class ManagerRespondMessage {
                 showSuccess("回复成功");
                 Stage stage = (Stage) passButton.getScene().getWindow();
                 stage.close();
-                ViewManager.changeView("/com/banyan_dormitory/fxml/Manager/manager_handleMessages.fxml");
+//                ViewManager.changeView("/com/banyan_dormitory/fxml/Manager/manager_handleMessages.fxml");
             }
         });
 
@@ -70,7 +73,7 @@ public class ManagerRespondMessage {
                 showSuccess("回复成功");
                 Stage stage = (Stage) passButton.getScene().getWindow();
                 stage.close();
-                ViewManager.changeView("/com/banyan_dormitory/fxml/Manager/manager_handleMessages.fxml");
+//                ViewManager.changeView("/com/banyan_dormitory/fxml/Manager/manager_handleMessages.fxml");
             }
         });
     }
@@ -82,12 +85,13 @@ public class ManagerRespondMessage {
         alert.showAndWait();
     }
 
-    private static void showSuccess(String message) {
+    private void showSuccess(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("提示");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+        respondStage.close();
     }
     private void handlePass(String inputText,String id,String type) throws SQLException {
         int number=this.id+10000;
