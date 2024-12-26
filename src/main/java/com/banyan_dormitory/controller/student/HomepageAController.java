@@ -1,6 +1,8 @@
 package com.banyan_dormitory.controller.student;
 
 import com.banyan_dormitory.util.DatabaseUtil;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -9,6 +11,7 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.geometry.Insets;
+import javafx.util.Duration;
 
 import java.sql.*;
 
@@ -20,13 +23,24 @@ public class HomepageAController {
     @FXML
     private ScrollPane scrollPane;
 
-    @FXML
+
     public void initialize() {
         // 设置滑动条为绿色主题
         scrollPane.setStyle("-fx-background: transparent; -fx-background-color: transparent; -fx-border-color: #C2E4C0;");
         scrollPane.getStyleClass().add("green-scrollbar");
+        // 启动自动刷新
+        startAutoRefresh();
+    }
 
-        loadInformationFromDatabase();
+    // 定义定时任务
+    private void startAutoRefresh() {
+        // 创建定时任务，每秒执行一次
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            loadInformationFromDatabase(); // 定时刷新数据
+        }));
+
+        timeline.setCycleCount(Timeline.INDEFINITE); // 无限循环
+        timeline.play(); // 开始执行
     }
 
     private void loadInformationFromDatabase() {
@@ -35,18 +49,12 @@ public class HomepageAController {
         try (Connection conn = DatabaseUtil.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
-
-            infoContainer.getChildren().clear(); // 清空旧内容
-
+            infoContainer.getChildren().clear();
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String content = rs.getString("content");
                 String date = rs.getString("date");
-
-                // 如果content超出20字符，截断并添加 "..."
                 String displayContent = content.length() > 20 ? content.substring(0, 20) + "..." : content;
-
-                // 创建一行信息
                 HBox infoRow = createInfoRow(id, displayContent, date, content, content.length() > 20);
                 infoContainer.getChildren().add(infoRow);
             }
@@ -61,21 +69,17 @@ public class HomepageAController {
         row.setStyle("-fx-background-color: #58C272; -fx-background-radius: 10; -fx-padding: 10;");
         row.setPadding(new Insets(10));
         row.setPrefWidth(780);
-
         // ID 标签
         Label idLabel = new Label(id + ".");
-        idLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"); // 调小字体
+        idLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;");
         idLabel.setPrefWidth(40);
-
         // 内容标签
         Label contentLabel = new Label(displayContent);
         contentLabel.setStyle("-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;");
         contentLabel.setPrefWidth(420);
-
         // 日期标签
         Label dateLabel = new Label(date);
-        dateLabel.setStyle("-fx-font-size: 18px; -fx-text-fill: white;"); // 调小字体112
-
+        dateLabel.setStyle("-fx-font-size: 18px; -fx-text-fill: white;");
         // 查看详情按钮（只有当内容超出20字符时才显示）
         if (showDetailButton) {
             Button viewButton = new Button("查看详情");
