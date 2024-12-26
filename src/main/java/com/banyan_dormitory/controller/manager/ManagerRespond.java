@@ -63,7 +63,7 @@ public class ManagerRespond {
     public void responseAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/banyan_dormitory/fxml/Manager/manager_respondMessage.fxml"));
         loader.setControllerFactory(param -> {
-            return new ManagerRespondMessage(id,student_id,type);
+            return new ManagerRespondMessage(id,student_id,type,returnButton);
         });
         Parent root = loader.load();
         Stage stage = new Stage();
@@ -71,6 +71,7 @@ public class ManagerRespond {
         stage.setScene(scene);
         stage.setHeight(500);
         stage.setWidth(600);
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
     }
 

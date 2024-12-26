@@ -42,7 +42,7 @@ public class ManagerHandleMessages {
     }
     public void initialize() throws SQLException
     {
-        timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+        timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> {
             Platform.runLater(() -> {
                 try {
                     update();
@@ -143,7 +143,6 @@ public class ManagerHandleMessages {
 
             button.setOnAction(e-> {
                 try {
-                    timeline.stop();
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/banyan_dormitory/fxml/Manager/managerRespond.fxml"));
                     loader.setControllerFactory(param -> {
                         return new ManagerRespond(number);
@@ -152,6 +151,7 @@ public class ManagerHandleMessages {
                     Stage currentStage = new Stage();
                     Scene scene = new Scene(root);
                     currentStage.setScene(scene);
+                    currentStage.initModality(Modality.APPLICATION_MODAL);
                     currentStage.show();
                 } catch (IOException ex) {
                     ex.printStackTrace();

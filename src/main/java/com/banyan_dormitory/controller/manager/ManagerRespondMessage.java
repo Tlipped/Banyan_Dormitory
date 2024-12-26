@@ -19,16 +19,18 @@ public class ManagerRespondMessage {
     private int id;
     private String student_id;
     private String type;
+    private Button returnButton;
 
     public ManagerRespondMessage()
     {
 
     }
-    public ManagerRespondMessage(int id,String student_id,String type)
+    public ManagerRespondMessage(int id,String student_id,String type,Button returnButton)
     {
         this.id=id;
         this.student_id=student_id;
         this.type=type;
+        this.returnButton=returnButton;
     }
     public void initialize()
     {
@@ -83,12 +85,14 @@ public class ManagerRespondMessage {
         alert.showAndWait();
     }
 
-    private static void showSuccess(String message) {
+    private void showSuccess(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("提示");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+        Stage stage=(Stage) returnButton.getScene().getWindow();
+        stage.close();
     }
     private void handlePass(String inputText,String id,String type) throws SQLException {
         int number=this.id+10000;
