@@ -171,15 +171,31 @@ public class DatabaseUtil {
         }
         return false;
     }
+
+    public static int findMaxId() {
+        String sql = "SELECT MAX(id) FROM message WHERE id < 10000";
+        try (Connection conn = DatabaseUtil.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
     public static void insertStudentRequest(String from, String to, String content, String type){
-        String sql = "INSERT INTO message (`from`, `to`, content, status, type) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO message (`id`,`from`, `to`, content, status, type) VALUES (? ,?, ?, ?, ?, ?)";
         try (Connection conn =DatabaseUtil.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, from);
-            pstmt.setString(2, to);
-            pstmt.setString(3, content);
-            pstmt.setInt(4, 0);// status 0 未处理
-            pstmt.setString(5, type);
+            int id = findMaxId() + 1;
+            pstmt.setInt(1,id);
+            pstmt.setString(2, from);
+            pstmt.setString(3, to);
+            pstmt.setString(4, content);
+            pstmt.setInt(5, 0);// status 0 未处理
+            pstmt.setString(6, type);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
