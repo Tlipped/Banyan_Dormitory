@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.awt.*;
 import java.sql.*;
+import java.time.LocalDate;
 
 public class ManagerReleaseMessage {
 
@@ -25,6 +26,8 @@ public class ManagerReleaseMessage {
 
     public void initialize()
     {
+        datePicker.setValue(LocalDate.now());
+        datePicker.setEditable(false);
         confirmButton.setOnAction(e -> {
             if(datePicker.getValue()==null&&textField.getText().isEmpty())
             {
