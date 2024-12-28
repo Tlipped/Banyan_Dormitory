@@ -60,41 +60,47 @@ public class RequestFeedbackPanelController {
             gridPane.setVgap(10);
             gridPane.setStyle("-fx-background-color: rgba(10,159,65,0.4);-fx-background-radius: 5");
 
-            for (int i = 0; i < 6; i++) {
+            for (int i = 0; i < 7; i++) {
                 ColumnConstraints column = new ColumnConstraints();
-                column.setPercentWidth(100.0 / 6);
+                column.setPercentWidth(100.0 / 7);
                 gridPane.getColumnConstraints().add(column);
             }
 
+            Label id_label = new Label(String.valueOf(message.getId()));
+            id_label.setStyle("-fx-font-size: 20px;");
+            id_label.setMaxWidth(Double.MAX_VALUE);
+            id_label.setAlignment(Pos.CENTER_LEFT);
+            gridPane.add(id_label, 0, 0);
+
             Label label1 = new Label("榕园九号");
-            label1.setStyle("-fx-font-size: 24px;");
+            label1.setStyle("-fx-font-size: 20px;");
             label1.setMaxWidth(Double.MAX_VALUE);
             label1.setAlignment(Pos.CENTER_LEFT);
-            gridPane.add(label1, 0, 0);
+            gridPane.add(label1, 1, 0);
 
             Label label2 = new Label(UserPanelController.user.getRoom());
-            label2.setStyle("-fx-font-size: 24px;");
+            label2.setStyle("-fx-font-size: 20px;");
             label2.setMaxWidth(Double.MAX_VALUE);
             label2.setAlignment(Pos.CENTER_LEFT);
-            gridPane.add(label2, 1, 0);
+            gridPane.add(label2, 2, 0);
 
             Label label3 = new Label(UserPanelController.user.getName());
-            label3.setStyle("-fx-font-size: 24px;");
+            label3.setStyle("-fx-font-size: 20px;");
             label3.setMaxWidth(Double.MAX_VALUE);
             label3.setAlignment(Pos.CENTER_LEFT);
-            gridPane.add(label3, 2, 0);
+            gridPane.add(label3, 3, 0);
 
             Label label4 = new Label(UserPanelController.user.getId());
-            label4.setStyle("-fx-font-size: 24px;");
+            label4.setStyle("-fx-font-size: 20px;");
             label4.setMaxWidth(Double.MAX_VALUE);
             label4.setAlignment(Pos.CENTER_LEFT);
-            gridPane.add(label4, 3, 0);
+            gridPane.add(label4, 4, 0);
 
             Label label5 = new Label(message.getType());
-            label5.setStyle("-fx-font-size: 24px;");
+            label5.setStyle("-fx-font-size: 20px;");
             label5.setMaxWidth(Double.MAX_VALUE);
             label5.setAlignment(Pos.CENTER_LEFT);
-            gridPane.add(label5, 4, 0);
+            gridPane.add(label5, 5, 0);
 
             int messageStatus = message.getStatus();
             StackPane statusContainer = new StackPane();
@@ -126,10 +132,10 @@ public class RequestFeedbackPanelController {
             }
 
             Label statusLabel = new Label(statusText);
-            statusLabel.setStyle("-fx-font-size: 24px;");
+            statusLabel.setStyle("-fx-font-size: 20px;");
             statusContainer.getChildren().add(statusLabel);
             statusContainer.setMaxWidth(Double.MAX_VALUE);
-            gridPane.add(statusContainer, 5, 0);
+            gridPane.add(statusContainer, 6, 0);
 
             gridPane.setOnMouseClicked(event -> {
                 System.out.println("clicked");
