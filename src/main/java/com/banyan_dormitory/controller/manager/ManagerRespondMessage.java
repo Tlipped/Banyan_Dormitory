@@ -1,7 +1,6 @@
 package com.banyan_dormitory.controller.manager;
 
 import com.banyan_dormitory.util.DatabaseUtil;
-import com.banyan_dormitory.util.ViewManager;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -9,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ManagerRespondMessage {
@@ -34,12 +34,27 @@ public class ManagerRespondMessage {
     }
     public void initialize()
     {
+        int number=this.id+10000;
+        String searchSql = "select * from message where id=?";
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(searchSql))
+        {
+            pstmt.setInt(1,number);
+            ResultSet Set= pstmt.executeQuery();
+            if(Set.next())
+            {
+                textArea.setText(Set.getString("content"));
+            }
+        } catch (SQLException a) {
+            a.printStackTrace();
+        }
+
         passButton.setOnAction(event -> {
             if (textArea.getText().trim().isEmpty()) {
                 showAlert("请输入回复内容");
             } else {
                 try {
-                    String sql="UPDATE message SET status=1 WHERE id=?";
+                    String sql ="UPDATE message SET status=1 WHERE id=?";
                     Connection connection= DatabaseUtil.getConnection();
                     PreparedStatement pstm= connection.prepareStatement(sql);
                     pstm.setInt(1,id);
@@ -96,6 +111,16 @@ public class ManagerRespondMessage {
     }
     private void handlePass(String inputText,String id,String type) throws SQLException {
         int number=this.id+10000;
+        String deleteSql="delete from message where id=?";
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(deleteSql))
+        {
+            pstmt.setInt(1,number);
+            pstmt.execute();
+        } catch (SQLException a) {
+            a.printStackTrace();
+        }
+
         String sql = "INSERT INTO message VALUES (?,'123456',?,?,2,?)";
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql))
@@ -112,6 +137,16 @@ public class ManagerRespondMessage {
 
     private void handleReject(String inputText,String id,String type) throws SQLException {
         int number=this.id+10000;
+        String deleteSql="delete from message where id=?";
+        try (Connection conn = DatabaseUtil.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(deleteSql))
+        {
+            pstmt.setInt(1,number);
+            pstmt.execute();
+        } catch (SQLException a) {
+            a.printStackTrace();
+        }
+
         String sql = "INSERT INTO message VALUES (?,'123456',?,?,3,?)";
         try (Connection conn = DatabaseUtil.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql))
