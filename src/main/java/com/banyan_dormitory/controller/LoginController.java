@@ -14,6 +14,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import java.io.IOException;
 import com.banyan_dormitory.controller.student.UserPanelController;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 
 public class LoginController {
@@ -34,6 +36,17 @@ public class LoginController {
     public void initialize(){
         registerButton.setCursor(Cursor.HAND);
         loginButton.setCursor(Cursor.HAND);
+        // 为账号和密码字段添加键盘事件监听器
+        account.setOnKeyPressed(this::handleKeyPress);
+        password.setOnKeyPressed(this::handleKeyPress);
+
+        // 设置默认按钮，使得焦点不在输入框上时也能通过Enter键提交
+        loginButton.setDefaultButton(true);
+    }
+    private void handleKeyPress(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            doLogin(new ActionEvent());
+        }
     }
     @FXML
     public void doLogin(ActionEvent actionEvent){

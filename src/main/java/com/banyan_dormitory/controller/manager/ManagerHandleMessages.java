@@ -82,7 +82,7 @@ public class ManagerHandleMessages {
                 super.updateItem(item, empty);
                 if (item!= null) {
                     setGraphic(item);
-                    setStyle("-fx-padding: 20px;-fx-background-color: rgba(214,239,223,0.7) ");
+                    setStyle("-fx-padding: 20px;-fx-background-color: rgba(214,239,223,0.7);-fx-border-color:rgba(0,176,80,0.5);-fx-border-width: 1px 0 1px 0;");
                     VBox vbox = new VBox(item);
                     vbox.setSpacing(100);
                     setGraphic(vbox);

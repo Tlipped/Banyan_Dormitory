@@ -7,6 +7,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -28,6 +29,20 @@ public class ManagerAccouncement {
     private Button releaseButton;
     private Timeline timeline;
     public void initialize() throws SQLException {
+        accouncement_show.setCellFactory(param -> new ListCell<HBox>() {
+            @Override
+            protected void updateItem(HBox item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                    setGraphic(null); // 清除任何先前的内容
+                } else {
+                    setGraphic(item);
+                    item.setStyle("-fx-background-color: rgba(0,176,80,0.5);");
+                }
+            }
+        });
         timeline = new Timeline(new KeyFrame(Duration.seconds(0.2), event -> {
             Platform.runLater(() -> {
                 try {
@@ -45,7 +60,6 @@ public class ManagerAccouncement {
     {
         releaseButton.setCursor(Cursor.HAND);
         accouncement_show.getItems().clear();
-        accouncement_show.setStyle("-fx-background-radius: 50;-fx-font-family: Arial");
         accouncement_show.setFixedCellSize(50);
 
         String sql="SELECT * FROM information order by id ";
@@ -68,7 +82,7 @@ public class ManagerAccouncement {
 
             Button button=new Button("删除公告");
             button.setCursor(Cursor.HAND);
-            button.setStyle("-fx-font-size: 20px;-fx-text-fill: black;-fx-background-color: red");
+            button.setStyle("-fx-font-size: 20px;-fx-text-fill: black;-fx-background-color: #F394A1");
             button.setOnAction(e->{
                 String drop="delete from information where id=?";
                 try {
@@ -80,7 +94,6 @@ public class ManagerAccouncement {
                     throw new RuntimeException(ex);
                 }
             });
-
             HBox hbox=new HBox();
             hbox.getChildren().add(label);
 
