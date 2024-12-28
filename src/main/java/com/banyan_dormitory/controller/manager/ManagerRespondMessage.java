@@ -5,7 +5,6 @@ import com.banyan_dormitory.util.ViewManager;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.sql.Connection;
@@ -20,21 +19,21 @@ public class ManagerRespondMessage {
     private int id;
     private String student_id;
     private String type;
+    private Button returnButton;
 
-    private Stage respondStage;
     public ManagerRespondMessage()
     {
+
     }
-    public ManagerRespondMessage(int id,String student_id,String type,Stage stage)
+    public ManagerRespondMessage(int id,String student_id,String type,Button returnButton)
     {
-        this.respondStage=stage;
         this.id=id;
         this.student_id=student_id;
         this.type=type;
+        this.returnButton=returnButton;
     }
     public void initialize()
     {
-
         passButton.setOnAction(event -> {
             if (textArea.getText().trim().isEmpty()) {
                 showAlert("请输入回复内容");
@@ -77,6 +76,7 @@ public class ManagerRespondMessage {
             }
         });
     }
+
     private static void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("提示");
@@ -91,7 +91,8 @@ public class ManagerRespondMessage {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
-        respondStage.close();
+        Stage stage=(Stage) returnButton.getScene().getWindow();
+        stage.close();
     }
     private void handlePass(String inputText,String id,String type) throws SQLException {
         int number=this.id+10000;

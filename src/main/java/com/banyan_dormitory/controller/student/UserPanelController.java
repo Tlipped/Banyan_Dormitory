@@ -21,6 +21,8 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class UserPanelController {
+    @FXML
+    public Label schoolInputWarningText;
 
     @FXML
     private TextField bedInput;
@@ -163,11 +165,16 @@ public class UserPanelController {
         phone_numberInput.setEditable(false);
         user_idWarningText.setVisible(false);
         phone_numberWarningText.setVisible(false);
+        schoolInputWarningText.setVisible(false);
 
         //changePasswordButton.setStyle("-fx-background-color: rgba(173,240,140,1);");
         changePasswordButton.setOnAction(event -> {
             Stage changePasswordStage = new Stage();
             changePasswordStage.setTitle("修改密码");
+
+            //冻结其他窗口
+            changePasswordStage.initModality(javafx.stage.Modality.APPLICATION_MODAL);
+
             try {
                 Parent root= FXMLLoader.load(UserPanelController.class.getResource("/com/banyan_dormitory/fxml/Student/ChangePassword.fxml"));
                 Scene scene = new Scene(root);
@@ -201,6 +208,7 @@ public class UserPanelController {
             }else{
                 String user_id = user_idInput.getText();
                 String phone_number = phone_numberInput.getText();
+                String school = schoolInput.getText();
 
                 user_idWarningText.setVisible(false);
                 phone_numberWarningText.setVisible(false);
@@ -228,6 +236,24 @@ public class UserPanelController {
 //                    alert.showAndWait();
                     phone_numberWarningText.setText("手机号码需要11位");
                     phone_numberWarningText.setVisible(true);
+                    isValid=false;
+                }
+
+                if(!StringUtil.isNumeric(phone_number)){
+                    phone_numberWarningText.setText("手机号码只能包含数字");
+                    phone_numberWarningText.setVisible(true);
+                    isValid=false;
+                }
+
+                if(!StringUtil.isNumeric(user_id)){
+                    user_idWarningText.setText("身份证号只能包含数字");
+                    user_idWarningText.setVisible(true);
+                    isValid=false;
+                }
+
+                if(school.equals("")){
+                    schoolInputWarningText.setText("学院信息不能为空");
+                    schoolInputWarningText.setVisible(true);
                     isValid=false;
                 }
 

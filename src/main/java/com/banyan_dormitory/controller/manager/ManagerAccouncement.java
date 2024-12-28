@@ -28,7 +28,7 @@ public class ManagerAccouncement {
     private Button releaseButton;
     private Timeline timeline;
     public void initialize() throws SQLException {
-        timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), event -> {
+        timeline = new Timeline(new KeyFrame(Duration.seconds(0.2), event -> {
             Platform.runLater(() -> {
                 try {
                     update();
@@ -72,11 +72,10 @@ public class ManagerAccouncement {
             button.setOnAction(e->{
                 String drop="delete from information where id=?";
                 try {
-                    Connection con=DatabaseUtil.getConnection();
-                    PreparedStatement pstm= con.prepareStatement(drop);
+                    Connection connection1= DatabaseUtil.getConnection();
+                    PreparedStatement pstm= connection1.prepareStatement(drop);
                     pstm.setString(1,id);
                     pstm.execute();
-                    initialize();
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }

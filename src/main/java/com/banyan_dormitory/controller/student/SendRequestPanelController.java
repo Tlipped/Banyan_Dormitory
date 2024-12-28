@@ -45,6 +45,7 @@ public class SendRequestPanelController {
             alert.setContentText("请求已提交");
             alert.showAndWait();
             RequestInput.clear();
+            requestTypeSelect.setValue("其他");
         });
         SubmitRequestButton.setCursor(Cursor.HAND);
     }

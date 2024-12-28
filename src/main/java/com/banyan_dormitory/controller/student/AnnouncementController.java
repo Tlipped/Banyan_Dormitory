@@ -107,6 +107,6 @@ public class AnnouncementController {
             currentSelectedContainer.setStyle("-fx-background-color: transparent;");
         }
         currentSelectedContainer = newSelectedContainer;
-        currentSelectedContainer.setStyle("-fx-border-color: rgba(234,251,226,0.93);");
+        currentSelectedContainer.setStyle("-fx-background-color: rgba(234,251,226,0.4);");
     }
 }

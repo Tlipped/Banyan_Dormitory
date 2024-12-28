@@ -109,9 +109,12 @@ public class RequestFeedbackPanelController {
                         statusText = "未处理";
                         break;
                     case 1:
-                        statusText = "已通过";
+                        statusText = "已处理";
                         break;
                     case 2:
+                        statusText = "已通过";
+                        break;
+                    case 3:
                         statusText = "被驳回";
                         break;
                     default:

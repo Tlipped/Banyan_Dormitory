@@ -39,4 +39,8 @@ public class StringUtil {
             }
         }
     }
+
+    public static boolean isNumeric(String phoneNumber) {
+        return phoneNumber.matches("\\d+");
+    }
 }

@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -52,9 +53,25 @@ public class ManagerHandleMessages {
         }));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
-
+        Platform.runLater(this::setVerticalScrollBarStyle);
     }
 
+    private void setVerticalScrollBarStyle() {
+        // 垂直滚动条并设置其样式
+        Node verticalScrollBar = totalMessages.lookup(".scroll-bar:vertical");
+        if (verticalScrollBar != null) {
+            verticalScrollBar.setStyle(
+                    "-fx-background-color: rgba(142,216,99,0.8); " + // 设置外部颜色
+                            "-fx-background-insets: 0; " +
+                            "-fx-padding: 0;"
+            );
+
+            Node thumb = verticalScrollBar.lookup(".thumb");
+            if (thumb != null) {
+                thumb.setStyle("-fx-background-color: rgb(75,147,53);");
+            }
+        }
+    }
     public void update() throws SQLException
     {
         totalMessages.getItems().clear();
@@ -65,7 +82,7 @@ public class ManagerHandleMessages {
                 super.updateItem(item, empty);
                 if (item!= null) {
                     setGraphic(item);
-                    setStyle("-fx-padding: 20px;-fx-background-color: green");
+                    setStyle("-fx-padding: 20px;-fx-background-color: rgba(214,239,223,0.7) ");
                     VBox vbox = new VBox(item);
                     vbox.setSpacing(100);
                     setGraphic(vbox);
@@ -75,7 +92,7 @@ public class ManagerHandleMessages {
             }
         });
 
-        String sql="SELECT * FROM message WHERE `to`='123456' order by status ";
+        String sql="SELECT * FROM message WHERE `to`='123456' order by status,id";
         Connection connection= DatabaseUtil.getConnection();
         Statement sq= connection.createStatement();
         ResultSet Set=sq.executeQuery(sql);

@@ -56,14 +56,14 @@ public class ManagerRespond {
 
     }
     public void returnAction(ActionEvent actionEvent) {
-        Stage stage=(Stage) returnButton.getScene().getWindow();
+        Stage stage = (Stage) returnButton.getScene().getWindow();
         stage.close();
     }
 
     public void responseAction(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/banyan_dormitory/fxml/Manager/manager_respondMessage.fxml"));
         loader.setControllerFactory(param -> {
-            return new ManagerRespondMessage(id,student_id,type,(Stage) returnButton.getScene().getWindow());
+            return new ManagerRespondMessage(id,student_id,type,returnButton);
         });
         Parent root = loader.load();
         Stage stage = new Stage();

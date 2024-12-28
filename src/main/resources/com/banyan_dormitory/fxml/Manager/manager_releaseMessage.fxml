@@ -7,10 +7,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #B8F4B8;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banyan_dormitory.controller.manager.ManagerReleaseMessage">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(214,239,223,0.7);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banyan_dormitory.controller.manager.ManagerReleaseMessage">
    <children>
       <DatePicker fx:id="datePicker" layoutX="395.0" layoutY="317.0" />
-      <Button fx:id="confirmButton" layoutX="222.0" layoutY="335.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="154.0" style="-fx-background-radius: 10; -fx-background-color: #90EE90;" text="确认发布">
+      <Button fx:id="confirmButton" layoutX="222.0" layoutY="335.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="154.0" style="-fx-background-radius: 10; -fx-background-color: rgb(172,238,179);" text="确认发布">
          <font>
             <Font name="Arial" size="20.0" />
          </font>
