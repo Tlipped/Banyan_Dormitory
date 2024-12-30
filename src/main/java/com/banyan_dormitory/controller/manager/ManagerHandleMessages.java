@@ -137,9 +137,9 @@ public class ManagerHandleMessages {
             if(Set.getInt("status")!=0)
             {
                 button.setText("已处理");
-                button.setOpacity(0.5);
+                button.setOpacity(0.2);
             }
-            button.setStyle("-fx-font-size: 20;-fx-background-color: #ADD8E6");
+            button.setStyle("-fx-font-size: 20;-fx-background-color: rgba(173,240,140,1)");
 
             button.setOnAction(e-> {
                 try {

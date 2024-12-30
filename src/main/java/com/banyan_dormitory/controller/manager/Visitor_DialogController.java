@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.event.ActionEvent; // 确保使用的是 JavaFX 的 ActionEvent
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -27,14 +28,17 @@ public class Visitor_DialogController {
     public void initialize(){
         Confirm.setCursor(Cursor.HAND);
         Cancel.setCursor(Cursor.HAND);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        date.setText(LocalDateTime.now().format(formatter));
+        date.setEditable(false);
+        date.setCursor(Cursor.DEFAULT);
     }
     public void setVisitorCheckController(VisitorCheckController controller) {
         this.visitorCheckController = controller;
     }
     @FXML
     public void Addcomfirm(ActionEvent actionEvent) {
-        if (name.getText().isEmpty() || visitor_id.getText().isEmpty() || phone_number.getText().isEmpty() ||
-                reason.getText().isEmpty() || date.getText().isEmpty()) {
+        if (name.getText().isEmpty() || visitor_id.getText().isEmpty() || phone_number.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("输入存在空");
             alert.setHeaderText("输入不合法");
@@ -42,17 +46,17 @@ public class Visitor_DialogController {
             alert.showAndWait();
             return;
         }
-
-        String[] dateTimeParts = StringUtil.splitAndConvertDateTime(date.getText());
-        if (dateTimeParts == null) {
+        if(reason.getText().isEmpty()){
+            reason.setText("其他");
+        }
+        if(StringUtil.containsDigit(name.getText())){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Date/Time Format Error");
-            alert.setContentText("请输入日期格式 (yyyy-MM-dd HH:mm).");
+            alert.setTitle("输入不合法");
+            alert.setHeaderText("名字不能数字");
+            alert.setContentText("请确保名字不包含数字");
             alert.showAndWait();
             return;
         }
-
         String insertSQL = "INSERT INTO visitor (name, visitor_id, phone_number, date, time, reason) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = DatabaseUtil.getConnection();
@@ -61,8 +65,8 @@ public class Visitor_DialogController {
             pstmt.setString(1, name.getText());
             pstmt.setString(2, visitor_id.getText());
             pstmt.setString(3, phone_number.getText());
-            pstmt.setDate(4, java.sql.Date.valueOf(dateTimeParts[0])); // Insert date part
-            pstmt.setTime(5, java.sql.Time.valueOf(dateTimeParts[1] + ":00")); // Insert time part with seconds set to 00
+            pstmt.setDate(4, java.sql.Date.valueOf(LocalDate.now())); // Insert date part
+            pstmt.setTime(5, java.sql.Time.valueOf(LocalTime.now())); // Insert time part with seconds set to 00
             pstmt.setString(6, reason.getText());
 
             int affectedRows = pstmt.executeUpdate();

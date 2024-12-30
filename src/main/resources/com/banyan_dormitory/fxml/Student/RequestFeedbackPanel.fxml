@@ -79,17 +79,20 @@
                      <content>
                         <VBox fx:id="MessageContainer" prefHeight="418.0" prefWidth="797.0" spacing="10.0" style="-fx-background-color: rgba(214,239,223,0.7);">
                            <padding>
-                              <Insets right="10.0" />
-                           </padding></VBox>
+                              <Insets right="10.0" top="10.0" />
+                           </padding>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets></VBox>
                      </content>
                   </ScrollPane>
                </children>
             </VBox>
          </content>
       </ScrollPane>
-      <Label alignment="CENTER" layoutX="205.0" layoutY="30.0" prefHeight="54.0" prefWidth="520.0" text="诉  求  记  录">
+      <Label alignment="CENTER" layoutX="207.0" layoutY="26.0" prefHeight="54.0" prefWidth="520.0" text="诉  求  记  录">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font name="System Bold" size="39.0" />
          </font>
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">

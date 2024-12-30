@@ -6,8 +6,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="660.0" maxWidth="930.0" minHeight="660.0" minWidth="930.0" prefHeight="660.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banyan_dormitory.controller.manager.VisitorCheckController">
@@ -46,56 +47,69 @@
                </padding></VBox>
          </content>
       </ScrollPane>
-      <HBox layoutX="39.0" layoutY="91.0" prefHeight="49.0" prefWidth="852.0">
-         <children>
-            <Label alignment="CENTER" prefHeight="49.0" prefWidth="152.0" text="姓名" textAlignment="CENTER">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <padding>
-                  <Insets left="5.0" />
-               </padding>
-               <HBox.margin>
-                  <Insets left="-20.0" right="10.0" />
-               </HBox.margin>
-            </Label>
-            <Label alignment="CENTER" prefHeight="49.0" prefWidth="158.0" text="身份证号" textAlignment="CENTER">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <padding>
-                  <Insets left="15.0" />
-               </padding>
-               <HBox.margin>
-                  <Insets left="5.0" right="5.0" />
-               </HBox.margin>
-            </Label>
-            <Label alignment="CENTER" prefHeight="49.0" prefWidth="128.0" text="手机号码" textAlignment="CENTER">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <padding>
-                  <Insets left="15.0" />
-               </padding>
-               <HBox.margin>
-                  <Insets left="170.0" />
-               </HBox.margin>
-            </Label>
-            <Label alignment="CENTER" prefHeight="49.0" prefWidth="223.0" text="到访原因" textAlignment="CENTER">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <padding>
-                  <Insets left="15.0" />
-               </padding>
-               <HBox.margin>
-                  <Insets left="80.0" />
-               </HBox.margin>
-            </Label>
-         </children>
+      <Label alignment="CENTER" layoutX="-12.0" layoutY="79.0" prefHeight="49.0" prefWidth="152.0" text="姓名" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
          <padding>
-            <Insets left="25.0" right="15.0" />
+            <Insets left="5.0" />
          </padding>
-      </HBox>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#278b27" />
+                  <Stop color="#1c9d41" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label alignment="CENTER" layoutX="237.0" layoutY="79.0" prefHeight="49.0" prefWidth="152.0" text="身份证号" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#278b27" />
+                  <Stop color="#1c9d41" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label alignment="CENTER" layoutX="484.0" layoutY="79.0" prefHeight="49.0" prefWidth="152.0" text="手机号" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#278b27" />
+                  <Stop color="#1c9d41" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Label alignment="CENTER" layoutX="715.0" layoutY="79.0" prefHeight="49.0" prefWidth="152.0" text="来访原因" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#278b27" />
+                  <Stop color="#1c9d41" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
    </children>
 </AnchorPane>

@@ -213,12 +213,12 @@ public class UserPanelController {
                 user_idWarningText.setVisible(false);
                 phone_numberWarningText.setVisible(false);
                 boolean isValid=true;
-                if(StringUtil.isEmpty(user_id)){
+                if(user_id.equals("无")){
                     user_idWarningText.setText("请输入身份证号");
                     user_idWarningText.setVisible(true);
                     isValid=false;
                 }
-                if(StringUtil.isEmpty(phone_number)){
+                if(phone_number.equals("无")){
                     phone_numberWarningText.setText("请输入手机号");
                     phone_numberWarningText.setVisible(true);
                     isValid=false;

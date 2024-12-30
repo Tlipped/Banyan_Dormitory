@@ -15,7 +15,7 @@ import javafx.scene.layout.StackPane;
 
 public class RegisterController {
     @FXML
-    public Button RegisterButton;  // 注意这里应该是 RegisterController 而不是 LoginController
+    public Button RegisterButton;
     public Label error;
     @FXML
     public Button BackButton;
@@ -104,6 +104,10 @@ public class RegisterController {
         }
         if (StringUtil.isEmpty(school)) {
             showError("请输入学院！");
+            return;
+        }
+        if(reAccount.getText().trim().length()!=8){
+            showError("账号需要为八位");
             return;
         }
         if (DatabaseUtil.registerUser(account, password, name, school)) {

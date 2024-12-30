@@ -44,18 +44,18 @@ public class HomepageAController {
     }
 
     private void loadInformationFromDatabase() {
-        String query = "SELECT id, content, date FROM information";
+        String query = "SELECT content, date FROM information";
 
         try (Connection conn = DatabaseUtil.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
             infoContainer.getChildren().clear();
+            int id = 1; // 从1开始递增的ID
             while (rs.next()) {
-                int id = rs.getInt("id");
                 String content = rs.getString("content");
                 String date = rs.getString("date");
                 String displayContent = content.length() > 20 ? content.substring(0, 20) + "..." : content;
-                HBox infoRow = createInfoRow(id, displayContent, date, content, content.length() > 20);
+                HBox infoRow = createInfoRow(id++, displayContent, date, content, content.length() > 20);
                 infoContainer.getChildren().add(infoRow);
             }
 

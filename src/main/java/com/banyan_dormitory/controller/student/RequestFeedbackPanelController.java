@@ -104,7 +104,7 @@ public class RequestFeedbackPanelController {
 
             int messageStatus = message.getStatus();
             StackPane statusContainer = new StackPane();
-            statusContainer.setPadding(new Insets(10, 10, 10, 10));
+            statusContainer.setPadding(new Insets(10, 10, 10, 20));
             statusContainer.setStyle("-fx-background-color: rgba(173,240,140,1);-fx-background-radius: 5");
             statusContainer.setAlignment(Pos.CENTER_LEFT);
 
@@ -122,6 +122,7 @@ public class RequestFeedbackPanelController {
                         break;
                     case 3:
                         statusText = "被驳回";
+                        statusContainer.setStyle("-fx-background-color: #F394A1;-fx-background-radius: 5");
                         break;
                     default:
                         statusText = "发送失败";

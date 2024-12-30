@@ -28,31 +28,46 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="name" layoutX="138.0" layoutY="100.0" prefHeight="36.0" prefWidth="198.0" style="-fx-border-radius: 5; -fx-border-color: black; -fx-background-color: transparent;" />
+      <TextField fx:id="name" layoutX="138.0" layoutY="100.0" prefHeight="36.0" prefWidth="198.0" style="-fx-border-radius: 5; -fx-border-color: black; -fx-background-color: transparent;">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
       <Label layoutX="20.0" layoutY="160.0" prefHeight="36.0" prefWidth="101.0" text="身份证号:">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="visitor_id" layoutX="138.0" layoutY="160.0" prefHeight="36.0" prefWidth="198.0" promptText="请输入18位身份证号" style="-fx-border-radius: 5; -fx-border-color: black; -fx-background-color: transparent;" />
+      <TextField fx:id="visitor_id" layoutX="138.0" layoutY="160.0" prefHeight="36.0" prefWidth="198.0" promptText="请输入18位身份证号" style="-fx-border-radius: 5; -fx-border-color: black; -fx-background-color: transparent;">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
       <Label layoutX="20.0" layoutY="220.0" prefHeight="36.0" prefWidth="70.0" text="手机号:">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="phone_number" layoutX="138.0" layoutY="220.0" prefHeight="36.0" prefWidth="198.0" promptText="请输入11位身份证号" style="-fx-border-radius: 5; -fx-border-color: black; -fx-background-color: transparent;" />
+      <TextField fx:id="phone_number" layoutX="138.0" layoutY="220.0" prefHeight="36.0" prefWidth="198.0" promptText="请输入11位身份证号" style="-fx-border-radius: 5; -fx-border-color: black; -fx-background-color: transparent;">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
       <Label layoutX="20.0" layoutY="280.0" prefHeight="36.0" prefWidth="101.0" text="来访时间:">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="date" layoutX="138.0" layoutY="280.0" prefHeight="36.0" prefWidth="198.0" promptText="年-月-日 小时:分钟" style="-fx-border-radius: 5; -fx-border-color: black; -fx-background-color: transparent;" />
+      <TextField fx:id="date" layoutX="138.0" layoutY="280.0" prefHeight="36.0" prefWidth="198.0" promptText="年-月-日 小时:分钟" style="-fx-border-radius: 5; -fx-border-color: black; -fx-background-color: transparent;">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
       <Label layoutX="20.0" layoutY="340.0" prefHeight="36.0" prefWidth="101.0" text="来访原因:">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="reason" layoutX="138.0" layoutY="340.0" prefHeight="36.0" prefWidth="198.0" style="-fx-border-radius: 5; -fx-border-color: black; -fx-background-color: transparent;" />
+      <TextField fx:id="reason" layoutX="138.0" layoutY="340.0" prefHeight="36.0" prefWidth="198.0" style="-fx-border-radius: 5; -fx-border-color: black; -fx-background-color: transparent;">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
       <Button fx:id="Confirm" layoutX="71.0" layoutY="428.0" mnemonicParsing="false" onAction="#Addcomfirm" prefHeight="36.0" prefWidth="129.0" style="-fx-background-color: rgb(172,238,179); -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;" text="确  认">
          <font>
             <Font size="21.0" />
