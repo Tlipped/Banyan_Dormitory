@@ -8,10 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
 import java.io.IOException;
 import com.banyan_dormitory.controller.student.UserPanelController;
 import javafx.scene.input.KeyCode;
@@ -26,7 +24,7 @@ public class LoginController {
     @FXML
     private TextField account;
     @FXML
-    private TextField password;
+    private PasswordField password;
     @FXML
     private Label error;
     @FXML
@@ -40,7 +38,6 @@ public class LoginController {
         account.setOnKeyPressed(this::handleKeyPress);
         password.setOnKeyPressed(this::handleKeyPress);
 
-        // 设置默认按钮，使得焦点不在输入框上时也能通过Enter键提交
         loginButton.setDefaultButton(true);
     }
     private void handleKeyPress(KeyEvent event) {
