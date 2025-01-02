@@ -352,7 +352,10 @@ public class Student_ManagerController {
             showAlerttOnce("错误", "床位号和学号不能为空！");
             return;
         }
-
+        if(Integer.parseInt(bedNumber)<=0||Integer.parseInt(bedNumber)>4){
+            showAlerttOnce("错误", "床位号必须在1-4之内！");
+            return;
+        }
         try (Connection conn = DatabaseUtil.getConnection()) {
             // 检查此房间号和床位是否已分配
             String checkRoomBedQuery = "SELECT id FROM user WHERE room = ? AND bed = ?";

@@ -47,7 +47,7 @@
                </padding></VBox>
          </content>
       </ScrollPane>
-      <Label alignment="CENTER" layoutX="-12.0" layoutY="79.0" prefHeight="49.0" prefWidth="152.0" text="姓名" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="2.0" layoutY="79.0" prefHeight="49.0" prefWidth="152.0" text="姓名" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -79,7 +79,7 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <Label alignment="CENTER" layoutX="484.0" layoutY="79.0" prefHeight="49.0" prefWidth="152.0" text="手机号" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="491.0" layoutY="79.0" prefHeight="49.0" prefWidth="152.0" text="手机号" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>

@@ -65,15 +65,14 @@ public class Visitor_DialogController {
             pstmt.setString(1, name.getText());
             pstmt.setString(2, visitor_id.getText());
             pstmt.setString(3, phone_number.getText());
-            pstmt.setDate(4, java.sql.Date.valueOf(LocalDate.now())); // Insert date part
-            pstmt.setTime(5, java.sql.Time.valueOf(LocalTime.now())); // Insert time part with seconds set to 00
+            pstmt.setDate(4, java.sql.Date.valueOf(LocalDate.now()));
+            pstmt.setTime(5, java.sql.Time.valueOf(LocalTime.now()));
             pstmt.setString(6, reason.getText());
 
             int affectedRows = pstmt.executeUpdate();
             if (affectedRows > 0) {
                 Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 stage.close();
-                //执行一次查询更新
                 if (visitorCheckController != null) {
                     visitorCheckController.onSearchButtonClick(new ActionEvent(visitorCheckController, null));
                 }

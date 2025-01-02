@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="660.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.banyan_dormitory.controller.manager.ManagerHandleMessages">
    <children>
-      <ListView fx:id="totalMessages" layoutX="65.0" layoutY="59.0" prefHeight="510.0" prefWidth="813.0" style="-fx-background-color: rgba(214,239,223,0.7); -fx-background-radius: 30;">
+      <ListView fx:id="totalMessages" layoutX="59.0" layoutY="97.0" prefHeight="510.0" prefWidth="813.0" style="-fx-background-color: rgba(214,239,223,0.5); -fx-background-radius: 30;">
          <padding>
             <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
          </padding></ListView>
+      <Label alignment="CENTER" layoutX="256.0" layoutY="30.0" prefHeight="40.0" prefWidth="396.0" text="诉  求  审  批">
+         <font>
+            <Font size="45.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#438d36" />
+                  <Stop color="#2f8653" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
    </children>
 </AnchorPane>
